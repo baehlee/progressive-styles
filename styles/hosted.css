@@ -456,4 +456,20 @@ header, footer, section, main, [class*="content"] {
 }
 
 
+/* ═══ 20. Mobile safety (most of this site's visitors are on phones) ═══ */
+
+/* Media never forces horizontal scroll on small screens. (max-width only —
+   we deliberately do NOT touch height, so fixed-ratio images like the founder
+   cards keep their object-fit cropping.) */
+img, video, iframe, embed, object {
+  max-width: 100% !important;
+}
+
+/* Long words, URLs, and unbroken strings wrap instead of pushing the layout
+   wider than the viewport. */
+body, p, li, td, h1, h2, h3, h4, h5, h6 {
+  overflow-wrap: break-word;
+}
+
+
 /* ═══ END — Progressive Real Estate Group global stylesheet ═══ */

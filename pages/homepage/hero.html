@@ -51,7 +51,15 @@
 
 <section id="preg-hero">
   <style>
-    /* All rules scoped to #preg-hero — safe inside a live Lofty page. */
+    /* Un-clip the hero's OWN ancestor chain so the full-bleed can reach the
+       page edges. Lofty drops custom blocks into a centered content column
+       that clips horizontally, which traps a margin breakout and leaves white
+       gutters. :has(#preg-hero) matches only this block's ancestors, so no
+       other part of the page layout is affected. (Page-wide, intentionally
+       NOT scoped to #preg-hero.) */
+    :has(#preg-hero){overflow:visible !important;}
+
+    /* All remaining rules scoped to #preg-hero — safe inside a live Lofty page. */
     #preg-hero{
       --i:#0A1F3D;      /* ink / navy        */
       --s2:#6FAED9;     /* sky-2             */
@@ -70,8 +78,12 @@
       padding:clamp(40px,7vw,104px) clamp(1.25rem,5vw,2.5rem) clamp(48px,7vw,96px);
       -webkit-font-smoothing:antialiased;
       /* Full-bleed: break out of Lofty's centered/constrained block wrapper so
-         the cream background spans the whole page width. Inner .ph-wrap keeps
-         the content centered at the 1280px site width. */
+         the cream background spans the whole page width. Explicit 100vw width
+         makes this deterministic inside Lofty's flex columns; the :has() rule
+         above removes the ancestor clip that would otherwise trap it. Inner
+         .ph-wrap keeps the content centered at the 1280px site width. */
+      width:100vw;
+      max-width:100vw;
       margin-left:calc(50% - 50vw);
       margin-right:calc(50% - 50vw);
       overflow-x:clip;

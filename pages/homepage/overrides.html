@@ -1,0 +1,131 @@
+<!-- Progressive RE Group — HOMEPAGE-ONLY OVERRIDES
+     ──────────────────────────────────────────────
+     WHERE TO PASTE: Lofty Page Editor → Home Page → Add Block → 
+                     Custom HTML / Code Block. Anywhere on the page.
+     WHY HERE: These rules only need to apply on the homepage AND
+               they're too big to fit in the global Custom Styles 5K limit.
+     ────────────────────────────────────────────── -->
+
+<style>
+/* ═══ 1. "Your Trusted Real Estate Experts" — kill the dark band + 4-color tiles ═══ */
+[class*="trusted"], [class*="why-us"], [class*="experts-band"],
+[class*="features-strip"], [class*="value-prop"] {
+  background-color: #F4EEE3 !important;
+  background-image: none !important;
+  color: #1B1815 !important;
+}
+[class*="trusted"] h1, [class*="trusted"] h2, [class*="trusted"] h3,
+[class*="why-us"] h2, [class*="experts-band"] h2 {
+  color: #0A1F3D !important;
+  text-shadow: none !important;
+}
+[class*="trusted"] p, [class*="why-us"] p, [class*="experts-band"] p {
+  color: #6E695F !important;
+  text-shadow: none !important;
+}
+/* Force all four tiles to the same cream/paper background */
+[class*="trusted"] > div > div,
+[class*="trusted"] [class*="column"],
+[class*="trusted"] [class*="tile"],
+[class*="trusted"] [class*="card"],
+[class*="why-us"] [class*="column"],
+[class*="why-us"] [class*="tile"],
+[class*="features-strip"] > div,
+[class*="value-prop"] > div,
+[class*="four-col"] > div,
+[class*="4-column"] > div {
+  background-color: #FBF8F1 !important;
+  background-image: none !important;
+  border: 1px solid #D9D1BE !important;
+  color: #1B1815 !important;
+  padding: clamp(28px, 3vw, 40px) !important;
+}
+[class*="trusted"] [class*="column"] *,
+[class*="trusted"] [class*="tile"] *,
+[class*="why-us"] [class*="column"] *,
+[class*="features-strip"] > div *,
+[class*="value-prop"] > div * {
+  color: #1B1815 !important;
+  text-shadow: none !important;
+}
+/* Icons inside the tiles — keep terracotta */
+[class*="trusted"] [class*="icon"],
+[class*="trusted"] svg,
+[class*="why-us"] [class*="icon"],
+[class*="features-strip"] [class*="icon"] {
+  color: #B86A3E !important;
+  fill: #B86A3E !important;
+}
+
+
+/* ═══ 2. "Get More Information" form — flip from dark navy to cream ═══ */
+[class*="get-info"], [class*="get-more"], [class*="getinfo"],
+[class*="contact-section"], [class*="lead-section"], [class*="home-contact"],
+[class*="footer-form"], [class*="info-form"], [class*="bottom-form"],
+section[class*="dark-form"], section[class*="form-block"] {
+  background-color: #F4EEE3 !important;
+  background-image: none !important;
+  color: #1B1815 !important;
+}
+[class*="get-info"] *, [class*="get-more"] *,
+[class*="contact-section"] *, [class*="lead-section"] *,
+[class*="home-contact"] *, [class*="footer-form"] * {
+  color: #1B1815 !important;
+}
+[class*="get-info"] h1, [class*="get-info"] h2, [class*="get-info"] h3,
+[class*="get-more"] h1, [class*="get-more"] h2,
+[class*="contact-section"] h2, [class*="lead-section"] h2 {
+  color: #0A1F3D !important;
+}
+[class*="get-info"] input, [class*="get-info"] textarea,
+[class*="get-more"] input, [class*="get-more"] textarea,
+[class*="contact-section"] input, [class*="contact-section"] textarea {
+  background: #FBF8F1 !important;
+  border: 1px solid #D9D1BE !important;
+  color: #1B1815 !important;
+}
+
+
+/* ═══ 3. "What's Your Home Worth?" valuation widget — readable heading on dark photo ═══ */
+[class*="valuation"] h1, [class*="valuation"] h2, [class*="valuation"] h3,
+[class*="valuation"] h4, [class*="valuation"] p,
+[class*="home-worth"] h1, [class*="home-worth"] h2, [class*="home-worth"] h3,
+[class*="home-worth"] p,
+[class*="estimate-form"] h1, [class*="estimate-form"] h2, [class*="estimate-form"] h3,
+[class*="property-value"] h1, [class*="property-value"] h2 {
+  color: #FBF8F1 !important;
+  text-shadow: 0 2px 16px rgba(10, 31, 61, 0.55) !important;
+}
+/* Step circles in the wizard */
+[class*="valuation"] [class*="step"],
+[class*="home-worth"] [class*="step"] {
+  color: #FBF8F1 !important;
+}
+
+
+/* ═══ 4. "Work With Us" — paragraph readability + tighten container ═══ */
+[class*="work-with"], [class*="work-with-us"] {
+  background-color: #F4EEE3 !important;
+}
+[class*="work-with"] p, [class*="work-with-us"] p {
+  font-size: 17px !important;
+  line-height: 1.65 !important;
+  color: #1B1815 !important;
+  max-width: 580px;
+}
+
+
+/* ═══ 5. Blog section — clean the featured card ═══ */
+[class*="blog-list"], [class*="blog-section"], [class*="recent-posts"] {
+  background-color: #F4EEE3 !important;
+}
+[class*="blog-card"], [class*="post-card"] {
+  background: #FBF8F1 !important;
+  border: 1px solid #D9D1BE !important;
+  transition: all 0.25s ease;
+}
+[class*="blog-card"]:hover, [class*="post-card"]:hover {
+  border-color: #0A1F3D !important;
+  transform: translateY(-3px);
+}
+</style>

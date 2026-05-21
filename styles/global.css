@@ -1,0 +1,51 @@
+/* Progressive RE Group — Global Foundation v3 (fits Lofty 5K limit).
+   Paste as the ONLY contents of Lofty Custom Styles. */
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:wght@300..700&family=Manrope:wght@400..600&display=swap');
+:root{
+ --I:#0A1F3D;--S:#3D88BD;--C:#F4EEE3;--P:#FBF8F1;--E:#B86A3E;--E2:#D38A5C;
+ --t:#1B1815;--m:#6E695F;--r:#D9D1BE;--d:'Fraunces',Georgia,serif;
+ --f:'Manrope',-apple-system,sans-serif
+}
+html,body{font-family:var(--f)!important;background:var(--C)!important;color:var(--t)!important;-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4,h5,h6{font-family:var(--d)!important;color:var(--I)!important;letter-spacing:-.02em!important;font-weight:400!important}
+h1{letter-spacing:-.03em!important;line-height:1.02!important}
+em,i{color:var(--E);font-style:italic}
+a{color:var(--I);text-decoration:none;transition:color .2s}
+a:hover{color:var(--E)}
+::selection{background:var(--E);color:var(--P)}
+
+/* Header */
+header,.header,[class*="header"]:not([class*="card"]):not([class*="modal"]),.navbar{background:var(--C)!important;border-bottom:1px solid var(--r)!important}
+header a,.header a,.navbar a{color:var(--t)!important}
+header nav a:hover,.navbar a:hover{color:var(--E)!important}
+
+/* Buttons */
+.btn,button,input[type=submit],[class*="btn-primary"]{font-family:var(--f)!important;font-weight:600!important;letter-spacing:.04em!important;text-transform:uppercase!important;font-size:13px!important;border-radius:2px!important;padding:14px 26px!important;transition:all .2s!important}
+.btn-primary,[class*="btn-primary"],button[type=submit],input[type=submit]{background:var(--I)!important;color:var(--P)!important;border:1px solid var(--I)!important}
+.btn-primary:hover,button[type=submit]:hover{background:var(--E)!important;border-color:var(--E)!important}
+button[class*="more"],a[class*="view-more"]{background:transparent!important;border:1px solid var(--I)!important;color:var(--I)!important}
+button[class*="more"]:hover,a[class*="view-more"]:hover{background:var(--I)!important;color:var(--P)!important}
+
+/* Forms */
+input,textarea,select{font-family:var(--f)!important;background:var(--P)!important;border:1px solid var(--r)!important;color:var(--t)!important;border-radius:1px!important;padding:14px 16px!important}
+input:focus,textarea:focus{outline:0!important;border-color:var(--I)!important}
+label{font-size:12px!important;font-weight:600!important;letter-spacing:.06em!important;text-transform:uppercase!important;color:var(--m)!important}
+
+/* Listing cards (site-wide: home + buy + agent pages) */
+[class*="listing-card"],[class*="property-card"],[class*="listing-item"]{background:var(--P)!important;border:1px solid var(--r)!important;border-radius:1px!important;transition:all .25s}
+[class*="listing-card"]:hover,[class*="property-card"]:hover{border-color:var(--I)!important;transform:translateY(-3px)}
+[class*="listing"] [class*="price"]{font-family:var(--d)!important;font-weight:400!important;color:var(--P)!important;letter-spacing:-.02em!important;text-shadow:0 2px 12px rgba(10,31,61,.6)}
+[class*="listing"] [class*="photo"] *,[class*="listing"] [class*="image"] *,[class*="listing-card"] [class*="content"] *{color:var(--P)!important}
+[class*="listing-tag"],[class*="ribbon"]{font-family:var(--f)!important;font-size:10px!important;font-weight:700!important;letter-spacing:.18em!important;text-transform:uppercase!important;padding:6px 10px!important}
+
+/* Hero/banner overlay text → keep LIGHT */
+[class*="hero"] h1,[class*="hero"] h2,[class*="hero"] h3,[class*="hero"] p,[class*="hero"] blockquote,
+[class*="banner"] h1,[class*="banner"] h2,[class*="banner"] p,
+[style*="background-image"] h1,[style*="background-image"] h2,[style*="background-image"] h3,[style*="background-image"]>p{color:var(--P)!important;text-shadow:0 2px 16px rgba(10,31,61,.55)}
+[class*="hero"] em,[class*="banner"] em{color:var(--E2)!important}
+
+/* Footer */
+footer,.footer,[class*="footer"]:not([class*="card"]):not([class*="modal"]){background:var(--I)!important;background-image:none!important;color:rgba(255,255,255,.72)!important}
+footer *,.footer *{color:rgba(255,255,255,.72)!important}
+footer a:hover{color:var(--P)!important}
+footer h1,footer h2,footer h3,footer h4,footer strong,footer [class*="logo"] *{color:var(--P)!important}

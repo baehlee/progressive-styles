@@ -1,0 +1,1601 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Progressive Real Estate Group — A place to belong</title>
+<meta name="description" content="Four veteran Twin Cities real estate founders building a brokerage on one idea: everyone deserves a place to belong. Inclusive, equitable, client-centered.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,300..800,0..100&family=Manrope:wght@300..800&display=swap" rel="stylesheet">
+<style>
+/* ───────── Design Tokens ───────── */
+:root {
+  /* Color */
+  --ink:    #0A1F3D;   /* primary navy */
+  --ink-2:  #14315A;   /* slightly lifted navy */
+  --sky:    #3D88BD;   /* logo sky blue */
+  --sky-2:  #6FAED9;
+  --canvas: #F4EEE3;   /* warm cream background */
+  --paper:  #FBF8F1;   /* warmer near-white */
+  --ember:  #B86A3E;   /* terracotta accent */
+  --ember-2:#D38A5C;
+  --char:   #1B1815;   /* body text */
+  --mute:   #6E695F;   /* secondary text */
+  --rule:   #D9D1BE;   /* subtle borders */
+  --rule-2: #E8E1D0;
+
+  /* Type */
+  --display: 'Fraunces', 'Times New Roman', serif;
+  --sans:    'Manrope', -apple-system, BlinkMacSystemFont, sans-serif;
+
+  /* Layout */
+  --bound: 1280px;
+  --gutter: clamp(1.25rem, 3vw, 2.5rem);
+}
+
+* { box-sizing: border-box; }
+html { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+body {
+  margin: 0;
+  font-family: var(--sans);
+  background: var(--canvas);
+  color: var(--char);
+  font-size: 17px;
+  line-height: 1.55;
+  font-weight: 400;
+  overflow-x: hidden;
+}
+
+/* Subtle paper grain texture */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.4;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.06 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+}
+
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; display: block; }
+h1, h2, h3, h4 { font-family: var(--display); font-weight: 400; letter-spacing: -0.02em; margin: 0; }
+p { margin: 0; }
+
+.bound {
+  max-width: var(--bound);
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+  position: relative;
+  z-index: 2;
+}
+
+/* ───────── Eyebrow / labels ───────── */
+.eyebrow {
+  font-family: var(--sans);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ember);
+}
+.eyebrow .dot {
+  display: inline-block;
+  width: 4px;
+  height: 4px;
+  background: var(--ember);
+  border-radius: 50%;
+  margin: 0 0.7em;
+  vertical-align: middle;
+  transform: translateY(-2px);
+}
+
+/* ───────── Buttons ───────── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6em;
+  padding: 0.95em 1.6em;
+  font-family: var(--sans);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  border: 1px solid transparent;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+.btn-primary { background: var(--ink); color: var(--paper); }
+.btn-primary:hover { background: var(--ember); transform: translateY(-1px); }
+.btn-ghost { background: transparent; color: var(--ink); border-color: var(--ink); }
+.btn-ghost:hover { background: var(--ink); color: var(--paper); }
+.btn-light { background: transparent; color: var(--paper); border-color: rgba(255,255,255,0.4); }
+.btn-light:hover { background: var(--paper); color: var(--ink); border-color: var(--paper); }
+.arrow { transition: transform 0.2s; }
+.btn:hover .arrow { transform: translateX(3px); }
+
+/* ───────── Header ───────── */
+header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: var(--canvas);
+  border-bottom: 1px solid var(--rule);
+  backdrop-filter: blur(10px);
+  background-color: rgba(244, 238, 227, 0.92);
+}
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 0;
+}
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.nav-logo img { height: 48px; width: 48px; object-fit: contain; }
+.nav-logo .word {
+  font-family: var(--display);
+  font-size: 19px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  line-height: 1.1;
+  color: var(--ink);
+}
+.nav-logo .word small {
+  display: block;
+  font-family: var(--sans);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--mute);
+  margin-top: 2px;
+}
+nav.nav-links {
+  display: flex;
+  gap: 32px;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+nav.nav-links a {
+  color: var(--char);
+  position: relative;
+  padding: 4px 0;
+  transition: color 0.2s;
+}
+nav.nav-links a:hover { color: var(--ember); }
+nav.nav-links a.active { color: var(--ember); }
+nav.nav-links a.active::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: var(--ember);
+}
+.nav-cta { display: flex; align-items: center; gap: 18px; }
+.nav-cta .sign-in {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--mute);
+}
+.nav-cta .sign-in:hover { color: var(--ink); }
+
+@media (max-width: 900px) {
+  nav.nav-links { display: none; }
+}
+
+/* ───────── Hero ───────── */
+.hero {
+  padding: clamp(48px, 8vw, 120px) 0 clamp(60px, 8vw, 100px);
+  position: relative;
+}
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.15fr 1fr;
+  gap: clamp(40px, 6vw, 80px);
+  align-items: center;
+}
+.hero-left .eyebrow { margin-bottom: 28px; display: block; }
+.hero h1 {
+  font-family: var(--display);
+  font-size: clamp(48px, 7.5vw, 116px);
+  line-height: 0.94;
+  letter-spacing: -0.035em;
+  font-weight: 300;
+  font-variation-settings: "opsz" 144, "SOFT" 50;
+  color: var(--ink);
+  margin-bottom: 32px;
+}
+.hero h1 em {
+  font-style: italic;
+  font-variation-settings: "opsz" 144, "SOFT" 100;
+  color: var(--ember);
+}
+.hero-sub {
+  font-size: clamp(17px, 1.4vw, 19px);
+  line-height: 1.6;
+  max-width: 480px;
+  color: var(--char);
+  margin-bottom: 36px;
+}
+.hero-cta-row {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+/* Founder grid in hero */
+.founder-stack {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+  position: relative;
+}
+.founder-stack::before {
+  content: 'WELCOME';
+  position: absolute;
+  top: -28px;
+  right: 0;
+  font-family: var(--sans);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.3em;
+  color: var(--mute);
+}
+.founder-card {
+  position: relative;
+  aspect-ratio: 1 / 1.15;
+  overflow: hidden;
+  background: var(--ink);
+  cursor: pointer;
+  border-radius: 1px;
+}
+.founder-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  transition: transform 0.6s ease, filter 0.3s ease;
+  filter: saturate(0.92);
+}
+.founder-card:hover img { transform: scale(1.06); filter: saturate(1.1); }
+.founder-card .meta {
+  position: absolute;
+  inset: auto 0 0 0;
+  padding: 14px 16px 14px;
+  background: linear-gradient(to top, rgba(10,31,61,0.95) 0%, rgba(10,31,61,0.7) 60%, transparent 100%);
+  color: var(--paper);
+}
+.founder-card .meta .role {
+  font-family: var(--sans);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--sky-2);
+  margin-bottom: 4px;
+}
+.founder-card .meta .name {
+  font-family: var(--display);
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+.founder-card .play {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.92);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+.founder-card:hover .play { background: var(--ember); }
+.founder-card .play svg { width: 12px; height: 12px; fill: var(--ink); transition: fill 0.2s; }
+.founder-card:hover .play svg { fill: var(--paper); }
+
+@media (max-width: 900px) {
+  .hero-grid { grid-template-columns: 1fr; gap: 56px; }
+}
+
+/* ───────── Stat strip ───────── */
+.strip {
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+  padding: 40px 0;
+  background: var(--paper);
+  position: relative;
+  z-index: 2;
+}
+.strip-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+.stat-item { padding: 0 16px; border-left: 1px solid var(--rule); }
+.stat-item:first-child { border-left: none; padding-left: 0; }
+.stat-value {
+  font-family: var(--display);
+  font-size: clamp(36px, 4vw, 56px);
+  line-height: 1;
+  font-weight: 300;
+  color: var(--ink);
+  margin-bottom: 6px;
+  font-variation-settings: "opsz" 144, "SOFT" 30;
+}
+.stat-value sup { font-size: 0.5em; color: var(--ember); vertical-align: super; font-style: italic; }
+.stat-label {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--mute);
+}
+
+@media (max-width: 700px) {
+  .strip-row { grid-template-columns: repeat(2, 1fr); gap: 36px 24px; }
+  .stat-item:nth-child(3) { border-left: none; padding-left: 0; }
+}
+
+/* ───────── Section header (reusable) ───────── */
+.section { padding: clamp(72px, 9vw, 130px) 0; position: relative; z-index: 2; }
+.section-head {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: clamp(32px, 5vw, 80px);
+  margin-bottom: clamp(48px, 6vw, 72px);
+  align-items: end;
+}
+.section-head .eyebrow { display: block; margin-bottom: 18px; }
+.section-head h2 {
+  font-size: clamp(36px, 5vw, 64px);
+  line-height: 1;
+  letter-spacing: -0.03em;
+  color: var(--ink);
+  font-weight: 300;
+  font-variation-settings: "opsz" 144, "SOFT" 50;
+}
+.section-head h2 em {
+  font-style: italic;
+  color: var(--ember);
+  font-variation-settings: "opsz" 144, "SOFT" 100;
+}
+.section-head .intro {
+  font-size: 17px;
+  line-height: 1.65;
+  color: var(--mute);
+  max-width: 520px;
+}
+.section-head .intro p + p { margin-top: 12px; }
+@media (max-width: 800px) {
+  .section-head { grid-template-columns: 1fr; gap: 24px; }
+}
+
+/* ───────── Search module (styled IDX placeholder) ───────── */
+.search-wrap {
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  padding: clamp(28px, 4vw, 48px);
+  position: relative;
+}
+.search-wrap::before, .search-wrap::after {
+  content: '';
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  border-color: var(--ember);
+}
+.search-wrap::before {
+  top: -1px;
+  left: -1px;
+  border-top: 2px solid;
+  border-left: 2px solid;
+}
+.search-wrap::after {
+  bottom: -1px;
+  right: -1px;
+  border-bottom: 2px solid;
+  border-right: 2px solid;
+}
+.search-field {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  background: var(--canvas);
+  border: 1px solid var(--rule);
+  padding: 4px 4px 4px 22px;
+  border-radius: 1px;
+}
+.search-field svg { width: 20px; height: 20px; stroke: var(--mute); flex-shrink: 0; }
+.search-field input {
+  flex: 1;
+  border: none;
+  background: transparent;
+  padding: 18px 0;
+  font-family: var(--sans);
+  font-size: 17px;
+  color: var(--char);
+  outline: none;
+}
+.search-field input::placeholder { color: var(--mute); }
+.search-field .btn { padding: 14px 28px; }
+.search-filters {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 18px;
+}
+.chip {
+  font-size: 13px;
+  font-weight: 500;
+  padding: 8px 16px;
+  border: 1px solid var(--rule);
+  background: var(--canvas);
+  border-radius: 100px;
+  color: var(--mute);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.chip:hover { color: var(--ink); border-color: var(--ink); background: var(--paper); }
+.chip.active { color: var(--paper); background: var(--ink); border-color: var(--ink); }
+.search-note {
+  margin-top: 22px;
+  font-size: 13px;
+  color: var(--mute);
+  font-style: italic;
+}
+.search-note strong { color: var(--ember); font-style: normal; }
+
+/* ───────── Founders section (big) ───────── */
+.founders-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: clamp(20px, 2.5vw, 32px);
+}
+.founder-big {
+  position: relative;
+}
+.founder-big .portrait {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  background: var(--ink);
+  overflow: hidden;
+  margin-bottom: 22px;
+}
+.founder-big .portrait img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  transition: transform 0.6s ease;
+}
+.founder-big:hover .portrait img { transform: scale(1.04); }
+.founder-big .num {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  width: 32px;
+  height: 32px;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--display);
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+}
+.founder-big .role-tag {
+  position: absolute;
+  bottom: 14px;
+  left: 14px;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  padding: 6px 10px;
+}
+.founder-big h3 {
+  font-size: 26px;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  margin-bottom: 4px;
+}
+.founder-big .years {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ember);
+  letter-spacing: 0.04em;
+  margin-bottom: 14px;
+}
+.founder-big .blurb {
+  font-size: 15px;
+  line-height: 1.55;
+  color: var(--mute);
+  margin-bottom: 18px;
+}
+.founder-big .watch {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border-bottom: 1px solid var(--ink);
+  padding-bottom: 2px;
+  transition: all 0.2s;
+}
+.founder-big .watch:hover { color: var(--ember); border-bottom-color: var(--ember); }
+
+@media (max-width: 1000px) {
+  .founders-grid { grid-template-columns: repeat(2, 1fr); gap: 40px 24px; }
+}
+@media (max-width: 600px) {
+  .founders-grid { grid-template-columns: 1fr; gap: 48px; }
+}
+
+/* ───────── Manifesto (dark section) ───────── */
+.manifesto {
+  background: var(--ink);
+  color: var(--paper);
+  padding: clamp(80px, 12vw, 160px) 0;
+  position: relative;
+  overflow: hidden;
+}
+.manifesto::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -10%;
+  width: 60%;
+  height: 200%;
+  background: radial-gradient(ellipse at center, rgba(61,136,189,0.15) 0%, transparent 60%);
+  pointer-events: none;
+}
+.manifesto .eyebrow { color: var(--ember-2); }
+.manifesto-mark {
+  font-family: var(--display);
+  font-size: clamp(80px, 14vw, 200px);
+  line-height: 0.5;
+  color: var(--ember);
+  display: block;
+  margin-bottom: 16px;
+  font-variation-settings: "opsz" 144, "SOFT" 100;
+  font-style: italic;
+}
+.manifesto-quote {
+  font-family: var(--display);
+  font-size: clamp(28px, 4.2vw, 56px);
+  line-height: 1.12;
+  letter-spacing: -0.025em;
+  font-weight: 300;
+  max-width: 1000px;
+  margin-bottom: 56px;
+  font-variation-settings: "opsz" 144, "SOFT" 60;
+}
+.manifesto-quote em {
+  font-style: italic;
+  color: var(--ember-2);
+  font-variation-settings: "opsz" 144, "SOFT" 100;
+}
+.manifesto-attribution {
+  font-family: var(--sans);
+  font-size: 13px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--sky-2);
+  margin-bottom: 80px;
+}
+.commitments {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(28px, 3vw, 48px);
+  border-top: 1px solid rgba(255,255,255,0.12);
+  padding-top: 56px;
+}
+.commitment {}
+.commitment-num {
+  font-family: var(--display);
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--ember-2);
+  letter-spacing: 0.04em;
+  font-style: italic;
+  margin-bottom: 14px;
+}
+.commitment h4 {
+  font-size: 22px;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  margin-bottom: 12px;
+  color: var(--paper);
+}
+.commitment p {
+  font-size: 15px;
+  line-height: 1.6;
+  color: rgba(255,255,255,0.72);
+}
+@media (max-width: 800px) {
+  .commitments { grid-template-columns: 1fr; gap: 36px; }
+}
+
+/* ───────── Featured listings ───────── */
+.listings-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(20px, 2.5vw, 32px);
+}
+.listing-card {
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+.listing-card:hover { transform: translateY(-3px); border-color: var(--ink); }
+.listing-photo {
+  aspect-ratio: 4 / 3;
+  background-size: cover;
+  background-position: center;
+  background-color: var(--ink-2);
+  position: relative;
+  overflow: hidden;
+}
+.listing-photo::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(160deg, transparent 40%, rgba(10,31,61,0.4) 100%);
+  pointer-events: none;
+}
+.listing-tag {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  padding: 6px 10px;
+  z-index: 2;
+}
+.listing-tag.coming { background: var(--ember); color: var(--paper); }
+.listing-body { padding: 22px; }
+.listing-price {
+  font-family: var(--display);
+  font-size: 30px;
+  font-weight: 400;
+  color: var(--ink);
+  letter-spacing: -0.02em;
+  margin-bottom: 6px;
+}
+.listing-address {
+  font-size: 14px;
+  color: var(--mute);
+  margin-bottom: 14px;
+  line-height: 1.4;
+}
+.listing-meta {
+  display: flex;
+  gap: 16px;
+  padding-top: 14px;
+  border-top: 1px solid var(--rule);
+  font-size: 13px;
+  color: var(--char);
+}
+.listing-meta span strong { color: var(--ink); }
+@media (max-width: 900px) { .listings-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 600px) { .listings-grid { grid-template-columns: 1fr; } }
+
+.see-all {
+  margin-top: 56px;
+  text-align: center;
+}
+
+/* ───────── How we work ───────── */
+.work-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--rule);
+  border: 1px solid var(--rule);
+}
+.work-card {
+  background: var(--paper);
+  padding: clamp(32px, 4vw, 52px);
+  position: relative;
+  transition: background 0.3s;
+}
+.work-card:hover { background: var(--canvas); }
+.work-card .num {
+  font-family: var(--display);
+  font-size: 14px;
+  font-style: italic;
+  color: var(--ember);
+  margin-bottom: 24px;
+  letter-spacing: 0.04em;
+}
+.work-card h3 {
+  font-size: clamp(28px, 3vw, 38px);
+  line-height: 1;
+  letter-spacing: -0.025em;
+  color: var(--ink);
+  font-weight: 400;
+  margin-bottom: 20px;
+}
+.work-card p {
+  font-size: 15px;
+  line-height: 1.65;
+  color: var(--mute);
+  margin-bottom: 24px;
+}
+.work-card ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 28px;
+  border-top: 1px solid var(--rule);
+}
+.work-card ul li {
+  padding: 14px 0;
+  border-bottom: 1px solid var(--rule);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--char);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.work-card ul li::before {
+  content: '';
+  width: 5px;
+  height: 5px;
+  background: var(--ember);
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.work-card .more {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border-bottom: 1px solid var(--ink);
+  padding-bottom: 2px;
+  transition: all 0.2s;
+}
+.work-card .more:hover { color: var(--ember); border-bottom-color: var(--ember); }
+@media (max-width: 900px) { .work-grid { grid-template-columns: 1fr; } }
+
+/* ───────── Insights ───────── */
+.insights-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr;
+  gap: clamp(20px, 3vw, 40px);
+}
+.insight-card {
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+}
+.insight-card .img {
+  aspect-ratio: 4 / 3;
+  background: var(--ink-2);
+  background-size: cover;
+  background-position: center;
+  margin-bottom: 22px;
+  position: relative;
+  overflow: hidden;
+}
+.insight-card.feature .img { aspect-ratio: 5 / 4; }
+.insight-card .cat {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ember);
+  margin-bottom: 10px;
+}
+.insight-card h3 {
+  font-size: 22px;
+  line-height: 1.15;
+  letter-spacing: -0.015em;
+  color: var(--ink);
+  margin-bottom: 12px;
+  transition: color 0.2s;
+}
+.insight-card.feature h3 { font-size: 30px; line-height: 1.05; }
+.insight-card:hover h3 { color: var(--ember); }
+.insight-card p {
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--mute);
+  margin-bottom: 14px;
+}
+.insight-meta {
+  font-size: 12px;
+  color: var(--mute);
+  letter-spacing: 0.04em;
+  margin-top: auto;
+  padding-top: 14px;
+  border-top: 1px solid var(--rule);
+}
+@media (max-width: 900px) {
+  .insights-grid { grid-template-columns: 1fr; gap: 40px; }
+  .insight-card.feature h3 { font-size: 24px; }
+}
+
+/* ───────── Closing CTA ───────── */
+.close-cta {
+  background: var(--paper);
+  text-align: center;
+  padding: clamp(80px, 12vw, 140px) 0;
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+  position: relative;
+  z-index: 2;
+}
+.close-cta .eyebrow { display: block; margin-bottom: 24px; }
+.close-cta h2 {
+  font-size: clamp(40px, 6vw, 80px);
+  line-height: 1;
+  letter-spacing: -0.03em;
+  color: var(--ink);
+  font-weight: 300;
+  margin-bottom: 36px;
+  font-variation-settings: "opsz" 144, "SOFT" 60;
+}
+.close-cta h2 em {
+  font-style: italic;
+  color: var(--ember);
+  font-variation-settings: "opsz" 144, "SOFT" 100;
+}
+.close-cta-row {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* ───────── Footer ───────── */
+footer {
+  background: var(--ink);
+  color: rgba(255,255,255,0.7);
+  padding: 80px 0 32px;
+  position: relative;
+  z-index: 2;
+}
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr 1fr 1fr;
+  gap: clamp(32px, 4vw, 56px);
+  margin-bottom: 72px;
+}
+.footer-brand .nav-logo .word { color: var(--paper); }
+.footer-brand .nav-logo .word small { color: rgba(255,255,255,0.5); }
+.footer-brand p {
+  font-size: 14px;
+  line-height: 1.6;
+  margin-top: 24px;
+  color: rgba(255,255,255,0.7);
+  max-width: 320px;
+}
+.footer-col h4 {
+  font-family: var(--sans);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ember-2);
+  margin-bottom: 22px;
+}
+.footer-col ul { list-style: none; padding: 0; margin: 0; }
+.footer-col ul li { margin-bottom: 12px; font-size: 14px; }
+.footer-col ul li a { color: rgba(255,255,255,0.7); transition: color 0.2s; }
+.footer-col ul li a:hover { color: var(--paper); }
+.contact-card {
+  font-size: 13px;
+  line-height: 1.55;
+  padding: 16px 0;
+  border-top: 1px solid rgba(255,255,255,0.12);
+}
+.contact-card:first-of-type { border-top: none; padding-top: 0; }
+.contact-card strong {
+  display: block;
+  color: var(--paper);
+  font-family: var(--display);
+  font-size: 17px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  margin-bottom: 2px;
+}
+.contact-card .role-mini {
+  font-family: var(--sans);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ember-2);
+  margin-bottom: 8px;
+}
+.contact-card a { color: rgba(255,255,255,0.7); display: block; }
+.contact-card a:hover { color: var(--paper); }
+
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 28px;
+  border-top: 1px solid rgba(255,255,255,0.12);
+  font-size: 12px;
+  color: rgba(255,255,255,0.45);
+  flex-wrap: wrap;
+  gap: 16px;
+}
+.footer-bottom .legal { display: flex; gap: 20px; }
+.footer-bottom .legal a:hover { color: var(--paper); }
+.no-hate-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  border: 1px solid var(--ember);
+  border-radius: 100px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ember-2);
+  margin-bottom: 24px;
+}
+.no-hate-pill::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  background: var(--ember);
+  border-radius: 50%;
+}
+@media (max-width: 900px) {
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 600px) {
+  .footer-grid { grid-template-columns: 1fr; gap: 36px; }
+}
+
+/* ───────── Design system panel (informational) ───────── */
+.system-panel {
+  background: var(--canvas);
+  border-top: 2px dashed var(--rule);
+  padding: 64px 0;
+}
+.system-panel .eyebrow { display: block; margin-bottom: 8px; }
+.system-panel h3 {
+  font-size: 28px;
+  margin-bottom: 32px;
+  color: var(--ink);
+  font-weight: 400;
+}
+.system-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+}
+.swatch-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+.swatch {
+  aspect-ratio: 1 / 1.1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 12px;
+  border-radius: 1px;
+  font-family: var(--sans);
+  font-size: 10px;
+  letter-spacing: 0.04em;
+  border: 1px solid transparent;
+}
+.swatch .nm { font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; margin-bottom: 4px; }
+.swatch .hex { font-family: ui-monospace, 'SF Mono', Menlo, monospace; opacity: 0.7; }
+.type-spec { font-size: 13px; color: var(--mute); margin-bottom: 6px; letter-spacing: 0.06em; text-transform: uppercase; font-weight: 600; }
+.type-sample { color: var(--ink); margin-bottom: 24px; }
+.type-display { font-family: var(--display); font-size: 42px; line-height: 1; font-weight: 300; letter-spacing: -0.03em; font-variation-settings: "opsz" 144, "SOFT" 60; }
+.type-display em { font-style: italic; color: var(--ember); }
+.type-body { font-family: var(--sans); font-size: 16px; line-height: 1.6; }
+@media (max-width: 800px) { .system-grid { grid-template-columns: 1fr; gap: 32px; } }
+
+/* ───────── Animation ───────── */
+@keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: none; } }
+.hero-left > * { animation: fadeUp 0.7s ease both; }
+.hero-left > *:nth-child(1) { animation-delay: 0.1s; }
+.hero-left > *:nth-child(2) { animation-delay: 0.2s; }
+.hero-left > *:nth-child(3) { animation-delay: 0.3s; }
+.hero-left > *:nth-child(4) { animation-delay: 0.4s; }
+.founder-stack .founder-card { animation: fadeUp 0.7s ease both; }
+.founder-stack .founder-card:nth-child(1) { animation-delay: 0.3s; }
+.founder-stack .founder-card:nth-child(2) { animation-delay: 0.4s; }
+.founder-stack .founder-card:nth-child(3) { animation-delay: 0.5s; }
+.founder-stack .founder-card:nth-child(4) { animation-delay: 0.6s; }
+
+</style>
+</head>
+<body>
+
+<!-- ───────── HEADER ───────── -->
+<header>
+  <div class="bound nav">
+    <a href="#" class="nav-logo">
+      <img src="assets/badge.png" alt="Progressive Real Estate Group">
+      <div class="word">
+        Progressive
+        <small>Real Estate Group</small>
+      </div>
+    </a>
+    <nav class="nav-links">
+      <a href="#" class="active">Home</a>
+      <a href="#founders">The Founders</a>
+      <a href="#search">Buy</a>
+      <a href="#work">Sell</a>
+      <a href="#manifesto">Our Mission</a>
+      <a href="#insights">Insights</a>
+    </nav>
+    <div class="nav-cta">
+      <a href="#" class="sign-in">Sign In</a>
+      <a href="#" class="btn btn-primary">Get in Touch</a>
+    </div>
+  </div>
+</header>
+
+<!-- ───────── HERO ───────── -->
+<section class="hero">
+  <div class="bound hero-grid">
+    <div class="hero-left">
+      <span class="eyebrow">Twin Cities Real Estate<span class="dot"></span>Founded by Four</span>
+      <h1>A place to <em>belong.</em></h1>
+      <p class="hero-sub">
+        We're four founders — eighty years of real estate between us — building a Twin Cities brokerage on a simple idea: <strong>everyone deserves a place to belong.</strong> Inclusive. Equitable. Client-centered. The way it should have always been.
+      </p>
+      <div class="hero-cta-row">
+        <a href="#search" class="btn btn-primary">Explore homes <span class="arrow">→</span></a>
+        <a href="#founders" class="btn btn-ghost">Meet the founders</a>
+      </div>
+    </div>
+    <div class="founder-stack">
+      <div class="founder-card">
+        <img src="assets/headshot-rodolfo.jpg" alt="Rodolfo Trujillo">
+        <div class="play"><svg viewBox="0 0 12 14"><polygon points="0,0 0,14 12,7"/></svg></div>
+        <div class="meta">
+          <div class="role">Co-Founder</div>
+          <div class="name">Rodolfo Trujillo</div>
+        </div>
+      </div>
+      <div class="founder-card">
+        <img src="assets/headshot-travis.jpg" alt="Travis Callstrom">
+        <div class="play"><svg viewBox="0 0 12 14"><polygon points="0,0 0,14 12,7"/></svg></div>
+        <div class="meta">
+          <div class="role">Co-Founder</div>
+          <div class="name">Travis Callstrom</div>
+        </div>
+      </div>
+      <div class="founder-card">
+        <img src="assets/headshot-joe.jpg" alt="Joe Mack">
+        <div class="play"><svg viewBox="0 0 12 14"><polygon points="0,0 0,14 12,7"/></svg></div>
+        <div class="meta">
+          <div class="role">Co-Founder</div>
+          <div class="name">Joe Mack</div>
+        </div>
+      </div>
+      <div class="founder-card">
+        <img src="assets/headshot-jake.jpg" alt="Jake Miller">
+        <div class="play"><svg viewBox="0 0 12 14"><polygon points="0,0 0,14 12,7"/></svg></div>
+        <div class="meta">
+          <div class="role">Co-Founder</div>
+          <div class="name">Jake Miller</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ───────── STAT STRIP ───────── -->
+<section class="strip">
+  <div class="bound strip-row">
+    <div class="stat-item">
+      <div class="stat-value">80<sup>+</sup></div>
+      <div class="stat-label">Years combined</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-value">4</div>
+      <div class="stat-label">Founding partners</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-value">1<sup>st</sup></div>
+      <div class="stat-label">Brokerage with a No Hate pledge</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-value">MN<span style="opacity:0.4">·</span>WI</div>
+      <div class="stat-label">Twin Cities & beyond</div>
+    </div>
+  </div>
+</section>
+
+<!-- ───────── SEARCH (styled IDX placeholder) ───────── -->
+<section class="section" id="search">
+  <div class="bound">
+    <div class="section-head">
+      <div>
+        <span class="eyebrow">Find your home</span>
+        <h2>Begin <em>where</em> you live.</h2>
+      </div>
+      <div class="intro">
+        <p>Search every active listing in the Twin Cities Metro and beyond. Built on the same MLS feed every brokerage uses — wrapped in something that respects your time.</p>
+      </div>
+    </div>
+
+    <div class="search-wrap">
+      <div class="search-field">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+        <input type="text" placeholder="City, neighborhood, ZIP, or MLS #">
+        <button class="btn btn-primary">Search</button>
+      </div>
+      <div class="search-filters">
+        <button class="chip active">All Twin Cities</button>
+        <button class="chip">Minneapolis</button>
+        <button class="chip">St. Paul</button>
+        <button class="chip">Edina</button>
+        <button class="chip">Plymouth</button>
+        <button class="chip">Eden Prairie</button>
+        <button class="chip">First-time buyer friendly</button>
+        <button class="chip">Under $400k</button>
+      </div>
+      <div class="search-note">
+        <strong>Note:</strong> In production, this is the same Lofty IDX search wrapped in our type and color system. Filters, map, sort, save — all native Lofty, restyled.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ───────── FOUNDERS (big) ───────── -->
+<section class="section" id="founders" style="padding-top:0;">
+  <div class="bound">
+    <div class="section-head">
+      <div>
+        <span class="eyebrow">The Founders</span>
+        <h2>Four people. <em>One</em> standard.</h2>
+      </div>
+      <div class="intro">
+        <p>Eighty years of combined experience across mortgage, valuation, negotiation, and the kind of patience this work actually requires. None of us got into real estate to coast. Watch a one-minute intro from each of us.</p>
+      </div>
+    </div>
+
+    <div class="founders-grid">
+      <div class="founder-big">
+        <div class="portrait">
+          <img src="assets/headshot-rodolfo.jpg" alt="Rodolfo Trujillo">
+          <div class="num">01</div>
+          <div class="role-tag">Co-Founder · Broker</div>
+        </div>
+        <h3>Rodolfo Trujillo</h3>
+        <div class="years">20 years · Built on referrals</div>
+        <p class="blurb">Twenty years of negotiation and relationship work — most of his business still comes from clients who came back, or sent family. The Golden Rule, done seriously.</p>
+        <a href="#" class="watch">Watch intro <span class="arrow">→</span></a>
+      </div>
+      <div class="founder-big">
+        <div class="portrait">
+          <img src="assets/headshot-travis.jpg" alt="Travis Callstrom">
+          <div class="num">02</div>
+          <div class="role-tag">Co-Founder</div>
+        </div>
+        <h3>Travis Callstrom</h3>
+        <div class="years">27 years · Steady leadership</div>
+        <p class="blurb">Deep market knowledge and long-tenured relationships. Serving everyone — LGBTQ+ families, minority households, anyone who values equity — isn't a niche. It's the standard.</p>
+        <a href="#" class="watch">Watch intro <span class="arrow">→</span></a>
+      </div>
+      <div class="founder-big">
+        <div class="portrait">
+          <img src="assets/headshot-joe.jpg" alt="Joe Mack">
+          <div class="num">03</div>
+          <div class="role-tag">Co-Founder</div>
+        </div>
+        <h3>Joe Mack</h3>
+        <div class="years">11+ years · Mortgage-trained</div>
+        <p class="blurb">Came up through a decade in banking and mortgage before switching sides. Reads your finances like a lender would — which is exactly the agent you want on your side.</p>
+        <a href="#" class="watch">Watch intro <span class="arrow">→</span></a>
+      </div>
+      <div class="founder-big">
+        <div class="portrait">
+          <img src="assets/headshot-jake.jpg" alt="Jake Miller">
+          <div class="num">04</div>
+          <div class="role-tag">Co-Founder</div>
+        </div>
+        <h3>Jake Miller</h3>
+        <div class="years">23 years · Mortgage + construction</div>
+        <p class="blurb">Started in mortgage in 2003. Knows financing, knows construction, knows what's worth what — and tells you straight. Survived the housing crisis and COVID. Easy to work with.</p>
+        <a href="#" class="watch">Watch intro <span class="arrow">→</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ───────── MANIFESTO ───────── -->
+<section class="manifesto" id="manifesto">
+  <div class="bound">
+    <span class="eyebrow">The No Hate Pledge</span>
+    <div class="manifesto-mark">"</div>
+    <div class="manifesto-quote">
+      To advance <em>inclusive homeownership</em> by providing equitable, informed, and client-centered real estate services — because <em>everyone</em> deserves a place to belong.
+    </div>
+    <div class="manifesto-attribution">— Our Founding Mission · 2024</div>
+
+    <div class="commitments">
+      <div class="commitment">
+        <div class="commitment-num">i.</div>
+        <h4>Equal advocacy.</h4>
+        <p>LGBTQ+ households, multilingual families, accessibility-conscious buyers, and first-generation homeowners get the same caliber of advisor — not a "specialist" treatment. The same four founders. The same standard.</p>
+      </div>
+      <div class="commitment">
+        <div class="commitment-num">ii.</div>
+        <h4>Informed by design.</h4>
+        <p>Two of our founders trained as mortgage lenders. We read your finances the way the bank does, then translate. No surprises at the closing table.</p>
+      </div>
+      <div class="commitment">
+        <div class="commitment-num">iii.</div>
+        <h4>Client-centered, always.</h4>
+        <p>We move at your pace, not the market's. We name when a house is wrong for you. We're paid when it closes — but we work like you're family, not commission.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ───────── FEATURED LISTINGS ───────── -->
+<section class="section">
+  <div class="bound">
+    <div class="section-head">
+      <div>
+        <span class="eyebrow">Featured Listings</span>
+        <h2>This week, <em>on</em> the market.</h2>
+      </div>
+      <div class="intro">
+        <p>A small sample. The full search is one click away. Listings refresh hourly from the Northstar MLS.</p>
+      </div>
+    </div>
+
+    <div class="listings-grid">
+      <div class="listing-card">
+        <div class="listing-photo" style="background-image: linear-gradient(135deg, #2C4A6B 0%, #4A7AA8 100%);">
+          <div class="listing-tag coming">Coming Soon</div>
+        </div>
+        <div class="listing-body">
+          <div class="listing-price">$499,900</div>
+          <div class="listing-address">12980 39th Ave N<br>Plymouth, MN 55441</div>
+          <div class="listing-meta">
+            <span><strong>3</strong> Beds</span>
+            <span><strong>3</strong> Baths</span>
+            <span><strong>2,741</strong> sqft</span>
+          </div>
+        </div>
+      </div>
+      <div class="listing-card">
+        <div class="listing-photo" style="background-image: linear-gradient(135deg, #4A6B5A 0%, #7AA890 100%);">
+          <div class="listing-tag">New</div>
+        </div>
+        <div class="listing-body">
+          <div class="listing-price">$699,900</div>
+          <div class="listing-address">13361 Couchtown Ct<br>Rosemount, MN 55068</div>
+          <div class="listing-meta">
+            <span><strong>4</strong> Beds</span>
+            <span><strong>4</strong> Baths</span>
+            <span><strong>3,418</strong> sqft</span>
+          </div>
+        </div>
+      </div>
+      <div class="listing-card">
+        <div class="listing-photo" style="background-image: linear-gradient(135deg, #6B4A5A 0%, #A87A8E 100%);">
+          <div class="listing-tag">Open Sat</div>
+        </div>
+        <div class="listing-body">
+          <div class="listing-price">$399,900</div>
+          <div class="listing-address">1004 Bridle Creek Dr<br>Jordan, MN 55352</div>
+          <div class="listing-meta">
+            <span><strong>3</strong> Beds</span>
+            <span><strong>2</strong> Baths</span>
+            <span><strong>1,662</strong> sqft</span>
+          </div>
+        </div>
+      </div>
+      <div class="listing-card">
+        <div class="listing-photo" style="background-image: linear-gradient(135deg, #4A5A6B 0%, #7A8EA8 100%);">
+          <div class="listing-tag">Loft</div>
+        </div>
+        <div class="listing-body">
+          <div class="listing-price">$284,900</div>
+          <div class="listing-address">700 Washington Ave N #501<br>Minneapolis, MN 55401</div>
+          <div class="listing-meta">
+            <span><strong>1</strong> Bed</span>
+            <span><strong>1</strong> Bath</span>
+            <span><strong>734</strong> sqft</span>
+          </div>
+        </div>
+      </div>
+      <div class="listing-card">
+        <div class="listing-photo" style="background-image: linear-gradient(135deg, #6B5A4A 0%, #A8907A 100%);">
+          <div class="listing-tag">New</div>
+        </div>
+        <div class="listing-body">
+          <div class="listing-price">$809,949</div>
+          <div class="listing-address">4453 Zenith Ave S<br>Minneapolis, MN 55410</div>
+          <div class="listing-meta">
+            <span><strong>5</strong> Beds</span>
+            <span><strong>2</strong> Baths</span>
+            <span><strong>2,897</strong> sqft</span>
+          </div>
+        </div>
+      </div>
+      <div class="listing-card">
+        <div class="listing-photo" style="background-image: linear-gradient(135deg, #5A4A6B 0%, #8E7AA8 100%);">
+          <div class="listing-tag">Open Thu</div>
+        </div>
+        <div class="listing-body">
+          <div class="listing-price">$695,000</div>
+          <div class="listing-address">1005 Spruce Dr<br>Hudson, WI 54016</div>
+          <div class="listing-meta">
+            <span><strong>5</strong> Beds</span>
+            <span><strong>3</strong> Baths</span>
+            <span><strong>4,380</strong> sqft</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="see-all">
+      <a href="#" class="btn btn-ghost">See all 10,000+ listings <span class="arrow">→</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ───────── HOW WE WORK ───────── -->
+<section class="section" id="work" style="padding-top:0;">
+  <div class="bound">
+    <div class="section-head">
+      <div>
+        <span class="eyebrow">How we work</span>
+        <h2>Buy. Sell. <em>Relocate.</em></h2>
+      </div>
+      <div class="intro">
+        <p>Three paths, one team. Every transaction touches at least one of the four of us — sometimes all four, depending on what you need.</p>
+      </div>
+    </div>
+
+    <div class="work-grid">
+      <div class="work-card">
+        <div class="num">i. — buying</div>
+        <h3>Find a place that fits your life, not the algorithm's idea of it.</h3>
+        <p>We start with a real conversation about your finances (two of us trained as lenders) and what "home" actually means for you. Then we hunt.</p>
+        <ul>
+          <li>Pre-offer financial coaching</li>
+          <li>Off-market and coming-soon access</li>
+          <li>Honest valuation, not just enthusiasm</li>
+          <li>Construction & condition walkthroughs</li>
+        </ul>
+        <a href="#" class="more">Buyer's path <span class="arrow">→</span></a>
+      </div>
+      <div class="work-card">
+        <div class="num">ii. — selling</div>
+        <h3>Top dollar, on your timeline, without the theatrics.</h3>
+        <p>Pricing built on actual comps, not seller flattery. Marketing that makes your home findable to buyers who actually want it.</p>
+        <ul>
+          <li>Strategic pricing & comp analysis</li>
+          <li>Professional photo, video, and 3D tours</li>
+          <li>Targeted digital & MLS marketing</li>
+          <li>Negotiation by founders, not assistants</li>
+        </ul>
+        <a href="#" class="more">Seller's path <span class="arrow">→</span></a>
+      </div>
+      <div class="work-card">
+        <div class="num">iii. — relocating</div>
+        <h3>Moving to the Twin Cities — or out of them — with a guide who's been here.</h3>
+        <p>Neighborhoods, schools, commutes, communities. Especially if you're moving from somewhere that wasn't built to welcome you, we know where you'll feel at home.</p>
+        <ul>
+          <li>Twin Cities neighborhood tours (virtual or in-person)</li>
+          <li>School & district counsel</li>
+          <li>LGBTQ+ & multicultural community guidance</li>
+          <li>Out-of-state agent referrals when you're leaving</li>
+        </ul>
+        <a href="#" class="more">Relocation guide <span class="arrow">→</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ───────── INSIGHTS ───────── -->
+<section class="section" id="insights" style="padding-top:0;">
+  <div class="bound">
+    <div class="section-head">
+      <div>
+        <span class="eyebrow">Insights & Notes</span>
+        <h2>What we're <em>watching.</em></h2>
+      </div>
+      <div class="intro">
+        <p>Market commentary, neighborhood deep-dives, and the occasional opinion on where the Twin Cities housing market is actually going.</p>
+      </div>
+    </div>
+
+    <div class="insights-grid">
+      <article class="insight-card feature">
+        <div class="img" style="background-image: linear-gradient(135deg, #14315A 0%, #3D88BD 100%);"></div>
+        <div class="cat">Market Intelligence</div>
+        <h3>2026 Twin Cities Real Estate Outlook</h3>
+        <p>Inventory's loosening, rates are creeping down, and the suburbs are pricing themselves out of the first-time-buyer market. Joe Mack reads the year ahead.</p>
+        <div class="insight-meta">By Joe Mack · April 2026 · 8 min read</div>
+      </article>
+      <article class="insight-card">
+        <div class="img" style="background-image: linear-gradient(135deg, #B86A3E 0%, #D38A5C 100%);"></div>
+        <div class="cat">Neighborhood Notes</div>
+        <h3>Edina, decoded — for buyers who aren't from here.</h3>
+        <p>What you're actually paying for, school district by school district, and where the value still hides.</p>
+        <div class="insight-meta">By Travis Callstrom · March 2026 · 6 min read</div>
+      </article>
+      <article class="insight-card">
+        <div class="img" style="background-image: linear-gradient(135deg, #4A6B5A 0%, #7AA890 100%);"></div>
+        <div class="cat">First-Time Buyers</div>
+        <h3>The five conversations to have before you tour your first house.</h3>
+        <p>Rodolfo Trujillo on the financial groundwork most agents skip — and why skipping it costs you.</p>
+        <div class="insight-meta">By Rodolfo Trujillo · March 2026 · 5 min read</div>
+      </article>
+    </div>
+
+    <div class="see-all">
+      <a href="#" class="btn btn-ghost">Read all insights <span class="arrow">→</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ───────── CLOSING CTA ───────── -->
+<section class="close-cta">
+  <div class="bound">
+    <span class="eyebrow">Let's get to know each other</span>
+    <h2>Coffee, a call, <em>or</em> a question — start anywhere.</h2>
+    <div class="close-cta-row">
+      <a href="#" class="btn btn-primary">Schedule a conversation <span class="arrow">→</span></a>
+      <a href="#" class="btn btn-ghost">What's my home worth?</a>
+    </div>
+  </div>
+</section>
+
+<!-- ───────── FOOTER ───────── -->
+<footer>
+  <div class="bound">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="nav-logo">
+          <img src="assets/badge.png" alt="Progressive" style="filter: brightness(1.05);">
+          <div class="word">
+            Progressive
+            <small>Real Estate Group</small>
+          </div>
+        </div>
+        <div class="no-hate-pill" style="margin-top:28px;">The No Hate Pledge</div>
+        <p>An inclusive, equitable Twin Cities real estate practice founded by four veteran agents. Brokered by RE/MAX Results. Licensed in Minnesota and Wisconsin.</p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Founders</h4>
+        <div class="contact-card">
+          <strong>Rodolfo Trujillo</strong>
+          <div class="role-mini">Co-Founder · Broker</div>
+          <a href="tel:6123847493">+1 (612) 384-7493</a>
+          <a href="mailto:rtmnrealestate@gmail.com">rtmnrealestate@gmail.com</a>
+        </div>
+        <div class="contact-card">
+          <strong>Travis Callstrom</strong>
+          <div class="role-mini">Co-Founder</div>
+          <a href="#">+1 (XXX) XXX-XXXX</a>
+          <a href="mailto:#">travis@results.net</a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>&nbsp;</h4>
+        <div class="contact-card">
+          <strong>Joe Mack</strong>
+          <div class="role-mini">Co-Founder</div>
+          <a href="tel:9524847071">+1 (952) 484-7071</a>
+          <a href="mailto:joe.mack@results.net">joe.mack@results.net</a>
+        </div>
+        <div class="contact-card">
+          <strong>Jake Miller</strong>
+          <div class="role-mini">Co-Founder</div>
+          <a href="#">+1 (XXX) XXX-XXXX</a>
+          <a href="mailto:#">jake@results.net</a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="#">Home Search</a></li>
+          <li><a href="#">What's My Home Worth?</a></li>
+          <li><a href="#">Market Snapshot</a></li>
+          <li><a href="#">Mortgage Calculator</a></li>
+          <li><a href="#">The No Hate Pledge</a></li>
+          <li><a href="#">Insights & Notes</a></li>
+          <li><a href="#">Twin Cities Neighborhoods</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div>7700 France Ave S #230, Edina MN 55435 · © 2026 Progressive Real Estate Group</div>
+      <div class="legal">
+        <a href="#">Terms</a>
+        <a href="#">Privacy</a>
+        <a href="#">Accessibility</a>
+        <a href="#">DMCA</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ───────── DESIGN SYSTEM PANEL ───────── -->
+<section class="system-panel">
+  <div class="bound">
+    <span class="eyebrow">For internal review · Not part of the live site</span>
+    <h3>Brand foundation at a glance</h3>
+
+    <div class="system-grid">
+      <div>
+        <div class="type-spec">Palette · close to the logo, warmer canvas</div>
+        <div class="swatch-row">
+          <div class="swatch" style="background:#0A1F3D;color:#fff;"><div class="nm">Ink</div><div class="hex">#0A1F3D</div></div>
+          <div class="swatch" style="background:#3D88BD;color:#fff;"><div class="nm">Sky</div><div class="hex">#3D88BD</div></div>
+          <div class="swatch" style="background:#B86A3E;color:#fff;"><div class="nm">Ember</div><div class="hex">#B86A3E</div></div>
+          <div class="swatch" style="background:#F4EEE3;color:#0A1F3D;border-color:#D9D1BE;"><div class="nm">Canvas</div><div class="hex">#F4EEE3</div></div>
+        </div>
+        <p style="font-size:13px;color:var(--mute);margin-top:18px;line-height:1.55;">
+          Navy and sky echo the logo. The terracotta <em>ember</em> is the warmth and the action color — buttons, accents, italic emphasis. The cream canvas replaces stark white throughout, which is what gives the whole site its editorial feel instead of feeling like another templated brokerage.
+        </p>
+      </div>
+
+      <div>
+        <div class="type-spec">Display · Fraunces</div>
+        <div class="type-sample type-display">A place to <em>belong.</em></div>
+        <div class="type-spec">Body · Manrope</div>
+        <div class="type-sample type-body">
+          We're four founders building a Twin Cities brokerage on one idea: everyone deserves a place to belong. Inclusive. Equitable. Client-centered.
+        </div>
+        <p style="font-size:13px;color:var(--mute);margin-top:12px;line-height:1.55;">
+          Fraunces has variable optical sizing and softness axes — we pull the italics out as a soft, terracotta-colored accent to give every heading a little voice. Manrope keeps the body warm and modern without looking like every Lofty default.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>

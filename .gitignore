@@ -1,0 +1,29 @@
+# OS junk
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor folders
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Local-only working files
+*.local.css
+*.local.html
+scratch/
+notes-local.md
+
+# Private / internal source — NEVER push to the public repo.
+# Competitive SEO strategy, founder bios with personal contact info &
+# family names, and pre-publication blog drafts. These live locally and
+# go into Lofty by hand; the public website is the only place this content
+# should ever appear (in its final, rendered form).
+content/
+
+# Built or cached files
+node_modules/
+dist/
+.cache/

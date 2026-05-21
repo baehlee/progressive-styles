@@ -33,11 +33,11 @@
        your real Lofty page slugs (the IDX search page and the Team page).
 
      ▶ LOFTY VALIDATOR NOTES (do not "fix" these — they're intentional):
-       · There is intentionally NO inline <svg> in this block. The play-button
+       · There is intentionally NO inline SVG in this block. The play-button
          triangle is drawn with CSS borders (.ph-play::after). Lofty's editor
-         auto-rewrites svg attributes to camelCase (e.g. viewBox) on save and
-         then its own validator rejects them — an unwinnable loop. Do not add
-         an <svg> back; keep the CSS-border triangle.
+         auto-rewrites SVG attributes to camelCase (e.g. the viewBox attr) on
+         save and then its own validator rejects them — an unwinnable loop. Do
+         not add an SVG element back; keep the CSS-border triangle.
        · The lightbox <iframe> has NO src attribute in the markup (Lofty rejects
          an empty src=""). The JS sets the src on play and removes it on close.
 
@@ -157,7 +157,7 @@
     #preg-hero .ph-card.has-video .ph-play{display:flex;}
     #preg-hero .ph-card.has-video:hover .ph-play{background:var(--e);}
     /* Play triangle drawn with CSS borders — NO inline SVG, so Lofty's editor
-       can't rewrite an svg attribute (viewBox) and trip its own validator. */
+       can't rewrite an SVG attribute and trip its own validator. */
     #preg-hero .ph-card .ph-play::after{
       content:'';width:0;height:0;margin-left:3px;
       border-style:solid;border-width:6px 0 6px 11px;

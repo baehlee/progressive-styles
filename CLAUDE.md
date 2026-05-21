@@ -111,7 +111,7 @@ The redesign rolls out in eight phases. Each phase produces visible improvement;
 | Phase | Description | Status | Deliverable type |
 |---|---|---|---|
 | **1** | Global CSS foundation | ✅ Complete. jsDelivr hosting now live (see below) — the full uncompacted CSS can serve from the CDN, bypassing the 5K cap. | `styles/global.css` (5K inline) + `styles/hosted.css` (CDN) |
-| **2** | Homepage hero replacement (4-founder video grid) | ⏳ Pending | Custom HTML block |
+| **2** | Homepage hero replacement (4-founder video grid) | 🟡 Deliverable ready (`pages/homepage/hero.html`) — pending human paste into Lofty + welcome-video URLs. Degrades to clean portraits until video URLs added. | Custom HTML block |
 | **3** | Homepage "Trusted Experts" + "Work With Us" rewrites | ⏳ Pending | Custom HTML blocks |
 | **4** | Team page rebuild with real bios + video integration | ⏳ Pending | Custom HTML blocks + content |
 | **5** | No Hate Pledge dedicated landing page | ⏳ Pending | Custom landing page |

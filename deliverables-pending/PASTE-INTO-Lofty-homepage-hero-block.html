@@ -1,0 +1,290 @@
+<!-- ════════════════════════════════════════════════════════════════════
+     PROGRESSIVE REAL ESTATE GROUP — HOMEPAGE HERO (Phase 2)
+     ────────────────────────────────────────────────────────────────────
+     WHERE TO PASTE:  Lofty Page Editor → Home Page → Add Block →
+                      Custom HTML / Code Block. Place it as the FIRST block
+                      on the page (top), and REMOVE/hide the existing Lofty
+                      stock hero/banner block it replaces.
+
+     WHAT IT IS:      The 4-founder "video grid" hero — headline on the left,
+                      a 2×2 grid of founder portraits on the right. Each
+                      portrait becomes a click-to-play video card once the
+                      welcome videos are hosted (see CONFIG below).
+
+     SELF-CONTAINED:  All CSS is scoped under #preg-hero so it cannot leak
+                      into — or be clobbered by — Lofty's own stylesheet.
+                      Headshots load from the project CDN (jsDelivr), so there
+                      is nothing to upload to Lofty's media library. Fonts
+                      (Fraunces + Manrope) come from the global hosted.css that
+                      the site already loads; graceful serif/sans fallbacks are
+                      set in case this block is previewed in isolation.
+
+     ▶ VIDEO CONFIG — READ THIS:
+       The four welcome videos are NOT yet hosted. Until you paste real embed
+       URLs into the VIDEOS object in the <script> at the bottom of this file,
+       each founder shows as a clean portrait with NO play button (no broken
+       UI on the live site). The moment you add a URL, that card gets a play
+       button and opens the video in a lightbox. Use an unlisted YouTube embed
+       URL (https://www.youtube.com/embed/XXXX) or a Vimeo embed URL
+       (https://player.vimeo.com/video/XXXX).
+
+     ▶ LINKS TO CONFIRM:
+       The two hero buttons point at "/search" and "/team". Update these to
+       your real Lofty page slugs (the IDX search page and the Team page).
+
+     SEO (homepage <head>, set in Lofty's per-page SEO panel — not in this block):
+       Meta title:        Twin Cities Real Estate, Founded by Four | Progressive
+       Meta description:  Four veteran Twin Cities founders — 80+ years — building
+                          an inclusive, equitable brokerage. Everyone deserves a
+                          place to belong. Buy, sell, relocate with Progressive.
+       Focus keyword:     twin cities real estate
+       URL slug:          / (homepage)
+     ════════════════════════════════════════════════════════════════════ -->
+
+<section id="preg-hero">
+  <style>
+    /* All rules scoped to #preg-hero — safe inside a live Lofty page. */
+    #preg-hero{
+      --i:#0A1F3D;      /* ink / navy        */
+      --s2:#6FAED9;     /* sky-2             */
+      --canvas:#F4EEE3; /* warm cream        */
+      --paper:#FBF8F1;  /* paper             */
+      --e:#B86A3E;      /* ember / terracotta*/
+      --char:#1B1815;   /* body text         */
+      --mute:#6E695F;   /* secondary text    */
+      --rule:#D9D1BE;   /* warm border       */
+      --disp:'Fraunces','Times New Roman',serif;
+      --sans:'Manrope',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+      display:block;
+      background:var(--canvas);
+      color:var(--char);
+      font-family:var(--sans);
+      padding:clamp(40px,7vw,104px) clamp(1.25rem,3vw,2.5rem) clamp(48px,7vw,96px);
+      -webkit-font-smoothing:antialiased;
+    }
+    #preg-hero *{box-sizing:border-box;}
+    #preg-hero .ph-wrap{max-width:1280px;margin:0 auto;}
+    #preg-hero .ph-grid{
+      display:grid;grid-template-columns:1.15fr 1fr;
+      gap:clamp(40px,6vw,80px);align-items:center;
+    }
+
+    /* ── Left column ── */
+    #preg-hero .ph-eyebrow{
+      display:block;margin:0 0 26px;
+      font-size:12px;font-weight:600;letter-spacing:.18em;
+      text-transform:uppercase;color:var(--e);
+    }
+    #preg-hero .ph-eyebrow .dot{
+      display:inline-block;width:4px;height:4px;background:var(--e);
+      border-radius:50%;margin:0 .7em;vertical-align:middle;transform:translateY(-2px);
+    }
+    #preg-hero h1.ph-h1{
+      margin:0 0 30px;font-family:var(--disp);
+      font-size:clamp(46px,7.2vw,108px);line-height:.94;
+      letter-spacing:-.035em;font-weight:300;color:var(--i);
+      font-variation-settings:"opsz" 144,"SOFT" 50;
+    }
+    #preg-hero h1.ph-h1 em{
+      font-style:italic;color:var(--e);
+      font-variation-settings:"opsz" 144,"SOFT" 100;
+    }
+    #preg-hero .ph-sub{
+      margin:0 0 34px;max-width:480px;
+      font-size:clamp(17px,1.4vw,19px);line-height:1.6;color:var(--char);
+    }
+    #preg-hero .ph-sub strong{color:var(--i);font-weight:600;}
+    #preg-hero .ph-cta-row{display:flex;gap:14px;flex-wrap:wrap;}
+    #preg-hero .ph-btn{
+      display:inline-flex;align-items:center;gap:.6em;
+      padding:.95em 1.6em;font-family:var(--sans);font-size:14px;font-weight:600;
+      letter-spacing:.04em;text-transform:uppercase;border:1px solid transparent;
+      border-radius:2px;cursor:pointer;transition:all .2s ease;white-space:nowrap;
+      text-decoration:none;
+    }
+    #preg-hero .ph-btn-primary{background:var(--i);color:var(--paper);}
+    #preg-hero .ph-btn-primary:hover{background:var(--e);transform:translateY(-1px);}
+    #preg-hero .ph-btn-ghost{background:transparent;color:var(--i);border-color:var(--i);}
+    #preg-hero .ph-btn-ghost:hover{background:var(--i);color:var(--paper);}
+    #preg-hero .ph-arrow{transition:transform .2s;}
+    #preg-hero .ph-btn:hover .ph-arrow{transform:translateX(3px);}
+
+    /* ── Founder grid (right) ── */
+    #preg-hero .ph-stack{
+      display:grid;grid-template-columns:repeat(2,1fr);gap:14px;position:relative;
+    }
+    #preg-hero .ph-stack::before{
+      content:'WELCOME';position:absolute;top:-28px;right:0;
+      font-size:11px;font-weight:600;letter-spacing:.3em;color:var(--mute);
+    }
+    #preg-hero .ph-card{
+      position:relative;aspect-ratio:1/1.15;overflow:hidden;
+      background:var(--i);border-radius:1px;
+    }
+    #preg-hero .ph-card img{
+      width:100%;height:100%;object-fit:cover;object-position:center top;
+      transition:transform .6s ease,filter .3s ease;filter:saturate(.92);display:block;
+    }
+    #preg-hero .ph-card.has-video{cursor:pointer;}
+    #preg-hero .ph-card.has-video:hover img{transform:scale(1.06);filter:saturate(1.1);}
+    #preg-hero .ph-card .ph-meta{
+      position:absolute;inset:auto 0 0 0;padding:14px 16px;
+      background:linear-gradient(to top,rgba(10,31,61,.95) 0%,rgba(10,31,61,.7) 60%,transparent 100%);
+      color:var(--paper);
+    }
+    #preg-hero .ph-card .ph-role{
+      font-size:10px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;
+      color:var(--s2);margin-bottom:4px;
+    }
+    #preg-hero .ph-card .ph-name{
+      font-family:var(--disp);font-size:18px;font-weight:500;letter-spacing:-.01em;
+    }
+    /* Play button — hidden until JS confirms the card has a real video URL */
+    #preg-hero .ph-card .ph-play{
+      position:absolute;top:12px;right:12px;width:36px;height:36px;border-radius:50%;
+      background:rgba(255,255,255,.92);display:none;align-items:center;justify-content:center;
+      transition:all .2s;
+    }
+    #preg-hero .ph-card.has-video .ph-play{display:flex;}
+    #preg-hero .ph-card.has-video:hover .ph-play{background:var(--e);}
+    #preg-hero .ph-card .ph-play svg{width:12px;height:12px;fill:var(--i);transition:fill .2s;}
+    #preg-hero .ph-card.has-video:hover .ph-play svg{fill:var(--paper);}
+
+    /* ── Video lightbox ── */
+    #preg-hero .ph-modal{
+      position:fixed;inset:0;z-index:9999;display:none;
+      align-items:center;justify-content:center;padding:24px;
+      background:rgba(10,31,61,.88);backdrop-filter:blur(4px);
+    }
+    #preg-hero .ph-modal.open{display:flex;}
+    #preg-hero .ph-modal-inner{
+      position:relative;width:min(960px,100%);aspect-ratio:16/9;
+      background:#000;border-radius:2px;overflow:hidden;
+      box-shadow:0 30px 80px rgba(0,0,0,.5);
+    }
+    #preg-hero .ph-modal-inner iframe{width:100%;height:100%;border:0;display:block;}
+    #preg-hero .ph-close{
+      position:absolute;top:-44px;right:0;width:36px;height:36px;border:0;cursor:pointer;
+      background:transparent;color:var(--paper);font-size:30px;line-height:1;
+    }
+    #preg-hero .ph-close:hover{color:var(--e);}
+
+    /* ── Entrance animation ── */
+    @keyframes phFadeUp{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:none;}}
+    #preg-hero .ph-left>*{animation:phFadeUp .7s ease both;}
+    #preg-hero .ph-left>*:nth-child(1){animation-delay:.1s;}
+    #preg-hero .ph-left>*:nth-child(2){animation-delay:.2s;}
+    #preg-hero .ph-left>*:nth-child(3){animation-delay:.3s;}
+    #preg-hero .ph-left>*:nth-child(4){animation-delay:.4s;}
+    #preg-hero .ph-stack .ph-card{animation:phFadeUp .7s ease both;}
+    #preg-hero .ph-stack .ph-card:nth-child(1){animation-delay:.3s;}
+    #preg-hero .ph-stack .ph-card:nth-child(2){animation-delay:.4s;}
+    #preg-hero .ph-stack .ph-card:nth-child(3){animation-delay:.5s;}
+    #preg-hero .ph-stack .ph-card:nth-child(4){animation-delay:.6s;}
+    @media (prefers-reduced-motion:reduce){
+      #preg-hero .ph-left>*,#preg-hero .ph-stack .ph-card{animation:none;}
+    }
+
+    @media (max-width:900px){
+      #preg-hero .ph-grid{grid-template-columns:1fr;gap:56px;}
+    }
+  </style>
+
+  <div class="ph-wrap">
+    <div class="ph-grid">
+      <div class="ph-left">
+        <span class="ph-eyebrow">Twin Cities Real Estate<span class="dot"></span>Founded by Four</span>
+        <h1 class="ph-h1">A place to <em>belong.</em></h1>
+        <p class="ph-sub">
+          We're four founders — eighty years of real estate between us — building a Twin Cities brokerage on a simple idea: <strong>everyone deserves a place to belong.</strong> Inclusive. Equitable. Client-centered. The way it should have always been.
+        </p>
+        <div class="ph-cta-row">
+          <a href="/search" class="ph-btn ph-btn-primary">Explore homes <span class="ph-arrow">&rarr;</span></a>
+          <a href="/team" class="ph-btn ph-btn-ghost">Meet the founders</a>
+        </div>
+      </div>
+
+      <div class="ph-stack">
+        <div class="ph-card" data-founder="rodolfo">
+          <img src="https://cdn.jsdelivr.net/gh/baehlee/progressive-styles@main/reference/assets/headshot-rodolfo.jpg" alt="Rodolfo Trujillo, Co-Founder of Progressive Real Estate Group" loading="lazy">
+          <div class="ph-play" aria-hidden="true"><svg viewBox="0 0 12 14"><polygon points="0,0 0,14 12,7"/></svg></div>
+          <div class="ph-meta"><div class="ph-role">Co-Founder</div><div class="ph-name">Rodolfo Trujillo</div></div>
+        </div>
+        <div class="ph-card" data-founder="travis">
+          <img src="https://cdn.jsdelivr.net/gh/baehlee/progressive-styles@main/reference/assets/headshot-travis.jpg" alt="Travis Callstrom, Co-Founder of Progressive Real Estate Group" loading="lazy">
+          <div class="ph-play" aria-hidden="true"><svg viewBox="0 0 12 14"><polygon points="0,0 0,14 12,7"/></svg></div>
+          <div class="ph-meta"><div class="ph-role">Co-Founder</div><div class="ph-name">Travis Callstrom</div></div>
+        </div>
+        <div class="ph-card" data-founder="joe">
+          <img src="https://cdn.jsdelivr.net/gh/baehlee/progressive-styles@main/reference/assets/headshot-joe.jpg" alt="Joe Mack, Co-Founder of Progressive Real Estate Group" loading="lazy">
+          <div class="ph-play" aria-hidden="true"><svg viewBox="0 0 12 14"><polygon points="0,0 0,14 12,7"/></svg></div>
+          <div class="ph-meta"><div class="ph-role">Co-Founder</div><div class="ph-name">Joe Mack</div></div>
+        </div>
+        <div class="ph-card" data-founder="jake">
+          <img src="https://cdn.jsdelivr.net/gh/baehlee/progressive-styles@main/reference/assets/headshot-jake.jpg" alt="Jake Miller, Co-Founder of Progressive Real Estate Group" loading="lazy">
+          <div class="ph-play" aria-hidden="true"><svg viewBox="0 0 12 14"><polygon points="0,0 0,14 12,7"/></svg></div>
+          <div class="ph-meta"><div class="ph-role">Co-Founder</div><div class="ph-name">Jake Miller</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Video lightbox (shared by all four cards) -->
+  <div class="ph-modal" id="ph-modal" role="dialog" aria-modal="true" aria-label="Founder welcome video">
+    <div class="ph-modal-inner">
+      <button class="ph-close" id="ph-close" aria-label="Close video">&times;</button>
+      <iframe id="ph-frame" src="" title="Founder welcome video" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+    </div>
+  </div>
+
+  <script>
+  (function () {
+    /* ▶▶▶  PASTE THE FOUR WELCOME-VIDEO EMBED URLS HERE  ◀◀◀
+       Leave a value as "" and that founder stays a plain portrait (no play
+       button) — so the live site never shows a broken control. Use an
+       unlisted YouTube embed URL (https://www.youtube.com/embed/ID) or a
+       Vimeo embed URL (https://player.vimeo.com/video/ID).               */
+    var VIDEOS = {
+      rodolfo: "",
+      travis:  "",
+      joe:     "",
+      jake:    ""
+    };
+
+    var root  = document.getElementById('preg-hero');
+    if (!root) return;
+    var modal = root.querySelector('#ph-modal');
+    var frame = root.querySelector('#ph-frame');
+    var sep   = function (url) { return url.indexOf('?') === -1 ? '?' : '&'; };
+
+    function open(url) {
+      frame.src = url + sep(url) + 'autoplay=1';
+      modal.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+    function close() {
+      modal.classList.remove('open');
+      frame.src = '';                       /* stop playback */
+      document.body.style.overflow = '';
+    }
+
+    root.querySelectorAll('.ph-card').forEach(function (card) {
+      var url = VIDEOS[card.getAttribute('data-founder')];
+      if (!url) return;                      /* no video yet → leave as portrait */
+      card.classList.add('has-video');
+      card.setAttribute('role', 'button');
+      card.setAttribute('tabindex', '0');
+      card.addEventListener('click', function () { open(url); });
+      card.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(url); }
+      });
+    });
+
+    root.querySelector('#ph-close').addEventListener('click', close);
+    modal.addEventListener('click', function (e) { if (e.target === modal) close(); });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && modal.classList.contains('open')) close();
+    });
+  })();
+  </script>
+</section>

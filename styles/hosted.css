@@ -158,15 +158,19 @@ header nav a:hover, .navbar a:hover, .top-nav a:hover {
 
 /* ═══ 6b. Header dropdown / sub-menus (e.g. Sell → 3 sub-options) ═══ */
 
-/* Force the WHOLE dropdown subtree (panel + every inner wrapper, padding strip,
-   and list) to cream — otherwise Lofty's dark panel bg shows as black bands at
-   the left/right edges around the cream items. Section 6's dark-text rule then
-   reads cleanly on top. */
+/* This site's nav dropdown structure (confirmed in the live DOM):
+     li.menu-item.has-child  >  div.wrapper  >  ol.submenu  >  li.menu-item > a
+   The OUTER div.wrapper has a near-black bg (rgb(25,25,25)) + 20px side
+   padding — that's what shows as black bars beside the cream list. Force the
+   WHOLE dropdown subtree cream so nothing dark remains. The generic selectors
+   are kept as a safety net for any differently-named menus. */
 header [class*="dropdown"], header [class*="dropdown"] *,
 header [class*="submenu"], header [class*="submenu"] *,
 header [class*="sub-menu"], header [class*="sub-menu"] *,
 header [class*="subnav"], header [class*="subnav"] *,
-header ul ul, header ul ul *,
+header ul ul, header ul ul *, header ol, header ol *,
+.head-menu .wrapper, .head-menu .wrapper *,
+[class*="menu-item"] [class*="wrapper"], [class*="menu-item"] [class*="wrapper"] *,
 .navbar ul ul, .navbar ul ul *, .top-nav ul ul, .top-nav ul ul *,
 [class*="nav-dropdown"], [class*="nav-dropdown"] *,
 [class*="menu-dropdown"], [class*="menu-dropdown"] *,
@@ -176,22 +180,28 @@ header ul ul, header ul ul *,
   background-image: none !important;
 }
 
-/* Card framing on the panel itself */
-header [class*="dropdown"], header [class*="submenu"], header [class*="sub-menu"],
-header [class*="subnav"], header ul ul, .navbar ul ul, .top-nav ul ul,
-[class*="nav-dropdown"], [class*="menu-dropdown"], [class*="dropdown-menu"],
-ul[class*="sub-menu"], .dropdown-content {
+/* Card framing on the OUTER dropdown panel (div.wrapper) only */
+.head-menu .wrapper, [class*="menu-item"] [class*="wrapper"],
+header [class*="dropdown-menu"], [class*="nav-dropdown"],
+[class*="menu-dropdown"], .dropdown-content {
   border: 1px solid var(--preg-rule) !important;
   border-radius: 2px !important;
   box-shadow: 0 12px 32px rgba(10, 31, 61, 0.14) !important;
   overflow: hidden !important;
 }
 
+/* Inner list must not draw its own box inside the framed panel */
+.head-menu .wrapper ol, .head-menu .wrapper ul,
+[class*="menu-item"] [class*="wrapper"] [class*="submenu"] {
+  border: none !important;
+  box-shadow: none !important;
+}
+
 /* Dropdown items + links — dark, readable text */
 header [class*="dropdown"] a, header [class*="submenu"] a, header [class*="sub-menu"] a,
-header ul ul a, header ul ul li, .navbar ul ul a, .top-nav ul ul a,
+header ul ul a, header ol a, .head-menu .wrapper a, .head-menu .wrapper li,
+[class*="menu-item"] [class*="wrapper"] a,
 [class*="nav-dropdown"] a, [class*="menu-dropdown"] a, [class*="dropdown-menu"] a,
-[class*="dropdown"] li, [class*="submenu"] li, [class*="sub-menu"] li,
 .dropdown-content a {
   color: var(--preg-char) !important;
   text-shadow: none !important;
@@ -199,7 +209,8 @@ header ul ul a, header ul ul li, .navbar ul ul a, .top-nav ul ul a,
 
 /* Hover on a dropdown item — gentle cream highlight + ember text */
 header [class*="dropdown"] a:hover, header [class*="submenu"] a:hover,
-header [class*="sub-menu"] a:hover, header ul ul a:hover,
+header [class*="sub-menu"] a:hover, header ul ul a:hover, header ol a:hover,
+.head-menu .wrapper a:hover, [class*="menu-item"] [class*="wrapper"] a:hover,
 [class*="dropdown-menu"] a:hover, [class*="nav-dropdown"] a:hover,
 [class*="menu-dropdown"] a:hover, .dropdown-content a:hover {
   background-color: var(--preg-canvas) !important;

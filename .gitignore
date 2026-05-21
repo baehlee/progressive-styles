@@ -32,3 +32,4 @@ dist/
 # live in reference/assets/). Also catches Windows Zone.Identifier ADS files.
 misc-files/
 *:Zone.Identifier
+.gstack/

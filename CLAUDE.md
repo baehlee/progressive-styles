@@ -175,6 +175,16 @@ When producing a deliverable, write it to its final folder *and* drop a copy in 
 
 ## 7 · Standards for every deliverable
 
+### Mobile-first — NON-NEGOTIABLE
+
+**Most of this client's visitors are on mobile.** Every deliverable must be designed and verified at phone widths first, desktop second. Concretely:
+
+- Build layouts that reflow to a single column on small screens; never rely on a desktop-only grid.
+- Test mentally (and visually when possible) at **~390px** width, not just 1440px. Headlines must not overflow; tap targets ≥ 44px; full-width buttons on small screens are fine and preferred.
+- Use fluid sizing (`clamp()`, `%`, `vw`) over fixed pixel widths. Avoid fixed heights that clip content when text wraps on narrow screens.
+- Full-bleed sections that break out of Lofty's constrained block wrapper use `margin-left/right: calc(50% - 50vw)` on the section, with an inner `max-width` wrapper to keep content aligned — see `pages/homepage/hero.html` for the reference pattern.
+- Never ship a block without confirming its mobile breakpoint. If a visual check isn't possible, state that explicitly in the deliverable's blockers.
+
 ### CSS
 
 - **Always check character count** for anything destined for Lofty's global Custom Styles. Hard cap is 5,000. Use `wc -c styles/global.css` as a check.

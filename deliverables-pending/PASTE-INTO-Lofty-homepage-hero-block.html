@@ -68,8 +68,14 @@
       background:var(--canvas);
       color:var(--char);
       font-family:var(--sans);
-      padding:clamp(40px,7vw,104px) clamp(1.25rem,3vw,2.5rem) clamp(48px,7vw,96px);
+      padding:clamp(40px,7vw,104px) clamp(1.25rem,5vw,2.5rem) clamp(48px,7vw,96px);
       -webkit-font-smoothing:antialiased;
+      /* Full-bleed: break out of Lofty's centered/constrained block wrapper so
+         the cream background spans the whole page width. Inner .ph-wrap keeps
+         the content centered at the 1280px site width. */
+      margin-left:calc(50% - 50vw);
+      margin-right:calc(50% - 50vw);
+      overflow-x:clip;
     }
     #preg-hero *{box-sizing:border-box;}
     #preg-hero .ph-wrap{max-width:1280px;margin:0 auto;}
@@ -204,7 +210,23 @@
     }
 
     @media (max-width:900px){
-      #preg-hero .ph-grid{grid-template-columns:1fr;gap:56px;}
+      #preg-hero .ph-grid{grid-template-columns:1fr;gap:52px;}
+      /* On mobile the WELCOME label would collide with the stacked text above,
+         so anchor it to the top-left of the grid instead of floating right. */
+      #preg-hero .ph-stack::before{right:auto;left:0;}
+    }
+    /* Small phones — most of this client's visitors. Keep the headline from
+       overflowing, tighten rhythm, make tap targets comfortable. */
+    @media (max-width:560px){
+      #preg-hero{padding-top:clamp(28px,9vw,44px);}
+      #preg-hero h1.ph-h1{font-size:clamp(40px,12vw,60px);}
+      #preg-hero .ph-sub{font-size:16px;}
+      #preg-hero .ph-stack{gap:10px;}
+      #preg-hero .ph-cta-row{gap:10px;}
+      #preg-hero .ph-btn{flex:1 1 auto;justify-content:center;padding:1.05em 1.2em;}
+      #preg-hero .ph-card .ph-name{font-size:16px;}
+      #preg-hero .ph-modal{padding:14px;}
+      #preg-hero .ph-close{top:-40px;}
     }
   </style>
 

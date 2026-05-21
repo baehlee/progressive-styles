@@ -30,7 +30,9 @@ The site runs on **Lofty**, a real estate-specific CMS. This is the most importa
 ### What you can customize in Lofty
 
 1. **Global Custom Styles (CSS)** — CMS → Settings → Tools → Styles. **Hard 5,000 character limit.** Use ruthlessly compact CSS. CSS variables save characters; multi-selector rules save characters; whitespace and comments cost characters.
-2. **Global Custom Scripts (JS)** — CMS → Settings → Tools → Scripts. No documented character limit. Useful for `Util.addStyle('https://cdn.jsdelivr.net/gh/...')` to load external CSS and bypass the 5K cap.
+2. **Global Custom Scripts (JS)** — CMS → Settings → Tools → Scripts. No documented character limit. Useful for `Util.addStyle('https://cdn.jsdelivr.net/gh/...')` to load external CSS and bypass the 5K cap. **This is set up and live.** The repo is public at `github.com/baehlee/progressive-styles`; `styles/hosted.css` is served via jsDelivr. Lofty snippet: `Util.addStyle('https://cdn.jsdelivr.net/gh/baehlee/progressive-styles@main/styles/hosted.css?v=1');` — to ship a global style change, edit `hosted.css`, commit, push, and bump `?v=` if the CDN cache lags.
+
+   **Privacy rule for the public repo:** the `content/` directory is **gitignored** and must never be pushed — it holds the competitive SEO strategy, founder bios with personal contact info + family names, and pre-publication blog drafts. That source lives locally only and goes into Lofty by hand; the public website is the only place it should ever appear, in final rendered form.
 3. **Custom HTML Blocks** — Inside Lofty's page editor, between any two existing blocks. No size limit. Inline `<style>` tags inside these blocks work and don't count against the global CSS budget. This is the primary escape hatch for page-specific styling.
 4. **Custom Landing Pages** — Brand-new pages outside the standard template. Used for the No Hate Pledge page, identity-led landing pages, and SEO area/neighborhood pages.
 5. **Per-page SEO panel** — Meta title, meta description, focus keyword, social sharing image. Available on every page and every blog post.
@@ -108,7 +110,7 @@ The redesign rolls out in eight phases. Each phase produces visible improvement;
 
 | Phase | Description | Status | Deliverable type |
 |---|---|---|---|
-| **1** | Global CSS foundation | ✅ Complete (5K version live) | `styles/global.css` |
+| **1** | Global CSS foundation | ✅ Complete. jsDelivr hosting now live (see below) — the full uncompacted CSS can serve from the CDN, bypassing the 5K cap. | `styles/global.css` (5K inline) + `styles/hosted.css` (CDN) |
 | **2** | Homepage hero replacement (4-founder video grid) | ⏳ Pending | Custom HTML block |
 | **3** | Homepage "Trusted Experts" + "Work With Us" rewrites | ⏳ Pending | Custom HTML blocks |
 | **4** | Team page rebuild with real bios + video integration | ⏳ Pending | Custom HTML blocks + content |

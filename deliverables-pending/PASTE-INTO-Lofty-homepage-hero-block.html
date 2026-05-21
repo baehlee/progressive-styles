@@ -33,9 +33,11 @@
        your real Lofty page slugs (the IDX search page and the Team page).
 
      ▶ LOFTY VALIDATOR NOTES (do not "fix" these — they're intentional):
-       · The play-button <svg> uses lowercase `viewbox`. Lofty's HTML checker
-         rejects camelCase attribute names; the browser's HTML parser maps it
-         back to the correct SVG `viewBox` for inline SVG, so it still renders.
+       · There is intentionally NO inline <svg> in this block. The play-button
+         triangle is drawn with CSS borders (.ph-play::after). Lofty's editor
+         auto-rewrites svg attributes to camelCase (e.g. viewBox) on save and
+         then its own validator rejects them — an unwinnable loop. Do not add
+         an <svg> back; keep the CSS-border triangle.
        · The lightbox <iframe> has NO src attribute in the markup (Lofty rejects
          an empty src=""). The JS sets the src on play and removes it on close.
 
@@ -154,8 +156,17 @@
     }
     #preg-hero .ph-card.has-video .ph-play{display:flex;}
     #preg-hero .ph-card.has-video:hover .ph-play{background:var(--e);}
-    #preg-hero .ph-card .ph-play svg{width:12px;height:12px;fill:var(--i);transition:fill .2s;}
-    #preg-hero .ph-card.has-video:hover .ph-play svg{fill:var(--paper);}
+    /* Play triangle drawn with CSS borders — NO inline SVG, so Lofty's editor
+       can't rewrite an svg attribute (viewBox) and trip its own validator. */
+    #preg-hero .ph-card .ph-play::after{
+      content:'';width:0;height:0;margin-left:3px;
+      border-style:solid;border-width:6px 0 6px 11px;
+      border-color:transparent transparent transparent var(--i);
+      transition:border-color .2s;
+    }
+    #preg-hero .ph-card.has-video:hover .ph-play::after{
+      border-color:transparent transparent transparent var(--paper);
+    }
 
     /* ── Video lightbox ── */
     #preg-hero .ph-modal{
@@ -214,22 +225,22 @@
       <div class="ph-stack">
         <div class="ph-card" data-founder="rodolfo">
           <img src="https://cdn.jsdelivr.net/gh/baehlee/progressive-styles@main/reference/assets/headshot-rodolfo.jpg" alt="Rodolfo Trujillo, Co-Founder of Progressive Real Estate Group" loading="lazy">
-          <div class="ph-play" aria-hidden="true"><svg viewbox="0 0 12 14"><polygon points="0,0 0,14 12,7"/></svg></div>
+          <div class="ph-play" aria-hidden="true"></div>
           <div class="ph-meta"><div class="ph-role">Co-Founder</div><div class="ph-name">Rodolfo Trujillo</div></div>
         </div>
         <div class="ph-card" data-founder="travis">
           <img src="https://cdn.jsdelivr.net/gh/baehlee/progressive-styles@main/reference/assets/headshot-travis.jpg" alt="Travis Callstrom, Co-Founder of Progressive Real Estate Group" loading="lazy">
-          <div class="ph-play" aria-hidden="true"><svg viewbox="0 0 12 14"><polygon points="0,0 0,14 12,7"/></svg></div>
+          <div class="ph-play" aria-hidden="true"></div>
           <div class="ph-meta"><div class="ph-role">Co-Founder</div><div class="ph-name">Travis Callstrom</div></div>
         </div>
         <div class="ph-card" data-founder="joe">
           <img src="https://cdn.jsdelivr.net/gh/baehlee/progressive-styles@main/reference/assets/headshot-joe.jpg" alt="Joe Mack, Co-Founder of Progressive Real Estate Group" loading="lazy">
-          <div class="ph-play" aria-hidden="true"><svg viewbox="0 0 12 14"><polygon points="0,0 0,14 12,7"/></svg></div>
+          <div class="ph-play" aria-hidden="true"></div>
           <div class="ph-meta"><div class="ph-role">Co-Founder</div><div class="ph-name">Joe Mack</div></div>
         </div>
         <div class="ph-card" data-founder="jake">
           <img src="https://cdn.jsdelivr.net/gh/baehlee/progressive-styles@main/reference/assets/headshot-jake.jpg" alt="Jake Miller, Co-Founder of Progressive Real Estate Group" loading="lazy">
-          <div class="ph-play" aria-hidden="true"><svg viewbox="0 0 12 14"><polygon points="0,0 0,14 12,7"/></svg></div>
+          <div class="ph-play" aria-hidden="true"></div>
           <div class="ph-meta"><div class="ph-role">Co-Founder</div><div class="ph-name">Jake Miller</div></div>
         </div>
       </div>

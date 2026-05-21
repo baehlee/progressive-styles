@@ -156,6 +156,44 @@ header nav a:hover, .navbar a:hover, .top-nav a:hover {
 }
 
 
+/* ═══ 6b. Header dropdown / sub-menus (e.g. Sell → 3 sub-options) ═══ */
+
+/* Lofty's nav dropdown panels keep their dark default background, but the
+   rule above forces their link text dark too → dark-on-dark, unreadable.
+   Give the dropdown panels a cream surface with legible dark links. */
+header [class*="dropdown"], header [class*="submenu"], header [class*="sub-menu"],
+header [class*="subnav"], header ul ul, .navbar ul ul, .top-nav ul ul,
+[class*="nav-dropdown"], [class*="menu-dropdown"], [class*="dropdown-menu"],
+ul[class*="sub-menu"], .dropdown-content {
+  background-color: var(--preg-paper) !important;
+  background-image: none !important;
+  border: 1px solid var(--preg-rule) !important;
+  border-radius: 2px !important;
+  box-shadow: 0 12px 32px rgba(10, 31, 61, 0.14) !important;
+  overflow: hidden !important;
+}
+
+/* Dropdown items + links — dark, readable text on the cream panel */
+header [class*="dropdown"] a, header [class*="submenu"] a, header [class*="sub-menu"] a,
+header ul ul a, header ul ul li, .navbar ul ul a, .top-nav ul ul a,
+[class*="nav-dropdown"] a, [class*="menu-dropdown"] a, [class*="dropdown-menu"] a,
+[class*="dropdown"] li, [class*="submenu"] li, [class*="sub-menu"] li,
+.dropdown-content a {
+  color: var(--preg-char) !important;
+  background-color: transparent !important;
+  text-shadow: none !important;
+}
+
+/* Hover on a dropdown item — gentle cream highlight + ember text */
+header [class*="dropdown"] a:hover, header [class*="submenu"] a:hover,
+header [class*="sub-menu"] a:hover, header ul ul a:hover,
+[class*="dropdown-menu"] a:hover, [class*="nav-dropdown"] a:hover,
+[class*="menu-dropdown"] a:hover, .dropdown-content a:hover {
+  background-color: var(--preg-canvas) !important;
+  color: var(--preg-ember) !important;
+}
+
+
 /* ═══ 7. Sections & spacing ═══ */
 
 /* Add breathing room between major sections */

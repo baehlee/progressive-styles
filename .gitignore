@@ -27,3 +27,8 @@ content/
 node_modules/
 dist/
 .cache/
+
+# High-res source masters — kept local only (huge; optimized web versions
+# live in reference/assets/). Also catches Windows Zone.Identifier ADS files.
+misc-files/
+*:Zone.Identifier

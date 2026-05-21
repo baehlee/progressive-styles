@@ -32,6 +32,13 @@
        The two hero buttons point at "/search" and "/team". Update these to
        your real Lofty page slugs (the IDX search page and the Team page).
 
+     ▶ LOFTY VALIDATOR NOTES (do not "fix" these — they're intentional):
+       · The play-button <svg> uses lowercase `viewbox`. Lofty's HTML checker
+         rejects camelCase attribute names; the browser's HTML parser maps it
+         back to the correct SVG `viewBox` for inline SVG, so it still renders.
+       · The lightbox <iframe> has NO src attribute in the markup (Lofty rejects
+         an empty src=""). The JS sets the src on play and removes it on close.
+
      SEO (homepage <head>, set in Lofty's per-page SEO panel — not in this block):
        Meta title:        Twin Cities Real Estate, Founded by Four | Progressive
        Meta description:  Four veteran Twin Cities founders — 80+ years — building
@@ -122,7 +129,7 @@
       background:var(--i);border-radius:1px;
     }
     #preg-hero .ph-card img{
-      width:100%;height:100%;object-fit:cover;object-position:center top;
+      width:100%;height:100%;object-fit:cover;object-position:center;
       transition:transform .6s ease,filter .3s ease;filter:saturate(.92);display:block;
     }
     #preg-hero .ph-card.has-video{cursor:pointer;}
@@ -207,22 +214,22 @@
       <div class="ph-stack">
         <div class="ph-card" data-founder="rodolfo">
           <img src="https://cdn.jsdelivr.net/gh/baehlee/progressive-styles@main/reference/assets/headshot-rodolfo.jpg" alt="Rodolfo Trujillo, Co-Founder of Progressive Real Estate Group" loading="lazy">
-          <div class="ph-play" aria-hidden="true"><svg viewBox="0 0 12 14"><polygon points="0,0 0,14 12,7"/></svg></div>
+          <div class="ph-play" aria-hidden="true"><svg viewbox="0 0 12 14"><polygon points="0,0 0,14 12,7"/></svg></div>
           <div class="ph-meta"><div class="ph-role">Co-Founder</div><div class="ph-name">Rodolfo Trujillo</div></div>
         </div>
         <div class="ph-card" data-founder="travis">
           <img src="https://cdn.jsdelivr.net/gh/baehlee/progressive-styles@main/reference/assets/headshot-travis.jpg" alt="Travis Callstrom, Co-Founder of Progressive Real Estate Group" loading="lazy">
-          <div class="ph-play" aria-hidden="true"><svg viewBox="0 0 12 14"><polygon points="0,0 0,14 12,7"/></svg></div>
+          <div class="ph-play" aria-hidden="true"><svg viewbox="0 0 12 14"><polygon points="0,0 0,14 12,7"/></svg></div>
           <div class="ph-meta"><div class="ph-role">Co-Founder</div><div class="ph-name">Travis Callstrom</div></div>
         </div>
         <div class="ph-card" data-founder="joe">
           <img src="https://cdn.jsdelivr.net/gh/baehlee/progressive-styles@main/reference/assets/headshot-joe.jpg" alt="Joe Mack, Co-Founder of Progressive Real Estate Group" loading="lazy">
-          <div class="ph-play" aria-hidden="true"><svg viewBox="0 0 12 14"><polygon points="0,0 0,14 12,7"/></svg></div>
+          <div class="ph-play" aria-hidden="true"><svg viewbox="0 0 12 14"><polygon points="0,0 0,14 12,7"/></svg></div>
           <div class="ph-meta"><div class="ph-role">Co-Founder</div><div class="ph-name">Joe Mack</div></div>
         </div>
         <div class="ph-card" data-founder="jake">
           <img src="https://cdn.jsdelivr.net/gh/baehlee/progressive-styles@main/reference/assets/headshot-jake.jpg" alt="Jake Miller, Co-Founder of Progressive Real Estate Group" loading="lazy">
-          <div class="ph-play" aria-hidden="true"><svg viewBox="0 0 12 14"><polygon points="0,0 0,14 12,7"/></svg></div>
+          <div class="ph-play" aria-hidden="true"><svg viewbox="0 0 12 14"><polygon points="0,0 0,14 12,7"/></svg></div>
           <div class="ph-meta"><div class="ph-role">Co-Founder</div><div class="ph-name">Jake Miller</div></div>
         </div>
       </div>
@@ -233,7 +240,7 @@
   <div class="ph-modal" id="ph-modal" role="dialog" aria-modal="true" aria-label="Founder welcome video">
     <div class="ph-modal-inner">
       <button class="ph-close" id="ph-close" aria-label="Close video">&times;</button>
-      <iframe id="ph-frame" src="" title="Founder welcome video" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+      <iframe id="ph-frame" title="Founder welcome video" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
     </div>
   </div>
 
@@ -264,7 +271,7 @@
     }
     function close() {
       modal.classList.remove('open');
-      frame.src = '';                       /* stop playback */
+      frame.removeAttribute('src');          /* stop playback */
       document.body.style.overflow = '';
     }
 

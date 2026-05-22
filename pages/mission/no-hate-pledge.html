@@ -1,0 +1,212 @@
+<!-- ════════════════════════════════════════════════════════════════════
+     PROGRESSIVE REAL ESTATE GROUP — THE NO HATE PLEDGE (Phase 5)
+     ────────────────────────────────────────────────────────────────────
+     WHERE TO PASTE:  Create a NEW Custom Landing Page in Lofty
+                      (Sites → Pages → add a blank/custom page), URL slug
+                      /no-hate-pledge, then add ONE Custom HTML / Code Block
+                      and paste this whole file as the page's content. Then
+                      add /no-hate-pledge to the site nav if desired.
+
+     WHAT IT IS:      The mission / brand-anchor landing page. A navy hero with
+                      the pledge, the formal mission statement "signed" by the
+                      founders, who the team serves (as the standard, not a
+                      niche), a fair-housing note, and a CTA band linking to
+                      Buy / Sell / Team (the internal links the SEO plan wants).
+
+     SELF-CONTAINED:  All CSS scoped under #preg-pledge. Fonts (Fraunces +
+                      Manrope) come from the global hosted.css. No images, no JS.
+
+     ▶ GLOBAL-CSS NOTES (do not "fix"):
+       · No inline SVG. · The DARK hero + CTA bands set their light text with
+         !important to beat hosted.css §4 `h1..h6{color:navy!important}`. · CTA
+         buttons use class `pl-cta-fill` (NOT *btn-primary*) so they dodge the
+         global `[class*="btn-primary"]{background:navy!important}` rule.
+
+     SEO (set in Lofty's per-page SEO panel for /no-hate-pledge):
+       Meta title:        The No Hate Pledge | Inclusive Real Estate, Twin Cities
+       Meta description:  Our pledge: inclusive, equitable homeownership for
+                          everyone. An LGBTQ+-affirming, multilingual, fair-housing
+                          real estate team serving Minneapolis & the Twin Cities.
+       Focus keyword:     inclusive real estate agent minneapolis
+       URL slug:          /no-hate-pledge
+       Internal links:    /listing (Buy), /sell, /team  (present in the CTA band)
+     ════════════════════════════════════════════════════════════════════ -->
+
+<section id="preg-pledge">
+  <style>
+    :has(#preg-pledge){overflow:visible !important;}
+
+    #preg-pledge{
+      --i:#0A1F3D; --i2:#14315A; --s2:#6FAED9;
+      --canvas:#F4EEE3; --paper:#FBF8F1; --e:#B86A3E; --e2:#D38A5C;
+      --char:#1B1815; --mute:#6E695F; --rule:#D9D1BE;
+      --disp:'Fraunces','Times New Roman',serif;
+      --sans:'Manrope',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+      display:block;background:var(--canvas);color:var(--char);font-family:var(--sans);
+      -webkit-font-smoothing:antialiased;
+      width:100vw;max-width:100vw;margin-left:calc(50% - 50vw);margin-right:calc(50% - 50vw);
+      overflow-x:clip;
+    }
+    #preg-pledge *{box-sizing:border-box;}
+    #preg-pledge .pl-in{max-width:920px;margin:0 auto;padding-left:clamp(1.25rem,5vw,2.5rem);padding-right:clamp(1.25rem,5vw,2.5rem);}
+    #preg-pledge .pl-in-wide{max-width:1080px;}
+
+    /* ── Hero (navy) ── */
+    #preg-pledge .pl-hero{
+      background:linear-gradient(165deg,var(--i) 0%,var(--i2) 100%);
+      text-align:center;padding:clamp(64px,11vw,140px) 0;
+    }
+    #preg-pledge .pl-eyebrow{
+      display:block;margin:0 0 20px;font-size:12px;font-weight:600;
+      letter-spacing:.22em;text-transform:uppercase;color:var(--s2) !important;
+    }
+    #preg-pledge h1.pl-h1{
+      margin:0 auto 22px;max-width:16ch;font-family:var(--disp);
+      font-size:clamp(44px,8vw,104px);line-height:.96;letter-spacing:-.035em;
+      font-weight:300;color:var(--paper) !important;font-variation-settings:"opsz" 144,"SOFT" 50;
+    }
+    #preg-pledge h1.pl-h1 em{font-style:italic;color:var(--e2) !important;font-variation-settings:"opsz" 144,"SOFT" 100;}
+    #preg-pledge .pl-hero-sub{
+      margin:0 auto;max-width:560px;font-size:clamp(17px,1.5vw,20px);line-height:1.6;
+      color:rgba(251,248,241,.85) !important;
+    }
+
+    /* ── Pledge statement (cream) ── */
+    #preg-pledge .pl-statement{padding:clamp(56px,8vw,104px) 0;text-align:center;}
+    #preg-pledge .pl-quote{
+      margin:0 auto;max-width:18ch;font-family:var(--disp);
+      font-size:clamp(28px,4.2vw,52px);line-height:1.18;letter-spacing:-.02em;
+      font-weight:300;color:var(--i);font-variation-settings:"opsz" 96,"SOFT" 60;
+    }
+    #preg-pledge .pl-quote em{font-style:italic;color:var(--e);font-variation-settings:"opsz" 96,"SOFT" 100;}
+    #preg-pledge .pl-sign{
+      margin:34px auto 0;font-size:13px;font-weight:600;letter-spacing:.12em;
+      text-transform:uppercase;color:var(--mute);
+    }
+    #preg-pledge .pl-sign span{color:var(--e);}
+
+    /* ── Section blocks ── */
+    #preg-pledge .pl-block{padding:0 0 clamp(56px,8vw,96px);}
+    #preg-pledge .pl-rule{border:0;border-top:1px solid var(--rule);max-width:1080px;margin:0 auto;}
+    #preg-pledge .pl-block h2{
+      margin:clamp(56px,8vw,96px) 0 18px;font-family:var(--disp);
+      font-size:clamp(30px,4.4vw,52px);line-height:1.02;letter-spacing:-.03em;
+      font-weight:300;color:var(--i);font-variation-settings:"opsz" 96,"SOFT" 50;
+    }
+    #preg-pledge .pl-block h2 em{font-style:italic;color:var(--e);font-variation-settings:"opsz" 96,"SOFT" 100;}
+    #preg-pledge .pl-block p{margin:0 0 18px;font-size:clamp(16px,1.4vw,18px);line-height:1.68;color:var(--char);max-width:60ch;}
+    #preg-pledge .pl-block p:last-child{margin-bottom:0;}
+    #preg-pledge .pl-block p strong{color:var(--i);font-weight:600;}
+
+    /* ── "Who we serve" list ── */
+    #preg-pledge .pl-serve{display:grid;grid-template-columns:repeat(2,1fr);gap:0;margin-top:14px;border-top:1px solid var(--rule);}
+    #preg-pledge .pl-serve li{
+      list-style:none;padding:22px 24px 22px 0;border-bottom:1px solid var(--rule);
+    }
+    #preg-pledge .pl-serve li h3{
+      margin:0 0 6px;font-family:var(--disp);font-size:clamp(18px,1.8vw,22px);
+      font-weight:500;color:var(--i);font-variation-settings:"opsz" 40,"SOFT" 40;
+    }
+    #preg-pledge .pl-serve li p{margin:0;font-size:15px;line-height:1.55;color:var(--mute);}
+    #preg-pledge ul.pl-serve{padding:0;}
+
+    /* ── CTA band (navy) ── */
+    #preg-pledge .pl-cta{
+      background:linear-gradient(165deg,var(--i) 0%,var(--i2) 100%);
+      text-align:center;padding:clamp(56px,8vw,104px) 0;
+    }
+    #preg-pledge .pl-cta h2{
+      margin:0 0 16px;font-family:var(--disp);font-size:clamp(30px,5vw,56px);
+      line-height:1.0;letter-spacing:-.03em;font-weight:300;color:var(--paper) !important;
+      font-variation-settings:"opsz" 96,"SOFT" 50;
+    }
+    #preg-pledge .pl-cta h2 em{font-style:italic;color:var(--e2) !important;font-variation-settings:"opsz" 96,"SOFT" 100;}
+    #preg-pledge .pl-cta p{margin:0 auto 32px;max-width:46ch;font-size:clamp(16px,1.4vw,18px);line-height:1.6;color:rgba(251,248,241,.85) !important;}
+    #preg-pledge .pl-cta-row{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;}
+    #preg-pledge .pl-btn{
+      display:inline-flex;align-items:center;gap:.55em;padding:1em 1.7em;
+      font-family:var(--sans);font-size:14px;font-weight:600;letter-spacing:.04em;
+      text-transform:uppercase;border:1px solid transparent;border-radius:2px;
+      cursor:pointer;transition:all .2s ease;white-space:nowrap;text-decoration:none;
+    }
+    /* fill button — class avoids the global [class*="btn-primary"] rule */
+    #preg-pledge .pl-cta-fill{background:var(--e) !important;color:var(--paper) !important;border-color:var(--e) !important;}
+    #preg-pledge .pl-cta-fill:hover{background:var(--e2) !important;border-color:var(--e2) !important;transform:translateY(-1px);}
+    #preg-pledge .pl-btn-ghost{background:transparent !important;color:var(--paper) !important;border-color:rgba(251,248,241,.45) !important;}
+    #preg-pledge .pl-btn-ghost:hover{background:var(--paper) !important;color:var(--i) !important;border-color:var(--paper) !important;}
+
+    /* ── Entrance ── */
+    @keyframes plUp{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:none;}}
+    #preg-pledge .pl-hero>*,#preg-pledge .pl-statement>*{animation:plUp .7s ease both;}
+    @media (prefers-reduced-motion:reduce){#preg-pledge .pl-hero>*,#preg-pledge .pl-statement>*{animation:none;}}
+
+    /* ── Mobile ── */
+    @media (max-width:680px){
+      #preg-pledge .pl-serve{grid-template-columns:1fr;}
+      #preg-pledge h1.pl-h1{font-size:clamp(40px,12vw,60px);}
+      #preg-pledge .pl-cta-row{flex-direction:column;}
+      #preg-pledge .pl-btn{width:100%;justify-content:center;padding:1.1em 1.2em;}
+    }
+  </style>
+
+  <!-- Hero -->
+  <div class="pl-hero">
+    <div class="pl-in">
+      <span class="pl-eyebrow">The No Hate Pledge</span>
+      <h1 class="pl-h1">No hate. <em>No exceptions.</em></h1>
+      <p class="pl-hero-sub">Everyone deserves a place to belong — and a real estate team that means it. This is the promise we built Progressive on.</p>
+    </div>
+  </div>
+
+  <!-- Pledge statement -->
+  <div class="pl-statement">
+    <div class="pl-in">
+      <p class="pl-quote">To advance inclusive homeownership through equitable, informed, client-centered service — because everyone deserves a place to <em>belong.</em></p>
+      <div class="pl-sign"><span>&mdash;</span> Rodolfo, Travis, Joe &amp; Jake &middot; Founders</div>
+    </div>
+  </div>
+
+  <hr class="pl-rule">
+
+  <!-- What it means -->
+  <div class="pl-block">
+    <div class="pl-in">
+      <h2>Not a niche. <em>The standard.</em></h2>
+      <p>Plenty of agents will tell you they're welcoming. We put it in writing. As <strong>inclusive real estate agents in Minneapolis and across the Twin Cities</strong>, serving people who've too often been overlooked in housing isn't a side specialty for us — it's simply how we work with everyone.</p>
+      <p>We follow the letter <em>and</em> the spirit of fair housing law. No coded language, no steering, no quiet assumptions about who belongs where. Just honest guidance and an advocate who's genuinely in your corner.</p>
+
+      <ul class="pl-serve">
+        <li><h3>LGBTQ+ households</h3><p>Affirming service from a team that lives it — including founders raising their own families.</p></li>
+        <li><h3>Spanish-speaking &amp; multilingual families</h3><p>Guidance in your language, so nothing gets lost in the most important decision you'll make.</p></li>
+        <li><h3>First-time &amp; first-generation buyers</h3><p>No question is too basic. We explain the process and the numbers until it's clear.</p></li>
+        <li><h3>Minority &amp; immigrant families</h3><p>Patient, respectful representation and a team that helps you build long-term wealth through ownership.</p></li>
+        <li><h3>Accessibility-conscious clients</h3><p>Homes and a process that fit how you actually live — not the other way around.</p></li>
+        <li><h3>Anyone who's ever wondered</h3><p>If you've felt unsure whether you'd be welcome, this pledge is for you. You are.</p></li>
+      </ul>
+    </div>
+  </div>
+
+  <hr class="pl-rule">
+
+  <!-- Why four founders -->
+  <div class="pl-block">
+    <div class="pl-in">
+      <h2>Why we built it <em>this way.</em></h2>
+      <p>Four founders. Eighty years of Twin Cities real estate between us. We've seen how the industry can quietly leave people out — and we started Progressive to do the opposite, on purpose.</p>
+      <p>That's the whole idea: real estate done with fairness, dignity, and respect for everyone, every time. Not because it markets well, but because it's right.</p>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="pl-cta">
+    <div class="pl-in">
+      <h2>Ready when <em>you are.</em></h2>
+      <p>Whether you're buying, selling, or just have questions, you'll get a straight answer and a team that has your back.</p>
+      <div class="pl-cta-row">
+        <a href="/listing" class="pl-btn pl-cta-fill">Explore homes &rarr;</a>
+        <a href="/sell" class="pl-btn pl-btn-ghost">Sell your home</a>
+        <a href="/team" class="pl-btn pl-btn-ghost">Meet the founders</a>
+      </div>
+    </div>
+  </div>
+</section>

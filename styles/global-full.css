@@ -387,6 +387,22 @@ footer [class*="logo"] *, footer [class*="brand"] * {
 }
 
 
+
+/* —— md-footer (layout5) legibility: Lofty colors .site-title navy = invisible
+   on the navy footer; force light, hide the unlabeled QR, tighten spacing. —— */
+.md-footer .site-title, footer .site-title{ color:var(--preg-paper,#FBF8F1) !important; }
+.md-footer .detail-addr, .md-footer .site-p, .md-footer .tip-color,
+.md-footer .mls-declaimer-container-v2, .md-footer .mls-declaimer-container-v2 *{
+  color:rgba(251,248,241,.74) !important;
+}
+.md-footer a, .md-footer .site-p.underline a{ color:rgba(251,248,241,.92) !important; }
+.md-footer a:hover{ color:var(--preg-ember-2,#D38A5C) !important; }
+/* The unlabeled QR block reads as clutter in the footer — hide it. */
+.md-footer .code-wrapper{ display:none !important; }
+/* Tighten the empty vertical space the layout leaves. */
+.md-footer{ padding:56px 0 !important; }
+
+
 /* ═══ 15. Get More Information block (contact form) ═══ */
 
 /* The form section currently has a dark navy bg with hard-to-read text — refine */

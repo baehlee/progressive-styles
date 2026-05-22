@@ -1,0 +1,139 @@
+<!-- ════════════════════════════════════════════════════════════════════
+     PROGRESSIVE REAL ESTATE GROUP — "WORK WITH US" CLOSING BAND (Phase 3)
+     ────────────────────────────────────────────────────────────────────
+     WHERE TO PASTE:  Lofty Page Editor → Home Page → Add Block →
+                      Custom HTML / Code Block. Place it where the stock
+                      "Work With Us" section currently sits (near the bottom,
+                      above the footer), and HIDE/REMOVE that stock Lofty block.
+
+     WHAT IT IS:      The homepage's closing call-to-action — a full-bleed
+                      DEEP-NAVY band (deliberate contrast against the cream
+                      sections above; reads as footer-adjacent). Eyebrow +
+                      italic-terracotta heading that bookends the hero's "a
+                      place to belong," one short plain paragraph, a quiet row
+                      of the four founder portraits, and two CTAs.
+
+     SELF-CONTAINED:  All CSS scoped under #preg-work. Headshots load from the
+                      project CDN (jsDelivr) — nothing to upload to Lofty.
+                      Fonts come from the global hosted.css; fallbacks set.
+                      No inline SVG, no JS.
+
+     ▶ LINKS (confirmed live slugs):
+       PRIMARY  "What's your home worth?" → /evaluation  (home valuation flow)
+       GHOST    "Meet the founders"        → /team
+
+     ▶ LOFTY VALIDATOR NOTE (do not "fix"): no inline SVG anywhere.
+
+     ▶ ONCE THIS IS LIVE: overrides.html §4 ("work-with") targets the stock
+       section and becomes dead code — harmless, trim on a later pass.
+     ════════════════════════════════════════════════════════════════════ -->
+
+<section id="preg-work">
+  <style>
+    :has(#preg-work){overflow:visible !important;}
+
+    #preg-work{
+      --i:#0A1F3D;      /* ink / navy        */
+      --i2:#14315A;     /* lifted navy       */
+      --s2:#6FAED9;     /* sky-2             */
+      --paper:#FBF8F1;  /* paper             */
+      --e:#B86A3E;      /* ember / terracotta*/
+      --e2:#D38A5C;     /* ember-2           */
+      --rule:#D9D1BE;
+      --disp:'Fraunces','Times New Roman',serif;
+      --sans:'Manrope',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+      display:block;
+      /* Deep-navy gradient surface, full-bleed. */
+      background:linear-gradient(165deg,var(--i) 0%,var(--i2) 100%);
+      color:var(--paper);
+      font-family:var(--sans);
+      text-align:center;
+      padding:clamp(56px,8vw,104px) clamp(1.25rem,5vw,2.5rem);
+      -webkit-font-smoothing:antialiased;
+      width:100vw;max-width:100vw;
+      margin-left:calc(50% - 50vw);margin-right:calc(50% - 50vw);
+      overflow-x:clip;
+    }
+    #preg-work *{box-sizing:border-box;}
+    #preg-work .pw-wrap{max-width:720px;margin:0 auto;}
+
+    /* ── Founder portrait row ── */
+    #preg-work .pw-faces{
+      display:flex;justify-content:center;margin:0 0 30px;
+    }
+    #preg-work .pw-faces img{
+      width:clamp(52px,8vw,68px);height:clamp(52px,8vw,68px);
+      border-radius:50%;object-fit:cover;object-position:center top;
+      border:2px solid var(--paper);
+      box-shadow:0 4px 14px rgba(0,0,0,.35);
+      margin-left:-14px;filter:saturate(.95);
+    }
+    #preg-work .pw-faces img:first-child{margin-left:0;}
+
+    #preg-work .pw-eyebrow{
+      display:block;margin:0 0 16px;
+      font-size:12px;font-weight:600;letter-spacing:.2em;
+      text-transform:uppercase;color:var(--s2);
+    }
+    #preg-work h2.pw-h2{
+      margin:0 0 20px;font-family:var(--disp);
+      font-size:clamp(34px,5.4vw,64px);line-height:1.0;
+      letter-spacing:-.03em;font-weight:300;color:var(--paper);
+      font-variation-settings:"opsz" 96,"SOFT" 50;
+    }
+    #preg-work h2.pw-h2 em{
+      font-style:italic;color:var(--e2);
+      font-variation-settings:"opsz" 96,"SOFT" 100;
+    }
+    #preg-work .pw-sub{
+      margin:0 auto 36px;max-width:540px;
+      font-size:clamp(16px,1.4vw,18px);line-height:1.65;
+      color:rgba(251,248,241,.82);
+    }
+
+    /* ── CTAs ── */
+    #preg-work .pw-cta-row{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;}
+    #preg-work .pw-btn{
+      display:inline-flex;align-items:center;gap:.6em;
+      padding:1em 1.7em;font-family:var(--sans);font-size:14px;font-weight:600;
+      letter-spacing:.04em;text-transform:uppercase;border:1px solid transparent;
+      border-radius:2px;cursor:pointer;transition:all .2s ease;white-space:nowrap;
+      text-decoration:none;
+    }
+    #preg-work .pw-btn-primary{background:var(--e);color:var(--paper);}
+    #preg-work .pw-btn-primary:hover{background:var(--e2);transform:translateY(-1px);}
+    #preg-work .pw-btn-ghost{background:transparent;color:var(--paper);border-color:rgba(251,248,241,.45);}
+    #preg-work .pw-btn-ghost:hover{background:var(--paper);color:var(--i);border-color:var(--paper);}
+    #preg-work .pw-arrow{transition:transform .2s;}
+    #preg-work .pw-btn:hover .pw-arrow{transform:translateX(3px);}
+
+    /* ── Small phones — full-width stacked buttons, comfortable tap targets. ── */
+    @media (max-width:560px){
+      #preg-work h2.pw-h2{font-size:clamp(30px,9vw,42px);}
+      #preg-work .pw-cta-row{flex-direction:column;}
+      #preg-work .pw-btn{width:100%;justify-content:center;padding:1.1em 1.2em;}
+    }
+  </style>
+
+  <div class="pw-wrap">
+    <div class="pw-faces">
+      <img src="https://cdn.jsdelivr.net/gh/baehlee/progressive-styles@main/reference/assets/headshot-rodolfo.jpg" alt="Rodolfo Trujillo, Co-Founder" loading="lazy">
+      <img src="https://cdn.jsdelivr.net/gh/baehlee/progressive-styles@main/reference/assets/headshot-travis.jpg" alt="Travis Callstrom, Co-Founder" loading="lazy">
+      <img src="https://cdn.jsdelivr.net/gh/baehlee/progressive-styles@main/reference/assets/headshot-joe.jpg" alt="Joe Mack, Co-Founder" loading="lazy">
+      <img src="https://cdn.jsdelivr.net/gh/baehlee/progressive-styles@main/reference/assets/headshot-jake.jpg" alt="Jake Miller, Co-Founder" loading="lazy">
+    </div>
+
+    <span class="pw-eyebrow">Work with us</span>
+    <h2 class="pw-h2">Let's find your <em>place to belong.</em></h2>
+    <p class="pw-sub">
+      Buying your first place, selling the one you've outgrown, or just curious
+      what your home is worth today — start here. You'll get a straight answer
+      and a real plan, from people who've done this for decades.
+    </p>
+
+    <div class="pw-cta-row">
+      <a href="/evaluation" class="pw-btn pw-btn-primary">What's your home worth? <span class="pw-arrow">&rarr;</span></a>
+      <a href="/team" class="pw-btn pw-btn-ghost">Meet the founders</a>
+    </div>
+  </div>
+</section>

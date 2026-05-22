@@ -1,0 +1,297 @@
+<!-- ════════════════════════════════════════════════════════════════════
+     PROGRESSIVE REAL ESTATE GROUP — TEAM / FOUNDERS (Phase 4)
+     ────────────────────────────────────────────────────────────────────
+     WHERE TO PASTE:  Lofty Page Editor → The Team page → Add Block →
+                      Custom HTML / Code Block. Place it directly UNDER the
+                      stock "OUR AGENTS" module (md-agent-search). You can
+                      either HIDE that stock module (this block tells the real
+                      founder story it can't) or keep it for its search field.
+
+     WHAT IT IS:      The four founders as alternating photo/bio rows. Each
+                      headshot is a click-to-play card that opens the founder's
+                      welcome video in a lightbox (same embeds + pattern as the
+                      homepage hero). Web-length bios (≤150 words). Roles read
+                      "Co-Founder" — never "Agent".
+
+     SELF-CONTAINED:  All CSS scoped under #preg-team. Headshots load from the
+                      project CDN (jsDelivr) — nothing to upload to Lofty. Fonts
+                      (Fraunces + Manrope) come from the global hosted.css.
+
+     ▶ LOFTY / GLOBAL-CSS NOTES (do not "fix"):
+       · NO inline SVG (Lofty rewrites svg attrs then rejects them). The play
+         triangle is a CSS-border shape; the lightbox <iframe> has no src in
+         markup (set by JS) — Lofty rejects empty src="".
+       · hosted.css forces all headings navy and restyles every <button>. On
+         this CREAM section navy headings are correct, but the lightbox close
+         <button> uses !important to escape the global button rule, and the
+         "watch" links avoid the class substring "btn-primary"/"Button".
+
+     SEO (set in Lofty's per-page SEO panel for /team — not in this block):
+       Meta title:        Meet the Founders | Progressive Real Estate Group
+       Meta description:  Four Twin Cities co-founders, 80+ years combined,
+                          building an inclusive, equitable brokerage. Meet
+                          Rodolfo, Travis, Joe and Jake.
+       Focus keyword:     twin cities real estate team
+       URL slug:          /team
+     ════════════════════════════════════════════════════════════════════ -->
+
+<section id="preg-team">
+  <style>
+    :has(#preg-team){overflow:visible !important;}
+
+    #preg-team{
+      --i:#0A1F3D; --i2:#14315A; --s2:#6FAED9;
+      --canvas:#F4EEE3; --paper:#FBF8F1; --e:#B86A3E; --e2:#D38A5C;
+      --char:#1B1815; --mute:#6E695F; --rule:#D9D1BE;
+      --disp:'Fraunces','Times New Roman',serif;
+      --sans:'Manrope',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+      display:block;background:var(--canvas);color:var(--char);font-family:var(--sans);
+      padding:clamp(52px,8vw,110px) clamp(1.25rem,5vw,2.5rem);
+      -webkit-font-smoothing:antialiased;
+      width:100vw;max-width:100vw;
+      margin-left:calc(50% - 50vw);margin-right:calc(50% - 50vw);overflow-x:clip;
+    }
+    #preg-team *{box-sizing:border-box;}
+    #preg-team .pt-wrap{max-width:1120px;margin:0 auto;}
+
+    /* ── Section header ── */
+    #preg-team .pt-head{max-width:680px;margin:0 0 clamp(44px,6vw,76px);}
+    #preg-team .pt-eyebrow{
+      display:block;margin:0 0 18px;font-size:12px;font-weight:600;
+      letter-spacing:.18em;text-transform:uppercase;color:var(--e);
+    }
+    #preg-team h2.pt-h2{
+      margin:0 0 18px;font-family:var(--disp);
+      font-size:clamp(34px,5vw,60px);line-height:1.0;letter-spacing:-.03em;
+      font-weight:300;color:var(--i);font-variation-settings:"opsz" 96,"SOFT" 50;
+    }
+    #preg-team h2.pt-h2 em{font-style:italic;color:var(--e);font-variation-settings:"opsz" 96,"SOFT" 100;}
+    #preg-team .pt-intro{margin:0;font-size:clamp(16px,1.4vw,18px);line-height:1.6;color:var(--char);}
+
+    /* ── Founder rows ── */
+    #preg-team .pt-row{
+      display:grid;grid-template-columns:.82fr 1fr;gap:clamp(28px,5vw,72px);
+      align-items:center;margin:0 0 clamp(46px,7vw,92px);
+    }
+    #preg-team .pt-row:last-child{margin-bottom:0;}
+    /* Alternating: flipped rows put the photo on the right (desktop only) */
+    #preg-team .pt-row.flip .pt-photo{order:2;}
+
+    /* Photo / video card */
+    #preg-team .pt-photo{
+      position:relative;aspect-ratio:1/1.12;overflow:hidden;
+      background:var(--i);border-radius:2px;cursor:default;
+    }
+    #preg-team .pt-photo img{
+      width:100%;height:100%;object-fit:cover;object-position:center top;
+      filter:saturate(.95);transition:transform .6s ease,filter .3s ease;display:block;
+    }
+    #preg-team .pt-photo.has-video{cursor:pointer;}
+    #preg-team .pt-photo.has-video:hover img{transform:scale(1.04);filter:saturate(1.08);}
+    #preg-team .pt-play{
+      position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+      width:64px;height:64px;border-radius:50%;background:rgba(251,248,241,.94);
+      display:none;align-items:center;justify-content:center;transition:all .2s;
+      box-shadow:0 8px 24px rgba(10,31,61,.4);
+    }
+    #preg-team .pt-photo.has-video .pt-play{display:flex;}
+    #preg-team .pt-photo.has-video:hover .pt-play{background:var(--e);transform:translate(-50%,-50%) scale(1.06);}
+    #preg-team .pt-play::after{
+      content:'';width:0;height:0;margin-left:5px;border-style:solid;
+      border-width:10px 0 10px 17px;border-color:transparent transparent transparent var(--i);
+      transition:border-color .2s;
+    }
+    #preg-team .pt-photo.has-video:hover .pt-play::after{border-color:transparent transparent transparent var(--paper);}
+
+    /* Bio column */
+    #preg-team .pt-spec{
+      display:block;margin:0 0 12px;font-size:12px;font-weight:600;
+      letter-spacing:.12em;text-transform:uppercase;color:var(--e);
+    }
+    #preg-team h3.pt-name{
+      margin:0 0 4px;font-family:var(--disp);font-size:clamp(28px,3.2vw,40px);
+      font-weight:400;letter-spacing:-.02em;color:var(--i);
+      font-variation-settings:"opsz" 60,"SOFT" 40;
+    }
+    #preg-team .pt-role{
+      margin:0 0 18px;font-size:13px;font-weight:600;letter-spacing:.1em;
+      text-transform:uppercase;color:var(--mute);
+    }
+    #preg-team .pt-bio{margin:0 0 20px;font-size:clamp(15px,1.2vw,17px);line-height:1.68;color:var(--char);}
+    #preg-team .pt-bio em{font-style:italic;color:var(--i);}
+    /* "Watch" link — class avoids the substrings the global button rules match */
+    #preg-team .pt-watch{
+      display:inline-flex;align-items:center;gap:.55em;background:none;border:0;padding:0;cursor:pointer;
+      font-family:var(--sans);font-size:13px;font-weight:600;letter-spacing:.06em;
+      text-transform:uppercase;color:var(--e) !important;text-decoration:none;transition:color .2s;
+    }
+    #preg-team .pt-watch:hover{color:var(--i) !important;}
+    #preg-team .pt-watch .pt-tri{width:0;height:0;border-style:solid;border-width:5px 0 5px 8px;border-color:transparent transparent transparent currentColor;}
+
+    /* ── Video lightbox (shared) ── */
+    #preg-team .pt-modal{
+      position:fixed;inset:0;z-index:9999;display:none;align-items:center;justify-content:center;
+      padding:24px;background:rgba(10,31,61,.88);backdrop-filter:blur(4px);
+    }
+    #preg-team .pt-modal.open{display:flex;}
+    #preg-team .pt-modal-inner{
+      position:relative;width:min(960px,100%);aspect-ratio:16/9;background:#000;
+      border-radius:2px;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.5);
+    }
+    #preg-team .pt-modal-inner iframe{width:100%;height:100%;border:0;display:block;}
+    /* !important escapes hosted.css's global `button{...}` restyle (uppercase/padding/border) */
+    #preg-team button.pt-close{
+      position:absolute !important;top:-44px !important;right:0 !important;
+      width:38px !important;height:38px !important;padding:0 !important;
+      border:0 !important;background:transparent !important;cursor:pointer;
+      color:var(--paper) !important;font-size:30px !important;line-height:1 !important;
+      text-transform:none !important;letter-spacing:0 !important;border-radius:0 !important;
+    }
+    #preg-team button.pt-close:hover{color:var(--e) !important;background:transparent !important;}
+
+    /* ── Entrance ── */
+    @keyframes ptUp{from{opacity:0;transform:translateY(22px);}to{opacity:1;transform:none;}}
+    #preg-team .pt-row{animation:ptUp .7s ease both;}
+    @media (prefers-reduced-motion:reduce){#preg-team .pt-row{animation:none;}}
+
+    /* ── Mobile: single column, photo always first, comfortable rhythm ── */
+    @media (max-width:780px){
+      #preg-team .pt-row,#preg-team .pt-row.flip{grid-template-columns:1fr;gap:22px;}
+      #preg-team .pt-row.flip .pt-photo{order:0;}
+      #preg-team .pt-photo{aspect-ratio:1/1;max-height:440px;}
+      #preg-team h2.pt-h2{font-size:clamp(30px,9vw,40px);}
+      #preg-team .pt-play{width:56px;height:56px;}
+    }
+  </style>
+
+  <div class="pt-wrap">
+    <div class="pt-head">
+      <span class="pt-eyebrow">Meet the founders</span>
+      <h2 class="pt-h2">Four founders. <em>One standard.</em></h2>
+      <p class="pt-intro">
+        Eighty years of Twin Cities real estate between us — and one shared belief:
+        everyone deserves a place to belong. Press play to hear it from us, then
+        let's talk about your move.
+      </p>
+    </div>
+
+    <!-- Rodolfo -->
+    <div class="pt-row" data-founder="rodolfo">
+      <div class="pt-photo">
+        <img src="https://cdn.jsdelivr.net/gh/baehlee/progressive-styles@main/reference/assets/headshot-rodolfo.jpg" alt="Rodolfo Trujillo, Co-Founder of Progressive Real Estate Group" loading="lazy">
+        <div class="pt-play" aria-hidden="true"></div>
+      </div>
+      <div class="pt-text">
+        <span class="pt-spec">20 years &middot; Referral-driven &middot; Hablo Español</span>
+        <h3 class="pt-name">Rodolfo Trujillo</h3>
+        <div class="pt-role">Co-Founder &middot; Broker Associate</div>
+        <p class="pt-bio">For more than 20 years, Rodolfo has built his business the way it should be built — on relationships, trust, and referrals. His rule is simple: treat people the way you'd want to be treated. Clients come back, and they send their families, because he makes a complicated process feel personal and even a little fun. He's known for sharp negotiation, an eye for detail, and staying calm when a deal gets complicated. Family is the center of his world — his wife Jen and their daughters remind him daily what <em>home</em> really means. He works in English and Spanish, and he's proud to help build a brokerage where everyone is treated with respect.</p>
+        <button class="pt-watch" type="button" aria-label="Play Rodolfo's welcome video"><span class="pt-tri"></span> Watch Rodolfo's welcome</button>
+      </div>
+    </div>
+
+    <!-- Travis (flipped) -->
+    <div class="pt-row flip" data-founder="travis">
+      <div class="pt-photo">
+        <img src="https://cdn.jsdelivr.net/gh/baehlee/progressive-styles@main/reference/assets/headshot-travis.jpg" alt="Travis Callstrom, Co-Founder of Progressive Real Estate Group" loading="lazy">
+        <div class="pt-play" aria-hidden="true"></div>
+      </div>
+      <div class="pt-text">
+        <span class="pt-spec">27 years &middot; Relationship-first</span>
+        <h3 class="pt-name">Travis Callstrom</h3>
+        <div class="pt-role">Co-Founder</div>
+        <p class="pt-bio">Twenty-seven years in, Travis still believes real estate is about people, not paperwork. He's steady, thoughtful, and relationship-first — the kind of advisor who guides clients through every kind of life change and stays in their corner long after closing. He shares life with his husband, Bryan, and their two kids, and time together — often at their cabin in Wisconsin — keeps him centered. Travis helped build Progressive around a simple promise: that inclusive, equitable service isn't a niche, it's the <em>standard</em>. Serving LGBTQ+ families, and anyone who's ever wondered whether they'd be welcome, isn't a side mission for him. It's the mission.</p>
+        <button class="pt-watch" type="button" aria-label="Play Travis's welcome video"><span class="pt-tri"></span> Watch Travis's welcome</button>
+      </div>
+    </div>
+
+    <!-- Joe -->
+    <div class="pt-row" data-founder="joe">
+      <div class="pt-photo">
+        <img src="https://cdn.jsdelivr.net/gh/baehlee/progressive-styles@main/reference/assets/headshot-joe.jpg" alt="Joe Mack, Co-Founder of Progressive Real Estate Group" loading="lazy">
+        <div class="pt-play" aria-hidden="true"></div>
+      </div>
+      <div class="pt-text">
+        <span class="pt-spec">Banking &amp; mortgage lens</span>
+        <h3 class="pt-name">Joe Mack</h3>
+        <div class="pt-role">Co-Founder</div>
+        <p class="pt-bio">Joe came to real estate from the other side of the table — more than a decade in banking and the mortgage industry. That financial lens is his edge: he helps clients understand the numbers <em>before</em> they sign, so the biggest decision of their lives feels clear instead of overwhelming. He grew up on a dairy farm, where showing up early and working hard weren't optional, and he brings that same reliability to every client. Outside of work, Joe's world revolves around his wife, Penny, and their kids — usually somewhere up north, on a lake. Joe helped found Progressive on a belief in fairness and equal access for everyone.</p>
+        <button class="pt-watch" type="button" aria-label="Play Joe's welcome video"><span class="pt-tri"></span> Watch Joe's welcome</button>
+      </div>
+    </div>
+
+    <!-- Jake (flipped) -->
+    <div class="pt-row flip" data-founder="jake">
+      <div class="pt-photo">
+        <img src="https://cdn.jsdelivr.net/gh/baehlee/progressive-styles@main/reference/assets/headshot-jake.jpg" alt="Jake Miller, Co-Founder of Progressive Real Estate Group" loading="lazy">
+        <div class="pt-play" aria-hidden="true"></div>
+      </div>
+      <div class="pt-text">
+        <span class="pt-spec">23 years &middot; Construction &amp; value</span>
+        <h3 class="pt-name">Jake Miller</h3>
+        <div class="pt-role">Co-Founder</div>
+        <p class="pt-bio">Jake has spent more than 23 years in real estate, starting in mortgage in 2003 before earning his license in 2004. He knows financing, he knows value, and — thanks to a construction background — he knows what's really behind the walls. That means you buy the <em>house</em>, not the staging. Jake has worked through the housing crash, the COVID market, and plenty of personal curveballs, and it's made him the steady, straight-talking advisor clients lean on. No spin, no pressure — just clarity. Away from work, his greatest pride is his family, including his partner Samantha. Jake helped build Progressive because he believes real opportunity in housing should be open to everyone, full stop.</p>
+        <button class="pt-watch" type="button" aria-label="Play Jake's welcome video"><span class="pt-tri"></span> Watch Jake's welcome</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Video lightbox (shared by all four founders) -->
+  <div class="pt-modal" id="pt-modal" role="dialog" aria-modal="true" aria-label="Founder welcome video">
+    <div class="pt-modal-inner">
+      <button class="pt-close" id="pt-close" type="button" aria-label="Close video">&times;</button>
+      <iframe id="pt-frame" title="Founder welcome video" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+    </div>
+  </div>
+
+  <script>
+  (function () {
+    /* Same welcome-video embeds as the homepage hero. Leave a value "" and that
+       founder's card stays a plain portrait (no play button) — no broken UI. */
+    var VIDEOS = {
+      rodolfo: "https://www.youtube-nocookie.com/embed/nijV6m7ispI",
+      travis:  "https://www.youtube-nocookie.com/embed/Lv_qZSl3sYA",
+      joe:     "https://www.youtube-nocookie.com/embed/2RqGl5WeL6g",
+      jake:    "https://www.youtube-nocookie.com/embed/GwUx2e76eDg"
+    };
+    var root = document.getElementById('preg-team');
+    if (!root) return;
+    var modal = root.querySelector('#pt-modal');
+    var frame = root.querySelector('#pt-frame');
+    var sep = function (u) { return u.indexOf('?') === -1 ? '?' : '&'; };
+
+    function open(url) {
+      frame.src = url + sep(url) + 'autoplay=1';
+      modal.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+    function close() {
+      modal.classList.remove('open');
+      frame.removeAttribute('src');
+      document.body.style.overflow = '';
+    }
+
+    root.querySelectorAll('.pt-row').forEach(function (row) {
+      var url = VIDEOS[row.getAttribute('data-founder')];
+      if (!url) return;
+      var photo = row.querySelector('.pt-photo');
+      var watch = row.querySelector('.pt-watch');
+      photo.classList.add('has-video');
+      photo.setAttribute('role', 'button');
+      photo.setAttribute('tabindex', '0');
+      var go = function () { open(url); };
+      photo.addEventListener('click', go);
+      photo.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); go(); }
+      });
+      if (watch) watch.addEventListener('click', go);
+    });
+
+    root.querySelector('#pt-close').addEventListener('click', close);
+    modal.addEventListener('click', function (e) { if (e.target === modal) close(); });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && modal.classList.contains('open')) close();
+    });
+  })();
+  </script>
+</section>

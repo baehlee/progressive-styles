@@ -73,22 +73,28 @@
     #preg-work .pw-eyebrow{
       display:block;margin:0 0 16px;
       font-size:12px;font-weight:600;letter-spacing:.2em;
-      text-transform:uppercase;color:var(--s2);
+      text-transform:uppercase;color:var(--s2) !important;
     }
+    /* NOTE: the global hosted.css forces ALL headings navy with
+       `h1..h6{color:var(--preg-ink) !important}`. On this DARK band the heading
+       must stay cream, so every light-on-navy color below uses !important to
+       out-rank that global rule (this block's #id selector already out-specifies
+       it; !important breaks the importance tie). Without this the heading renders
+       navy-on-navy on the live site even though it looks correct in isolation. */
     #preg-work h2.pw-h2{
       margin:0 0 20px;font-family:var(--disp);
       font-size:clamp(34px,5.4vw,64px);line-height:1.0;
-      letter-spacing:-.03em;font-weight:300;color:var(--paper);
+      letter-spacing:-.03em;font-weight:300;color:var(--paper) !important;
       font-variation-settings:"opsz" 96,"SOFT" 50;
     }
     #preg-work h2.pw-h2 em{
-      font-style:italic;color:var(--e2);
+      font-style:italic;color:var(--e2) !important;
       font-variation-settings:"opsz" 96,"SOFT" 100;
     }
     #preg-work .pw-sub{
       margin:0 auto 36px;max-width:540px;
       font-size:clamp(16px,1.4vw,18px);line-height:1.65;
-      color:rgba(251,248,241,.82);
+      color:rgba(251,248,241,.82) !important;
     }
 
     /* ── CTAs ── */
@@ -100,10 +106,14 @@
       border-radius:2px;cursor:pointer;transition:all .2s ease;white-space:nowrap;
       text-decoration:none;
     }
-    #preg-work .pw-btn-primary{background:var(--e);color:var(--paper);}
-    #preg-work .pw-btn-primary:hover{background:var(--e2);transform:translateY(-1px);}
-    #preg-work .pw-btn-ghost{background:transparent;color:var(--paper);border-color:rgba(251,248,241,.45);}
-    #preg-work .pw-btn-ghost:hover{background:var(--paper);color:var(--i);border-color:var(--paper);}
+    /* Renamed from pw-btn-primary → pw-btn-fill so it does NOT match the global
+       hosted.css selector [class*="btn-primary"], which would otherwise force
+       this button navy !important (navy-on-navy on this band). Colors also
+       !important as belt-and-suspenders against Lofty's aggressive globals. */
+    #preg-work .pw-btn-fill{background:var(--e) !important;color:var(--paper) !important;border-color:var(--e) !important;}
+    #preg-work .pw-btn-fill:hover{background:var(--e2) !important;border-color:var(--e2) !important;transform:translateY(-1px);}
+    #preg-work .pw-btn-ghost{background:transparent !important;color:var(--paper) !important;border-color:rgba(251,248,241,.45) !important;}
+    #preg-work .pw-btn-ghost:hover{background:var(--paper) !important;color:var(--i) !important;border-color:var(--paper) !important;}
     #preg-work .pw-arrow{transition:transform .2s;}
     #preg-work .pw-btn:hover .pw-arrow{transform:translateX(3px);}
 
@@ -132,7 +142,7 @@
     </p>
 
     <div class="pw-cta-row">
-      <a href="/evaluation" class="pw-btn pw-btn-primary">What's your home worth? <span class="pw-arrow">&rarr;</span></a>
+      <a href="/evaluation" class="pw-btn pw-btn-fill">What's your home worth? <span class="pw-arrow">&rarr;</span></a>
       <a href="/team" class="pw-btn pw-btn-ghost">Meet the founders</a>
     </div>
   </div>

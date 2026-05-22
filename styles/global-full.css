@@ -475,4 +475,51 @@ body, p, li, td, h1, h2, h3, h4, h5, h6 {
 }
 
 
+
+/* ═══ 21. Stock-module legibility — REAL Lofty classes (md-house / md-evaluation-banner / md-form / md-blog) ═══
+   Sections 8/11/13/15 above use [class*="listing-card"] / [class*="get-info"] /
+   [class*="blog-card"] guesses that DON'T match Lofty's actual module classes
+   (verified live: md-house, md-evaluation-banner, md-form, md-blog). These rules
+   target the real classes and fix the contrast problems — most importantly they
+   out-rank section 4's blanket `h1..h6{color:var(--preg-ink)!important}`, which
+   was forcing dark-photo headings navy-on-navy (invisible). Form heading/consent
+   are scoped to .md-form.layout3 (the homepage's dark-photo layout) so light-bg
+   form layouts (e.g. layout2 on /about) keep their dark, legible heading. */
+
+/* Listings showcase (.md-house): scrim the photo overlay so price/beds/address read */
+.md-house .body-mask{
+  background:linear-gradient(to top,rgba(10,31,61,.88) 0%,rgba(10,31,61,.48) 60%,transparent 95%) !important;
+  padding-top:46px !important;
+}
+.md-house .house-price,
+.md-house .house-basic span,
+.md-house .house-address a{ color:var(--preg-paper,#FBF8F1) !important; text-shadow:0 1px 6px rgba(10,31,61,.85) !important; }
+.md-house .house-address a:hover{ color:var(--preg-ember-2,#D38A5C) !important; }
+
+/* "What's your home worth?" (.md-evaluation-banner): cream heading on the dark photo */
+.md-evaluation-banner h2{ color:var(--preg-paper,#FBF8F1) !important; text-shadow:0 2px 18px rgba(10,31,61,.9),0 1px 3px rgba(0,0,0,.5) !important; }
+.md-evaluation-banner .step-desc{ color:var(--preg-paper,#FBF8F1) !important; text-shadow:0 1px 8px rgba(10,31,61,.7) !important; }
+.md-evaluation-banner .chime,
+.md-evaluation-banner .chime a,
+.md-evaluation-banner .reserved,
+.md-evaluation-banner a.link{ color:rgba(251,248,241,.72) !important; }
+
+/* "Get More Information" form — cream heading/consent only on the dark layout3 */
+.md-form.layout3 h2{ color:var(--preg-paper,#FBF8F1) !important; text-shadow:0 2px 18px rgba(0,0,0,.65) !important; }
+.md-form.layout3 p{ color:rgba(251,248,241,.85) !important; }
+.md-form .privacy-link{ color:var(--preg-ember-2,#D38A5C) !important; text-decoration:underline; }
+.md-form .label-top{ color:var(--preg-mute,#6E695F) !important; }
+.md-form input,.md-form textarea{ background:var(--preg-paper,#FBF8F1) !important; border:1px solid var(--preg-rule,#D9D1BE) !important; color:var(--preg-char,#1B1815) !important; }
+.md-form button.submit,.md-form .toast-btn2{ background:var(--preg-ember,#B86A3E) !important; border-color:var(--preg-ember,#B86A3E) !important; color:var(--preg-paper,#FBF8F1) !important; }
+.md-form button.submit:hover{ background:var(--preg-ember-2,#D38A5C) !important; }
+
+/* Blog showcase (.md-blog): cream section, paper card, readable body */
+.md-blog{ background:var(--preg-canvas,#F4EEE3) !important; }
+.md-blog .text-content{ background:var(--preg-paper,#FBF8F1) !important; }
+.md-blog .blog-card-title{ color:var(--preg-ink,#0A1F3D) !important; }
+.md-blog .blog-card-desc{ color:#2F3954 !important; font-size:17px !important; line-height:1.6 !important; }
+.md-blog .blog-jump-btn{ background:var(--preg-ink,#0A1F3D) !important; color:var(--preg-paper,#FBF8F1) !important; }
+.md-blog .blog-jump-btn:hover{ background:var(--preg-ember,#B86A3E) !important; }
+
+
 /* ═══ END — Progressive Real Estate Group global stylesheet ═══ */

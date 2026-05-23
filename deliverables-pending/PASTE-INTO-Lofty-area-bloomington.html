@@ -1,0 +1,117 @@
+<!-- ════════════════════════════════════════════════════════════════════
+     PROGRESSIVE REAL ESTATE GROUP — AREAS PAGE CONTENT: BLOOMINGTON (Phase 8)
+     ────────────────────────────────────────────────────────────────────
+     Built from the Areas template (see areas/minneapolis.html for full paste/
+     placement notes). Paste into the Lofty Areas page for "Bloomington". Don't
+     hardcode prices — use Lofty's market widget.
+
+     SEO (set in Lofty's per-page SEO panel):
+       Meta title:        Homes for Sale in Bloomington, MN | Progressive Real Estate
+       Meta description:  Find homes for sale in Bloomington, MN — central location, established neighborhoods, and real value. Local, inclusive guidance for buying or selling in Bloomington.
+       Focus keyword:     homes for sale bloomington mn
+       Secondary:         bloomington mn real estate, living in bloomington minnesota
+       URL slug:          (Lofty Areas tool sets this — e.g. /bloomington-mn)
+     ════════════════════════════════════════════════════════════════════ -->
+
+<section id="preg-area">
+  <style>
+    :has(#preg-area){overflow:visible !important;}
+    #preg-area{
+      --i:#0A1F3D; --i2:#14315A; --s2:#6FAED9;
+      --canvas:#F4EEE3; --paper:#FBF8F1; --e:#B86A3E; --e2:#D38A5C;
+      --char:#1B1815; --mute:#6E695F; --rule:#D9D1BE;
+      --disp:'Fraunces','Times New Roman',serif;
+      --sans:'Manrope',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+      display:block;background:var(--canvas);color:var(--char);font-family:var(--sans);
+      -webkit-font-smoothing:antialiased;
+      width:100vw;max-width:100vw;margin-left:calc(50% - 50vw);margin-right:calc(50% - 50vw);overflow-x:clip;
+    }
+    #preg-area *{box-sizing:border-box;}
+    #preg-area .ar-in{max-width:920px;margin:0 auto;padding-left:clamp(1.25rem,5vw,2.5rem);padding-right:clamp(1.25rem,5vw,2.5rem);}
+    #preg-area .ar-block{padding:clamp(48px,7vw,84px) 0 0;}
+    #preg-area .ar-block.pb{padding-bottom:clamp(48px,7vw,84px);}
+    #preg-area .ar-eyebrow{display:block;margin:0 0 14px;font-size:12px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--e);}
+    #preg-area .ar-block h2{margin:0 0 16px;font-family:var(--disp);font-size:clamp(28px,4.4vw,48px);line-height:1.04;letter-spacing:-.03em;font-weight:300;color:var(--i);font-variation-settings:"opsz" 96,"SOFT" 50;}
+    #preg-area .ar-block h2 em{font-style:italic;color:var(--e);font-variation-settings:"opsz" 96,"SOFT" 100;}
+    #preg-area .ar-block h3{margin:26px 0 8px;font-family:var(--disp);font-size:clamp(18px,1.9vw,23px);font-weight:500;color:var(--i);font-variation-settings:"opsz" 40,"SOFT" 40;}
+    #preg-area .ar-block p{margin:0 0 16px;font-size:clamp(16px,1.4vw,18px);line-height:1.7;color:var(--char);max-width:62ch;}
+    #preg-area .ar-block p:last-child{margin-bottom:0;}
+    #preg-area .ar-block p strong{color:var(--i);font-weight:600;}
+    #preg-area .ar-block a{color:var(--e);text-decoration:underline;text-underline-offset:2px;}
+    #preg-area .ar-block a:hover{color:var(--i);}
+    #preg-area .ar-rule{border:0;border-top:1px solid var(--rule);max-width:920px;margin:clamp(40px,6vw,64px) auto 0;}
+    #preg-area .ar-love{background:var(--paper);border:1px solid var(--rule);border-radius:2px;padding:clamp(26px,3vw,40px);margin-top:24px;}
+    #preg-area .ar-love p{font-family:var(--disp);font-size:clamp(19px,2.2vw,26px);line-height:1.4;color:var(--i);font-weight:300;font-variation-settings:"opsz" 72,"SOFT" 60;max-width:none;}
+    #preg-area .ar-love .ar-by{margin:16px 0 0;font-family:var(--sans);font-size:13px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--mute);}
+    #preg-area .ar-cta{background:linear-gradient(165deg,var(--i) 0%,var(--i2) 100%);text-align:center;padding:clamp(52px,8vw,96px) 0;margin-top:clamp(44px,7vw,72px);}
+    #preg-area .ar-cta h2{margin:0 0 14px;font-family:var(--disp);font-size:clamp(28px,5vw,52px);line-height:1.0;letter-spacing:-.03em;font-weight:300;color:var(--paper) !important;font-variation-settings:"opsz" 96,"SOFT" 50;}
+    #preg-area .ar-cta h2 em{font-style:italic;color:var(--e2) !important;font-variation-settings:"opsz" 96,"SOFT" 100;}
+    #preg-area .ar-cta p{margin:0 auto 30px;max-width:46ch;font-size:clamp(16px,1.4vw,18px);line-height:1.6;color:rgba(251,248,241,.85) !important;}
+    #preg-area .ar-cta-row{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;}
+    #preg-area .ar-btn{display:inline-flex;align-items:center;gap:.55em;padding:1em 1.7em;font-family:var(--sans);font-size:14px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;border:1px solid transparent;border-radius:2px;cursor:pointer;transition:all .2s ease;white-space:nowrap;text-decoration:none;}
+    #preg-area .ar-cta-fill{background:var(--e) !important;color:var(--paper) !important;border-color:var(--e) !important;}
+    #preg-area .ar-cta-fill:hover{background:var(--e2) !important;border-color:var(--e2) !important;transform:translateY(-1px);}
+    #preg-area .ar-btn-ghost{background:transparent !important;color:var(--paper) !important;border-color:rgba(251,248,241,.45) !important;}
+    #preg-area .ar-btn-ghost:hover{background:var(--paper) !important;color:var(--i) !important;border-color:var(--paper) !important;}
+    @media (max-width:560px){#preg-area .ar-cta-row{flex-direction:column;}#preg-area .ar-btn{width:100%;justify-content:center;padding:1.1em 1.2em;}}
+  </style>
+
+  <div class="ar-block">
+    <div class="ar-in">
+      <span class="ar-eyebrow">Bloomington &middot; Twin Cities Metro</span>
+      <h2>Living in <em>Bloomington.</em></h2>
+      <p>Bloomington is one of Minnesota's largest cities and quietly one of its most practical places to own a home. It's home to the Mall of America, it borders the airport, and it backs up to the Minnesota Valley National Wildlife Refuge along the river — a rare combination of jobs, access, and open space.</p>
+      <p>For buyers, Bloomington often delivers more home for the money than the higher-profile southwest suburbs, with established neighborhoods and an unbeatable central location.</p>
+    </div>
+  </div>
+
+  <hr class="ar-rule">
+
+  <div class="ar-block">
+    <div class="ar-in">
+      <h2>What buyers <em>should know.</em></h2>
+
+      <h3>The neighborhoods</h3>
+      <p>Bloomington runs from the bustling <strong>South Loop</strong> near the Mall of America and the airport — condos, hotels, and jobs — to quiet, mature residential streets across the rest of the city. East and west Bloomington each have their own feel, but both lean leafy and settled.</p>
+
+      <h3>Schools &amp; getting around</h3>
+      <p>Bloomington Public Schools serves the city, with parts near the edges in neighboring districts. Few places are this central: I-494, I-35W, the METRO Blue Line, and the airport are all right here, making almost any commute in the metro short.</p>
+
+      <h3>Parks &amp; everyday life</h3>
+      <p>The Minnesota Valley National Wildlife Refuge gives Bloomington miles of riverside trails and genuine wilderness on its southern edge, balanced by the shopping, dining, and entertainment around the Mall of America. It's both more outdoorsy and more convenient than people expect.</p>
+
+      <h3>The housing stock</h3>
+      <p>Bloomington boomed in the post-war decades, so you'll find lots of solid mid-century ramblers and split-levels on generous lots, plus newer condos and townhomes near the South Loop. That older stock is a value opportunity — and a reason to inspect mechanicals and updates carefully.</p>
+
+      <h3>Who Bloomington fits</h3>
+      <p>It's a strong match for buyers who want central location and value over prestige — first-time buyers, commuters who fly often, and anyone who'd rather put their money into the house than the ZIP code. Established, convenient, and reasonably priced.</p>
+
+      <h3>The value angle</h3>
+      <p>Bloomington's superpower is location for the money. You're minutes from the airport, two light-rail-connected downtowns, and the river — often at a price that buys you noticeably more home than the marquee southwest suburbs. The catch is that much of the stock is mid-century, so condition varies and updates matter. For buyers, that's where a careful read on mechanicals, roofs, and past remodels protects your budget. For sellers, smart, targeted updates can move an older Bloomington home to the top of a buyer's list. We help you spend — and price — where it actually counts.</p>
+    </div>
+  </div>
+
+  <hr class="ar-rule">
+
+  <div class="ar-block pb">
+    <div class="ar-in">
+      <h2>Why we <em>love it here.</em></h2>
+      <div class="ar-love">
+        <p>"Bloomington is the metro's quiet value play — central, established, and a lot more house for the money. We love helping first-time buyers and right-sizers find a solid home here without overpaying for a label."</p>
+        <div class="ar-by">&mdash; The founders, Progressive Real Estate Group</div>
+      </div>
+      <p style="margin-top:24px">Buying or selling here? Browse current <a href="/listing">Bloomington homes for sale &rarr;</a>, see <a href="/evaluation">what your home is worth &rarr;</a>, or read about our <a href="/no-hate-pledge">inclusive, no-hate approach &rarr;</a>.</p>
+    </div>
+  </div>
+
+  <div class="ar-cta">
+    <div class="ar-in">
+      <h2>Thinking about <em>Bloomington?</em></h2>
+      <p>Tell us what you're looking for and we'll give you an honest, local read on the homes and neighborhoods that fit.</p>
+      <div class="ar-cta-row">
+        <a href="/listing" class="ar-btn ar-cta-fill">Browse Bloomington homes &rarr;</a>
+        <a href="/team" class="ar-btn ar-btn-ghost">Talk to a founder</a>
+      </div>
+    </div>
+  </div>
+</section>

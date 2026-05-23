@@ -1,0 +1,237 @@
+<!-- ════════════════════════════════════════════════════════════════════
+     PROGRESSIVE REAL ESTATE GROUP — MORTGAGE PRE-APPROVAL HELP, TWIN CITIES (Phase 8 · identity page)
+     ────────────────────────────────────────────────────────────────────
+     Built from the identity-page template (see lgbtq-realtor-twin-cities.html).
+     WHERE TO PASTE: new Custom Landing Page in Lofty, slug /mortgage-pre-approval-help, one
+     Custom HTML / Code Block. Self-contained; founder video plays in a lightbox.
+
+     SEO (per-page panel):
+       Meta title:        Mortgage Pre-Approval Help | Twin Cities | Progressive Real Estate
+       Meta description:  What is mortgage pre-approval, do you need it, and how does it strengthen your offer? Clear answers from a Twin Cities team with deep mortgage backgrounds.
+       Focus keyword:     mortgage pre approval twin cities
+       Secondary:         do i need pre-approval to buy a house minnesota, mortgage pre approval real estate agent
+       URL slug:          /mortgage-pre-approval-help
+     ════════════════════════════════════════════════════════════════════ -->
+
+<section id="preg-mortgage">
+  <style>
+    :has(#preg-mortgage){overflow:visible !important;}
+    #preg-mortgage{
+      --i:#0A1F3D; --i2:#14315A; --s2:#6FAED9;
+      --canvas:#F4EEE3; --paper:#FBF8F1; --e:#B86A3E; --e2:#D38A5C;
+      --char:#1B1815; --mute:#6E695F; --rule:#D9D1BE;
+      --disp:'Fraunces','Times New Roman',serif;
+      --sans:'Manrope',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+      display:block;background:var(--canvas);color:var(--char);font-family:var(--sans);
+      -webkit-font-smoothing:antialiased;
+      width:100vw;max-width:100vw;margin-left:calc(50% - 50vw);margin-right:calc(50% - 50vw);overflow-x:clip;
+    }
+    #preg-mortgage *{box-sizing:border-box;}
+    #preg-mortgage .lg-in{max-width:920px;margin:0 auto;padding-left:clamp(1.25rem,5vw,2.5rem);padding-right:clamp(1.25rem,5vw,2.5rem);}
+    #preg-mortgage .lg-hero{background:linear-gradient(165deg,var(--i) 0%,var(--i2) 100%);text-align:center;padding:clamp(60px,10vw,128px) 0;}
+    #preg-mortgage .lg-eyebrow{display:block;margin:0 0 18px;font-size:12px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--s2) !important;}
+    #preg-mortgage h1.lg-h1{margin:0 auto 20px;max-width:17ch;font-family:var(--disp);font-size:clamp(40px,7vw,88px);line-height:.98;letter-spacing:-.035em;font-weight:300;color:var(--paper) !important;font-variation-settings:"opsz" 144,"SOFT" 50;}
+    #preg-mortgage h1.lg-h1 em{font-style:italic;color:var(--e2) !important;font-variation-settings:"opsz" 144,"SOFT" 100;}
+    #preg-mortgage .lg-hero-sub{margin:0 auto;max-width:560px;font-size:clamp(17px,1.5vw,20px);line-height:1.6;color:rgba(251,248,241,.85) !important;}
+    #preg-mortgage .lg-block{padding:clamp(48px,7vw,88px) 0 0;}
+    #preg-mortgage .lg-block.pb{padding-bottom:clamp(48px,7vw,88px);}
+    #preg-mortgage .lg-block h2{margin:0 0 18px;font-family:var(--disp);font-size:clamp(28px,4.4vw,48px);line-height:1.04;letter-spacing:-.03em;font-weight:300;color:var(--i);font-variation-settings:"opsz" 96,"SOFT" 50;}
+    #preg-mortgage .lg-block h2 em{font-style:italic;color:var(--e);font-variation-settings:"opsz" 96,"SOFT" 100;}
+    #preg-mortgage .lg-block h3{margin:28px 0 10px;font-family:var(--disp);font-size:clamp(19px,2vw,24px);font-weight:500;color:var(--i);font-variation-settings:"opsz" 40,"SOFT" 40;}
+    #preg-mortgage .lg-block p{margin:0 0 16px;font-size:clamp(16px,1.4vw,18px);line-height:1.7;color:var(--char);max-width:62ch;}
+    #preg-mortgage .lg-block p:last-child{margin-bottom:0;}
+    #preg-mortgage .lg-block p strong{color:var(--i);font-weight:600;}
+    #preg-mortgage .lg-block a{color:var(--e);text-decoration:underline;text-underline-offset:2px;}
+    #preg-mortgage .lg-block a:hover{color:var(--i);}
+    #preg-mortgage .lg-rule{border:0;border-top:1px solid var(--rule);max-width:920px;margin:clamp(48px,7vw,80px) auto 0;}
+    #preg-mortgage .lg-feature{display:grid;grid-template-columns:.85fr 1fr;gap:clamp(24px,4vw,56px);align-items:center;margin-top:28px;}
+    #preg-mortgage .lg-photo{position:relative;aspect-ratio:1/1.1;overflow:hidden;background:var(--i);border-radius:2px;}
+    #preg-mortgage .lg-photo img{width:100%;height:100%;object-fit:cover;object-position:center top;filter:saturate(.95);transition:transform .6s ease,filter .3s ease;display:block;}
+    #preg-mortgage .lg-photo.has-video{cursor:pointer;}
+    #preg-mortgage .lg-photo.has-video:hover img{transform:scale(1.04);filter:saturate(1.08);}
+    #preg-mortgage .lg-play{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:62px;height:62px;border-radius:50%;background:rgba(251,248,241,.94);display:none;align-items:center;justify-content:center;transition:all .2s;box-shadow:0 8px 24px rgba(10,31,61,.4);}
+    #preg-mortgage .lg-photo.has-video .lg-play{display:flex;}
+    #preg-mortgage .lg-photo.has-video:hover .lg-play{background:var(--e);transform:translate(-50%,-50%) scale(1.06);}
+    #preg-mortgage .lg-play::after{content:'';width:0;height:0;margin-left:5px;border-style:solid;border-width:10px 0 10px 17px;border-color:transparent transparent transparent var(--i);transition:border-color .2s;}
+    #preg-mortgage .lg-photo.has-video:hover .lg-play::after{border-color:transparent transparent transparent var(--paper);}
+    #preg-mortgage .lg-feature .lg-fname{margin:0 0 4px;font-family:var(--disp);font-size:clamp(24px,3vw,34px);font-weight:400;color:var(--i);font-variation-settings:"opsz" 60,"SOFT" 40;}
+    #preg-mortgage .lg-feature .lg-frole{margin:0 0 16px;font-size:13px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--mute);}
+    #preg-mortgage ul.lg-list{list-style:none;padding:0;margin:24px 0 0;border-top:1px solid var(--rule);}
+    #preg-mortgage ul.lg-list li{padding:18px 0;border-bottom:1px solid var(--rule);display:flex;gap:14px;}
+    #preg-mortgage ul.lg-list li::before{content:'';flex:0 0 auto;width:8px;height:8px;margin-top:9px;border-radius:50%;background:var(--e);}
+    #preg-mortgage ul.lg-list li b{color:var(--i);font-weight:600;}
+    #preg-mortgage ul.lg-list li span{font-size:clamp(15px,1.3vw,17px);line-height:1.6;color:var(--char);}
+    #preg-mortgage .lg-cta{background:linear-gradient(165deg,var(--i) 0%,var(--i2) 100%);text-align:center;padding:clamp(56px,8vw,104px) 0;margin-top:clamp(48px,7vw,80px);}
+    #preg-mortgage .lg-cta h2{margin:0 0 16px;font-family:var(--disp);font-size:clamp(30px,5vw,56px);line-height:1.0;letter-spacing:-.03em;font-weight:300;color:var(--paper) !important;font-variation-settings:"opsz" 96,"SOFT" 50;}
+    #preg-mortgage .lg-cta h2 em{font-style:italic;color:var(--e2) !important;font-variation-settings:"opsz" 96,"SOFT" 100;}
+    #preg-mortgage .lg-cta p{margin:0 auto 32px;max-width:48ch;font-size:clamp(16px,1.4vw,18px);line-height:1.6;color:rgba(251,248,241,.85) !important;}
+    #preg-mortgage .lg-cta-row{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;}
+    #preg-mortgage .lg-btn{display:inline-flex;align-items:center;gap:.55em;padding:1em 1.7em;font-family:var(--sans);font-size:14px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;border:1px solid transparent;border-radius:2px;cursor:pointer;transition:all .2s ease;white-space:nowrap;text-decoration:none;}
+    #preg-mortgage .lg-cta-fill{background:var(--e) !important;color:var(--paper) !important;border-color:var(--e) !important;}
+    #preg-mortgage .lg-cta-fill:hover{background:var(--e2) !important;border-color:var(--e2) !important;transform:translateY(-1px);}
+    #preg-mortgage .lg-btn-ghost{background:transparent !important;color:var(--paper) !important;border-color:rgba(251,248,241,.45) !important;}
+    #preg-mortgage .lg-btn-ghost:hover{background:var(--paper) !important;color:var(--i) !important;border-color:var(--paper) !important;}
+    #preg-mortgage .lg-modal{position:fixed;inset:0;z-index:9999;display:none;align-items:center;justify-content:center;padding:24px;background:rgba(10,31,61,.88);backdrop-filter:blur(4px);}
+    #preg-mortgage .lg-modal.open{display:flex;}
+    #preg-mortgage .lg-modal-inner{position:relative;width:min(960px,100%);aspect-ratio:16/9;background:#000;border-radius:2px;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.5);}
+    #preg-mortgage .lg-modal-inner iframe{width:100%;height:100%;border:0;display:block;}
+    #preg-mortgage button.lg-close{position:absolute !important;top:-44px !important;right:0 !important;width:38px !important;height:38px !important;padding:0 !important;border:0 !important;background:transparent !important;cursor:pointer;color:var(--paper) !important;font-size:30px !important;line-height:1 !important;text-transform:none !important;letter-spacing:0 !important;border-radius:0 !important;}
+    #preg-mortgage button.lg-close:hover{color:var(--e) !important;background:transparent !important;}
+    @media (max-width:760px){
+      #preg-mortgage .lg-feature{grid-template-columns:1fr;gap:22px;}
+      #preg-mortgage .lg-photo{aspect-ratio:1/1;max-height:420px;}
+      #preg-mortgage h1.lg-h1{font-size:clamp(38px,11vw,56px);}
+      #preg-mortgage .lg-cta-row{flex-direction:column;}
+      #preg-mortgage .lg-btn{width:100%;justify-content:center;padding:1.1em 1.2em;}
+    }
+  </style>
+
+  <div class="lg-hero">
+    <div class="lg-in">
+      <span class="lg-eyebrow">Pre-Approval · Twin Cities</span>
+      <h1 class="lg-h1">Get pre-approved. <em>Then go shopping.</em></h1>
+      <p class="lg-hero-sub">Pre-approval is the step that turns "just looking" into a real, competitive offer. Here's what it is, why it matters, and how we help.</p>
+    </div>
+  </div>
+
+  <div class="lg-block">
+    <div class="lg-in">
+      <p>Almost every strong home purchase in the Twin Cities starts the same way: with a mortgage pre-approval. It tells you exactly what you can afford, and it tells sellers you're a serious, capable buyer — which matters enormously when there's competition for a home. Skipping it is one of the most common (and costly) first-time mistakes.</p>
+      <p>Co-founder Jake Miller started in the mortgage industry back in 2003, and co-founder Joe Mack spent over a decade in banking and mortgage. So while <strong>we're not a lender</strong>, we understand the financing process deeply — and we'll make sure you do too, and connect you with trusted local lenders.</p>
+    </div>
+  </div>
+
+  <div class="lg-block">
+    <div class="lg-in">
+      <h2>Meet Jake — <em>he speaks mortgage.</em></h2>
+      <div class="lg-feature">
+        <div class="lg-photo" data-founder="jake">
+          <img src="https://cdn.jsdelivr.net/gh/baehlee/progressive-styles@main/reference/assets/headshot-jake.jpg" alt="Jake Miller, Co-Founder of Progressive Real Estate Group" loading="lazy">
+          <div class="lg-play" aria-hidden="true"></div>
+        </div>
+        <div class="lg-ftext">
+          <div class="lg-fname">Jake Miller</div>
+          <div class="lg-frole">Co-Founder · Mortgage background since 2003</div>
+          <p>Jake's career began on the financing side, so he reads a pre-approval and a loan estimate the way most people read a menu. He'll help you understand what the numbers mean and what questions to ask your lender.</p>
+          <p>Press play to hear his straight-shooting approach, then let's get you ready to make an offer with confidence.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="lg-rule">
+
+  <div class="lg-block">
+    <div class="lg-in">
+      <h2>Pre-qualification vs. <em>pre-approval.</em></h2>
+      <p>People mix these up constantly, and the difference matters:</p>
+      <ul class="lg-list">
+        <li><span><b>Pre-qualification</b> A quick, informal estimate based on numbers you tell a lender. Useful for a ballpark, but it carries little weight with sellers.</span></li>
+        <li><span><b>Pre-approval</b> A lender actually reviews your finances and credit and issues a letter stating what they're prepared to lend. This is what makes your offer competitive — and what we'll want in hand before you shop seriously.</span></li>
+      </ul>
+    </div>
+  </div>
+
+  <hr class="lg-rule">
+
+  <div class="lg-block">
+    <div class="lg-in">
+      <h2>What you'll <em>need.</em></h2>
+      <p>Every lender is a little different, but a pre-approval generally involves documenting your income, assets, and credit. Having these ready makes it fast:</p>
+      <ul class="lg-list">
+        <li><span><b>Proof of income</b> Recent pay stubs, W-2s or 1099s, and often a couple years of tax returns — especially if you're self-employed.</span></li>
+        <li><span><b>Assets</b> Bank and investment statements showing your down payment and reserves.</span></li>
+        <li><span><b>Identification & history</b> ID, and a picture of your debts and employment history.</span></li>
+        <li><span><b>A credit review</b> The lender will check your credit as part of approval. Shopping several mortgage lenders within a short window is generally treated as a single inquiry, so comparing offers won't pile up against you.</span></li>
+      </ul>
+    </div>
+  </div>
+
+  <hr class="lg-rule">
+
+  <div class="lg-block">
+    <div class="lg-in">
+      <h2>How much house <em>can you afford?</em></h2>
+      <p>Pre-approval tells you what a lender will lend — but "can borrow" and "should spend" aren't the same number. Your real budget includes more than principal and interest.</p>
+      <p>A monthly payment usually also covers property taxes, homeowners insurance, possibly mortgage insurance, and any association dues — and lenders weigh your existing debts through your debt-to-income ratio. We help you land on the payment that fits your life comfortably, not the maximum that fits the formula, so your home stays a foundation instead of a strain.</p>
+    </div>
+  </div>
+
+  <hr class="lg-rule">
+
+  <div class="lg-block pb">
+    <div class="lg-in">
+      <h2>Why it makes your offer <em>stronger.</em></h2>
+      <p>When two similar offers land on a seller's table, the pre-approved buyer almost always wins — there's far less risk the deal falls apart at financing. A solid pre-approval letter lets us write a confident, credible offer and negotiate from a position of strength. When you're ready, <a href="/listing">browse Twin Cities homes &rarr;</a> or read <a href="/no-hate-pledge">how we work with every buyer &rarr;</a>.</p>
+    </div>
+  </div>
+
+  <hr class="lg-rule">
+
+  <div class="lg-block pb">
+    <div class="lg-in">
+      <h2>Questions we <em>hear a lot</em></h2>
+      <h3>Do I really need pre-approval to buy a house in Minnesota?</h3>
+      <p>You're not legally required to have it, but practically speaking, yes — in a competitive market most sellers won't take an offer seriously without a pre-approval letter, and you won't know your true budget without one. It's the first step we recommend to every buyer.</p>
+
+      <h3>What is PMI, and will I have to pay it?</h3>
+      <p>Private mortgage insurance is often required when your down payment is below a certain threshold; it protects the lender, not you, and can usually be removed later as you build equity. Your lender will tell you whether it applies, and we'll make sure you understand the cost up front.</p>
+
+      <h3>Does a pre-approval guarantee my loan?</h3>
+      <p>Not quite — it's a strong, documented estimate, but final approval comes after full underwriting and the appraisal once you're under contract. That's why we help you avoid big financial moves — new debt, a job change — between pre-approval and closing.</p>
+
+      <h3>Does getting pre-approved hurt my credit?</h3>
+      <p>A pre-approval involves a credit check, which can have a small, temporary effect. The good news: credit scoring generally treats multiple mortgage inquiries within a short shopping window as one, so you can compare lenders without stacking up the impact.</p>
+
+      <h3>How long does pre-approval take?</h3>
+      <p>Often anywhere from a same-day quick turnaround to a few business days, depending on the lender and how ready your documents are. Having your paperwork together speeds it up a lot.</p>
+
+      <h3>How long does a pre-approval last?</h3>
+      <p>Typically around 60–90 days, since it's based on a current snapshot of your finances and credit. If your search runs longer, your lender can refresh it.</p>
+
+      <h3>Are you the ones who approve my loan?</h3>
+      <p>No — we're your real estate team, not a lender. But with our mortgage backgrounds, we'll help you understand the process, ask the right questions, and we'll connect you with trusted local lenders who do the approving.</p>
+    </div>
+  </div>
+
+  <div class="lg-cta">
+    <div class="lg-in">
+      <h2>Let's get you <em>offer-ready.</em></h2>
+      <p>Not sure where to start with financing? Talk to us — we'll point you in the right direction and connect you with lenders we trust.</p>
+      <div class="lg-cta-row">
+        <a href="/team" class="lg-btn lg-cta-fill">Talk to our team &rarr;</a>
+        <a href="/listing" class="lg-btn lg-btn-ghost">Browse homes</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="lg-modal" id="lg-modal" role="dialog" aria-modal="true" aria-label="Welcome video">
+    <div class="lg-modal-inner">
+      <button class="lg-close" id="lg-close" type="button" aria-label="Close video">&times;</button>
+      <iframe id="lg-frame" title="Founder welcome video" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+    </div>
+  </div>
+
+  <script>
+  (function () {
+    var VIDEOS = { jake: "https://www.youtube-nocookie.com/embed/GwUx2e76eDg" };
+    var root = document.getElementById('preg-mortgage');
+    if (!root) return;
+    var modal = root.querySelector('#lg-modal');
+    var frame = root.querySelector('#lg-frame');
+    var sep = function (u) { return u.indexOf('?') === -1 ? '?' : '&'; };
+    function open(url){ frame.src = url + sep(url) + 'autoplay=1'; modal.classList.add('open'); document.body.style.overflow='hidden'; }
+    function close(){ modal.classList.remove('open'); frame.removeAttribute('src'); document.body.style.overflow=''; }
+    root.querySelectorAll('.lg-photo').forEach(function (ph) {
+      var url = VIDEOS[ph.getAttribute('data-founder')];
+      if (!url) return;
+      ph.classList.add('has-video'); ph.setAttribute('role','button'); ph.setAttribute('tabindex','0');
+      ph.addEventListener('click', function(){ open(url); });
+      ph.addEventListener('keydown', function(e){ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); open(url); } });
+    });
+    root.querySelector('#lg-close').addEventListener('click', close);
+    modal.addEventListener('click', function(e){ if(e.target===modal) close(); });
+    document.addEventListener('keydown', function(e){ if(e.key==='Escape'&&modal.classList.contains('open')) close(); });
+  })();
+  </script>
+</section>

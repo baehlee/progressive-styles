@@ -1,0 +1,239 @@
+<!-- ════════════════════════════════════════════════════════════════════
+     PROGRESSIVE REAL ESTATE GROUP — RELOCATING TO THE TWIN CITIES (Phase 8 · identity page)
+     ────────────────────────────────────────────────────────────────────
+     Built from the identity-page template (see lgbtq-realtor-twin-cities.html).
+     WHERE TO PASTE: new Custom Landing Page in Lofty, slug /relocating-to-twin-cities, one
+     Custom HTML / Code Block. Self-contained; founder video plays in a lightbox.
+
+     SEO (per-page panel):
+       Meta title:        Relocating to the Twin Cities | Moving to Minneapolis & St. Paul
+       Meta description:  Moving to Minneapolis or St. Paul from out of state? A local team that handles relocations remotely — neighborhood guidance, an honest take on the metro, and virtual tours.
+       Focus keyword:     relocating to twin cities
+       Secondary:         moving to minneapolis, moving to minnesota guide
+       URL slug:          /relocating-to-twin-cities
+     ════════════════════════════════════════════════════════════════════ -->
+
+<section id="preg-relo">
+  <style>
+    :has(#preg-relo){overflow:visible !important;}
+    #preg-relo{
+      --i:#0A1F3D; --i2:#14315A; --s2:#6FAED9;
+      --canvas:#F4EEE3; --paper:#FBF8F1; --e:#B86A3E; --e2:#D38A5C;
+      --char:#1B1815; --mute:#6E695F; --rule:#D9D1BE;
+      --disp:'Fraunces','Times New Roman',serif;
+      --sans:'Manrope',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+      display:block;background:var(--canvas);color:var(--char);font-family:var(--sans);
+      -webkit-font-smoothing:antialiased;
+      width:100vw;max-width:100vw;margin-left:calc(50% - 50vw);margin-right:calc(50% - 50vw);overflow-x:clip;
+    }
+    #preg-relo *{box-sizing:border-box;}
+    #preg-relo .lg-in{max-width:920px;margin:0 auto;padding-left:clamp(1.25rem,5vw,2.5rem);padding-right:clamp(1.25rem,5vw,2.5rem);}
+    #preg-relo .lg-hero{background:linear-gradient(165deg,var(--i) 0%,var(--i2) 100%);text-align:center;padding:clamp(60px,10vw,128px) 0;}
+    #preg-relo .lg-eyebrow{display:block;margin:0 0 18px;font-size:12px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--s2) !important;}
+    #preg-relo h1.lg-h1{margin:0 auto 20px;max-width:17ch;font-family:var(--disp);font-size:clamp(40px,7vw,88px);line-height:.98;letter-spacing:-.035em;font-weight:300;color:var(--paper) !important;font-variation-settings:"opsz" 144,"SOFT" 50;}
+    #preg-relo h1.lg-h1 em{font-style:italic;color:var(--e2) !important;font-variation-settings:"opsz" 144,"SOFT" 100;}
+    #preg-relo .lg-hero-sub{margin:0 auto;max-width:560px;font-size:clamp(17px,1.5vw,20px);line-height:1.6;color:rgba(251,248,241,.85) !important;}
+    #preg-relo .lg-block{padding:clamp(48px,7vw,88px) 0 0;}
+    #preg-relo .lg-block.pb{padding-bottom:clamp(48px,7vw,88px);}
+    #preg-relo .lg-block h2{margin:0 0 18px;font-family:var(--disp);font-size:clamp(28px,4.4vw,48px);line-height:1.04;letter-spacing:-.03em;font-weight:300;color:var(--i);font-variation-settings:"opsz" 96,"SOFT" 50;}
+    #preg-relo .lg-block h2 em{font-style:italic;color:var(--e);font-variation-settings:"opsz" 96,"SOFT" 100;}
+    #preg-relo .lg-block h3{margin:28px 0 10px;font-family:var(--disp);font-size:clamp(19px,2vw,24px);font-weight:500;color:var(--i);font-variation-settings:"opsz" 40,"SOFT" 40;}
+    #preg-relo .lg-block p{margin:0 0 16px;font-size:clamp(16px,1.4vw,18px);line-height:1.7;color:var(--char);max-width:62ch;}
+    #preg-relo .lg-block p:last-child{margin-bottom:0;}
+    #preg-relo .lg-block p strong{color:var(--i);font-weight:600;}
+    #preg-relo .lg-block a{color:var(--e);text-decoration:underline;text-underline-offset:2px;}
+    #preg-relo .lg-block a:hover{color:var(--i);}
+    #preg-relo .lg-rule{border:0;border-top:1px solid var(--rule);max-width:920px;margin:clamp(48px,7vw,80px) auto 0;}
+    #preg-relo .lg-feature{display:grid;grid-template-columns:.85fr 1fr;gap:clamp(24px,4vw,56px);align-items:center;margin-top:28px;}
+    #preg-relo .lg-photo{position:relative;aspect-ratio:1/1.1;overflow:hidden;background:var(--i);border-radius:2px;}
+    #preg-relo .lg-photo img{width:100%;height:100%;object-fit:cover;object-position:center top;filter:saturate(.95);transition:transform .6s ease,filter .3s ease;display:block;}
+    #preg-relo .lg-photo.has-video{cursor:pointer;}
+    #preg-relo .lg-photo.has-video:hover img{transform:scale(1.04);filter:saturate(1.08);}
+    #preg-relo .lg-play{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:62px;height:62px;border-radius:50%;background:rgba(251,248,241,.94);display:none;align-items:center;justify-content:center;transition:all .2s;box-shadow:0 8px 24px rgba(10,31,61,.4);}
+    #preg-relo .lg-photo.has-video .lg-play{display:flex;}
+    #preg-relo .lg-photo.has-video:hover .lg-play{background:var(--e);transform:translate(-50%,-50%) scale(1.06);}
+    #preg-relo .lg-play::after{content:'';width:0;height:0;margin-left:5px;border-style:solid;border-width:10px 0 10px 17px;border-color:transparent transparent transparent var(--i);transition:border-color .2s;}
+    #preg-relo .lg-photo.has-video:hover .lg-play::after{border-color:transparent transparent transparent var(--paper);}
+    #preg-relo .lg-feature .lg-fname{margin:0 0 4px;font-family:var(--disp);font-size:clamp(24px,3vw,34px);font-weight:400;color:var(--i);font-variation-settings:"opsz" 60,"SOFT" 40;}
+    #preg-relo .lg-feature .lg-frole{margin:0 0 16px;font-size:13px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--mute);}
+    #preg-relo ul.lg-list{list-style:none;padding:0;margin:24px 0 0;border-top:1px solid var(--rule);}
+    #preg-relo ul.lg-list li{padding:18px 0;border-bottom:1px solid var(--rule);display:flex;gap:14px;}
+    #preg-relo ul.lg-list li::before{content:'';flex:0 0 auto;width:8px;height:8px;margin-top:9px;border-radius:50%;background:var(--e);}
+    #preg-relo ul.lg-list li b{color:var(--i);font-weight:600;}
+    #preg-relo ul.lg-list li span{font-size:clamp(15px,1.3vw,17px);line-height:1.6;color:var(--char);}
+    #preg-relo .lg-cta{background:linear-gradient(165deg,var(--i) 0%,var(--i2) 100%);text-align:center;padding:clamp(56px,8vw,104px) 0;margin-top:clamp(48px,7vw,80px);}
+    #preg-relo .lg-cta h2{margin:0 0 16px;font-family:var(--disp);font-size:clamp(30px,5vw,56px);line-height:1.0;letter-spacing:-.03em;font-weight:300;color:var(--paper) !important;font-variation-settings:"opsz" 96,"SOFT" 50;}
+    #preg-relo .lg-cta h2 em{font-style:italic;color:var(--e2) !important;font-variation-settings:"opsz" 96,"SOFT" 100;}
+    #preg-relo .lg-cta p{margin:0 auto 32px;max-width:48ch;font-size:clamp(16px,1.4vw,18px);line-height:1.6;color:rgba(251,248,241,.85) !important;}
+    #preg-relo .lg-cta-row{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;}
+    #preg-relo .lg-btn{display:inline-flex;align-items:center;gap:.55em;padding:1em 1.7em;font-family:var(--sans);font-size:14px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;border:1px solid transparent;border-radius:2px;cursor:pointer;transition:all .2s ease;white-space:nowrap;text-decoration:none;}
+    #preg-relo .lg-cta-fill{background:var(--e) !important;color:var(--paper) !important;border-color:var(--e) !important;}
+    #preg-relo .lg-cta-fill:hover{background:var(--e2) !important;border-color:var(--e2) !important;transform:translateY(-1px);}
+    #preg-relo .lg-btn-ghost{background:transparent !important;color:var(--paper) !important;border-color:rgba(251,248,241,.45) !important;}
+    #preg-relo .lg-btn-ghost:hover{background:var(--paper) !important;color:var(--i) !important;border-color:var(--paper) !important;}
+    #preg-relo .lg-modal{position:fixed;inset:0;z-index:9999;display:none;align-items:center;justify-content:center;padding:24px;background:rgba(10,31,61,.88);backdrop-filter:blur(4px);}
+    #preg-relo .lg-modal.open{display:flex;}
+    #preg-relo .lg-modal-inner{position:relative;width:min(960px,100%);aspect-ratio:16/9;background:#000;border-radius:2px;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.5);}
+    #preg-relo .lg-modal-inner iframe{width:100%;height:100%;border:0;display:block;}
+    #preg-relo button.lg-close{position:absolute !important;top:-44px !important;right:0 !important;width:38px !important;height:38px !important;padding:0 !important;border:0 !important;background:transparent !important;cursor:pointer;color:var(--paper) !important;font-size:30px !important;line-height:1 !important;text-transform:none !important;letter-spacing:0 !important;border-radius:0 !important;}
+    #preg-relo button.lg-close:hover{color:var(--e) !important;background:transparent !important;}
+    @media (max-width:760px){
+      #preg-relo .lg-feature{grid-template-columns:1fr;gap:22px;}
+      #preg-relo .lg-photo{aspect-ratio:1/1;max-height:420px;}
+      #preg-relo h1.lg-h1{font-size:clamp(38px,11vw,56px);}
+      #preg-relo .lg-cta-row{flex-direction:column;}
+      #preg-relo .lg-btn{width:100%;justify-content:center;padding:1.1em 1.2em;}
+    }
+  </style>
+
+  <div class="lg-hero">
+    <div class="lg-in">
+      <span class="lg-eyebrow">Relocating · Twin Cities</span>
+      <h1 class="lg-h1">Moving to the Twin Cities? <em>Start here.</em></h1>
+      <p class="lg-hero-sub">Buying a home in a metro you don't know yet is daunting. We do this all the time — and we'll be your honest guide from wherever you are now.</p>
+    </div>
+  </div>
+
+  <div class="lg-block">
+    <div class="lg-in">
+      <p>Relocating to Minneapolis and St. Paul means learning a whole new map: which neighborhoods fit your life, how the commute really works, and what living through a Minnesota winter is actually like (it's better than you think, and we'll tell you the truth). Doing all of that from another state is a lot — so let us carry the local knowledge while you focus on the move.</p>
+      <p>Co-founder Travis Callstrom has spent 27 years helping people through big life transitions, and the team relocates buyers regularly, often before they've ever set foot in Minnesota. <strong>Moving to the Twin Cities</strong> should feel like an adventure, not a leap in the dark.</p>
+    </div>
+  </div>
+
+  <div class="lg-block">
+    <div class="lg-in">
+      <h2>Meet Travis — <em>your local guide.</em></h2>
+      <div class="lg-feature">
+        <div class="lg-photo" data-founder="travis">
+          <img src="https://cdn.jsdelivr.net/gh/baehlee/progressive-styles@main/reference/assets/headshot-travis.jpg" alt="Travis Callstrom, Co-Founder of Progressive Real Estate Group" loading="lazy">
+          <div class="lg-play" aria-hidden="true"></div>
+        </div>
+        <div class="lg-ftext">
+          <div class="lg-fname">Travis Callstrom</div>
+          <div class="lg-frole">Co-Founder · 27 years</div>
+          <p>Travis knows the metro the way only someone who's lived and worked here for decades can — the trade-offs between city and suburb, which neighborhoods fit which lifestyles, and where you'll actually feel at home.</p>
+          <p>Press play for his take, then tell us where you're moving from and what matters most.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="lg-rule">
+
+  <div class="lg-block">
+    <div class="lg-in">
+      <h2>Minneapolis, St. Paul, <em>or the suburbs?</em></h2>
+      <p>The Twin Cities aren't one place — they're dozens of distinct communities. The right fit depends on what you want your day to look like.</p>
+      <ul class="lg-list">
+        <li><span><b>Minneapolis</b> The bigger, busier twin — lakes, trails, arts, food, and walkable neighborhoods. Great if you want energy and to bike or walk to things.</span></li>
+        <li><span><b>St. Paul</b> Quieter and more historic, with grand old neighborhoods and a settled, community feel. Often more home for the money.</span></li>
+        <li><span><b>The suburbs</b> Edina, Plymouth, Eden Prairie, Maple Grove and more — top schools, newer homes, and space, with easy commutes back to the core.</span></li>
+        <li><span><b>Across the river</b> Hudson, WI and the St. Croix valley offer river-town living and a short hop to the east metro.</span></li>
+      </ul>
+    </div>
+  </div>
+
+  <hr class="lg-rule">
+
+  <div class="lg-block">
+    <div class="lg-in">
+      <h2>What to know <em>before you move.</em></h2>
+
+      <h3>The seasons (yes, including winter)</h3>
+      <p>Minnesota has four real seasons, and winter is part of the deal — but locals lean into it with great parks, lakes, and trails year-round. We'll be honest about what to expect and how people actually live here.</p>
+      <h3>Cost of living</h3>
+      <p>The metro is generally more affordable than the coasts, and your housing dollar tends to go further — one of the quiet perks of moving here.</p>
+      <h3>Getting around</h3>
+      <p>Light rail connects the airport, both downtowns, and the U of M; suburbs are car-friendly with quick highway access. Where you land shapes your commute, so it's worth planning early.</p>
+    </div>
+  </div>
+
+  <hr class="lg-rule">
+
+  <div class="lg-block">
+    <div class="lg-in">
+      <h2>Timing <em>the move.</em></h2>
+      <p>The trickiest part of relocating is usually the choreography: selling where you are, buying where you're going, and not ending up with two homes — or none. We help you map it out.</p>
+      <p>Some buyers sell first and rent here briefly so they can shop without pressure; others buy before they arrive and time the closings to line up. There's no single right answer — it depends on your finances and how much certainty you want. We'll talk through the trade-offs and point you to resources for the selling side in your current market.</p>
+    </div>
+  </div>
+
+  <hr class="lg-rule">
+
+  <div class="lg-block pb">
+    <div class="lg-in">
+      <h2>How a remote move <em>works with us.</em></h2>
+      <p>You don't have to fly in repeatedly. We run live video tours, send detailed neighborhood breakdowns, coordinate inspections, and give you a candid read on every option — so your first day here already feels like home. When you're ready, <a href="/listing">browse current listings &rarr;</a> or read about <a href="/no-hate-pledge">how we work with everyone &rarr;</a>.</p>
+    </div>
+  </div>
+
+  <hr class="lg-rule">
+
+  <div class="lg-block pb">
+    <div class="lg-in">
+      <h2>Questions we <em>hear a lot</em></h2>
+      <h3>Can we start before I move to Minnesota?</h3>
+      <p>Definitely. Many of our relocation clients never visit until closing week. Video tours, neighborhood guidance, and remote coordination are a normal part of how we work.</p>
+
+      <h3>Should I rent first or buy right away?</h3>
+      <p>Both are valid. Renting briefly lets you learn the neighborhoods firsthand before committing; buying right away saves a second move and locks in your home. We'll help you weigh it against your timeline and budget — no pressure either way.</p>
+
+      <h3>Can you help me sell my current home too?</h3>
+      <p>We focus on your Twin Cities purchase, but we work with a network of trusted agents and can connect you with a strong one in your current market, so both ends of the move are in good hands.</p>
+
+      <h3>Which Twin Cities neighborhoods should I consider?</h3>
+      <p>It depends on your commute, budget, and lifestyle — walkable city living versus space and top schools in the suburbs. Tell us your priorities and we'll narrow the whole metro down to a short, honest list.</p>
+
+      <h3>Is the winter really that bad?</h3>
+      <p>It's real, but it's manageable — and a lot of people grow to love it. Good gear, a warm home, and the metro's incredible parks and lakes make the cold months more fun than newcomers expect. We won't sugarcoat it, but we'll put it in perspective.</p>
+
+      <h3>How does the cost of living compare?</h3>
+      <p>Generally friendlier than the coasts, especially on housing. Many people relocating from larger or pricier metros find their money goes noticeably further here.</p>
+
+      <h3>Can you help with schools and family logistics?</h3>
+      <p>Yes. School fit is one of the biggest relocation questions, and we'll help you weigh districts and neighborhoods against your budget and commute so the whole move makes sense for your family.</p>
+    </div>
+  </div>
+
+  <div class="lg-cta">
+    <div class="lg-in">
+      <h2>Let's make your move <em>easy.</em></h2>
+      <p>Tell us where you're coming from and what you're looking for. We'll handle the local part.</p>
+      <div class="lg-cta-row">
+        <a href="/team" class="lg-btn lg-cta-fill">Talk to Travis &rarr;</a>
+        <a href="/listing" class="lg-btn lg-btn-ghost">Browse homes</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="lg-modal" id="lg-modal" role="dialog" aria-modal="true" aria-label="Welcome video">
+    <div class="lg-modal-inner">
+      <button class="lg-close" id="lg-close" type="button" aria-label="Close video">&times;</button>
+      <iframe id="lg-frame" title="Founder welcome video" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+    </div>
+  </div>
+
+  <script>
+  (function () {
+    var VIDEOS = { travis: "https://www.youtube-nocookie.com/embed/Lv_qZSl3sYA" };
+    var root = document.getElementById('preg-relo');
+    if (!root) return;
+    var modal = root.querySelector('#lg-modal');
+    var frame = root.querySelector('#lg-frame');
+    var sep = function (u) { return u.indexOf('?') === -1 ? '?' : '&'; };
+    function open(url){ frame.src = url + sep(url) + 'autoplay=1'; modal.classList.add('open'); document.body.style.overflow='hidden'; }
+    function close(){ modal.classList.remove('open'); frame.removeAttribute('src'); document.body.style.overflow=''; }
+    root.querySelectorAll('.lg-photo').forEach(function (ph) {
+      var url = VIDEOS[ph.getAttribute('data-founder')];
+      if (!url) return;
+      ph.classList.add('has-video'); ph.setAttribute('role','button'); ph.setAttribute('tabindex','0');
+      ph.addEventListener('click', function(){ open(url); });
+      ph.addEventListener('keydown', function(e){ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); open(url); } });
+    });
+    root.querySelector('#lg-close').addEventListener('click', close);
+    modal.addEventListener('click', function(e){ if(e.target===modal) close(); });
+    document.addEventListener('keydown', function(e){ if(e.key==='Escape'&&modal.classList.contains('open')) close(); });
+  })();
+  </script>
+</section>

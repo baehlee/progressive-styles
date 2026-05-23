@@ -1,0 +1,116 @@
+<!-- ════════════════════════════════════════════════════════════════════
+     PROGRESSIVE REAL ESTATE GROUP — AREAS PAGE CONTENT: ST. PAUL (Phase 8)
+     ────────────────────────────────────────────────────────────────────
+     Built from the Areas template (see areas/minneapolis.html for the full
+     paste/placement notes — same approach). Paste into the Lofty Areas page
+     for "St. Paul, MN". Don't hardcode prices — use Lofty's market widget.
+
+     SEO (set in Lofty's per-page SEO panel):
+       Meta title:        Homes for Sale in St. Paul, MN | Progressive Real Estate
+       Meta description:  Find homes for sale in St. Paul with a local, inclusive
+                          team. Neighborhood guides for Mac-Groveland, Highland
+                          Park, Summit Hill and more — plus honest buying advice.
+       Focus keyword:     homes for sale st paul mn
+       Secondary:         st paul real estate, living in st paul, best st paul neighborhoods
+       URL slug:          (Lofty Areas tool sets this — e.g. /st-paul-mn)
+     ════════════════════════════════════════════════════════════════════ -->
+
+<section id="preg-area">
+  <style>
+    :has(#preg-area){overflow:visible !important;}
+    #preg-area{
+      --i:#0A1F3D; --i2:#14315A; --s2:#6FAED9;
+      --canvas:#F4EEE3; --paper:#FBF8F1; --e:#B86A3E; --e2:#D38A5C;
+      --char:#1B1815; --mute:#6E695F; --rule:#D9D1BE;
+      --disp:'Fraunces','Times New Roman',serif;
+      --sans:'Manrope',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+      display:block;background:var(--canvas);color:var(--char);font-family:var(--sans);
+      -webkit-font-smoothing:antialiased;
+      width:100vw;max-width:100vw;margin-left:calc(50% - 50vw);margin-right:calc(50% - 50vw);overflow-x:clip;
+    }
+    #preg-area *{box-sizing:border-box;}
+    #preg-area .ar-in{max-width:920px;margin:0 auto;padding-left:clamp(1.25rem,5vw,2.5rem);padding-right:clamp(1.25rem,5vw,2.5rem);}
+    #preg-area .ar-block{padding:clamp(48px,7vw,84px) 0 0;}
+    #preg-area .ar-block.pb{padding-bottom:clamp(48px,7vw,84px);}
+    #preg-area .ar-eyebrow{display:block;margin:0 0 14px;font-size:12px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--e);}
+    #preg-area .ar-block h2{margin:0 0 16px;font-family:var(--disp);font-size:clamp(28px,4.4vw,48px);line-height:1.04;letter-spacing:-.03em;font-weight:300;color:var(--i);font-variation-settings:"opsz" 96,"SOFT" 50;}
+    #preg-area .ar-block h2 em{font-style:italic;color:var(--e);font-variation-settings:"opsz" 96,"SOFT" 100;}
+    #preg-area .ar-block h3{margin:26px 0 8px;font-family:var(--disp);font-size:clamp(18px,1.9vw,23px);font-weight:500;color:var(--i);font-variation-settings:"opsz" 40,"SOFT" 40;}
+    #preg-area .ar-block p{margin:0 0 16px;font-size:clamp(16px,1.4vw,18px);line-height:1.7;color:var(--char);max-width:62ch;}
+    #preg-area .ar-block p:last-child{margin-bottom:0;}
+    #preg-area .ar-block p strong{color:var(--i);font-weight:600;}
+    #preg-area .ar-block a{color:var(--e);text-decoration:underline;text-underline-offset:2px;}
+    #preg-area .ar-block a:hover{color:var(--i);}
+    #preg-area .ar-rule{border:0;border-top:1px solid var(--rule);max-width:920px;margin:clamp(40px,6vw,64px) auto 0;}
+    #preg-area .ar-love{background:var(--paper);border:1px solid var(--rule);border-radius:2px;padding:clamp(26px,3vw,40px);margin-top:24px;}
+    #preg-area .ar-love p{font-family:var(--disp);font-size:clamp(19px,2.2vw,26px);line-height:1.4;color:var(--i);font-weight:300;font-variation-settings:"opsz" 72,"SOFT" 60;max-width:none;}
+    #preg-area .ar-love .ar-by{margin:16px 0 0;font-family:var(--sans);font-size:13px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--mute);}
+    #preg-area .ar-cta{background:linear-gradient(165deg,var(--i) 0%,var(--i2) 100%);text-align:center;padding:clamp(52px,8vw,96px) 0;margin-top:clamp(44px,7vw,72px);}
+    #preg-area .ar-cta h2{margin:0 0 14px;font-family:var(--disp);font-size:clamp(28px,5vw,52px);line-height:1.0;letter-spacing:-.03em;font-weight:300;color:var(--paper) !important;font-variation-settings:"opsz" 96,"SOFT" 50;}
+    #preg-area .ar-cta h2 em{font-style:italic;color:var(--e2) !important;font-variation-settings:"opsz" 96,"SOFT" 100;}
+    #preg-area .ar-cta p{margin:0 auto 30px;max-width:46ch;font-size:clamp(16px,1.4vw,18px);line-height:1.6;color:rgba(251,248,241,.85) !important;}
+    #preg-area .ar-cta-row{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;}
+    #preg-area .ar-btn{display:inline-flex;align-items:center;gap:.55em;padding:1em 1.7em;font-family:var(--sans);font-size:14px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;border:1px solid transparent;border-radius:2px;cursor:pointer;transition:all .2s ease;white-space:nowrap;text-decoration:none;}
+    #preg-area .ar-cta-fill{background:var(--e) !important;color:var(--paper) !important;border-color:var(--e) !important;}
+    #preg-area .ar-cta-fill:hover{background:var(--e2) !important;border-color:var(--e2) !important;transform:translateY(-1px);}
+    #preg-area .ar-btn-ghost{background:transparent !important;color:var(--paper) !important;border-color:rgba(251,248,241,.45) !important;}
+    #preg-area .ar-btn-ghost:hover{background:var(--paper) !important;color:var(--i) !important;border-color:var(--paper) !important;}
+    @media (max-width:560px){#preg-area .ar-cta-row{flex-direction:column;}#preg-area .ar-btn{width:100%;justify-content:center;padding:1.1em 1.2em;}}
+  </style>
+
+  <div class="ar-block">
+    <div class="ar-in">
+      <span class="ar-eyebrow">St. Paul, Minnesota</span>
+      <h2>Living in <em>St. Paul.</em></h2>
+      <p>St. Paul is the older, quieter half of the Twin Cities — Minnesota's capital, and a city that wears its history on its sleeve. Summit Avenue runs nearly five miles as one of the longest intact stretches of Victorian residential architecture in the country (F. Scott Fitzgerald grew up just off it), and the bluffs above the Mississippi give whole neighborhoods their shape. Where Minneapolis can feel like a young city, St. Paul feels like a collection of established neighborhoods that have known each other for a hundred years.</p>
+      <p>For buyers, that translates to character: stately homes on Summit and Crocus Hill, walkable village commercial strips, and family neighborhoods that often deliver more house and yard for the money than the comparable Minneapolis lake districts.</p>
+    </div>
+  </div>
+
+  <hr class="ar-rule">
+
+  <div class="ar-block">
+    <div class="ar-in">
+      <h2>What buyers <em>should know.</em></h2>
+
+      <h3>The neighborhoods</h3>
+      <p><strong>Macalester-Groveland</strong> and <strong>Highland Park</strong> are the family favorites — leafy, walkable, anchored by good commercial nodes and, at Highland Bridge, one of the largest new-construction redevelopments in the region (the former Ford plant). <strong>Summit Hill, Crocus Hill, and Cathedral Hill</strong> hold the city's grandest historic homes and some of its best restaurants. <strong>Como</strong> wraps around the park and its free zoo and conservatory, while <strong>Lowertown</strong> downtown offers artist lofts, the farmers market, and CHS Field.</p>
+
+      <h3>Getting around</h3>
+      <p>The METRO Green Line runs straight up University Avenue to connect downtown St. Paul, the Capitol, the U of M, and downtown Minneapolis, with buses filling in the rest. Many St. Paul neighborhoods are genuinely walkable to a coffee shop, a school, and a park — the kind of everyday convenience that's hard to retrofit.</p>
+
+      <h3>Parks, schools &amp; everyday life</h3>
+      <p>St. Paul Public Schools is joined by a deep bench of private, charter, and college-adjacent options (Macalester, St. Thomas, Hamline all shape their surrounding neighborhoods). Como Regional Park, the river bluffs, and the Mississippi trails mean green space is rarely far, and the city's calendar — from the Winter Carnival to the State Fair on its edge — gives it a strong sense of place.</p>
+
+      <h3>The housing stock</h3>
+      <p>St. Paul skews older and more architecturally distinct than its twin: Victorians and Queen Annes on the hills, sturdy 1920s bungalows and four-squares across Mac-Grove and Como, mid-century homes in the outer neighborhoods, and brand-new construction at Highland Bridge. Older homes mean more charm — and more to inspect — so condition and systems are worth a careful look before you fall in love.</p>
+
+      <h3>Who St. Paul fits</h3>
+      <p>It's a strong match if you want established neighborhoods, historic character, and a little more space and value than the Minneapolis lakes, without giving up walkability or a quick commute across the river. Families and old-house lovers tend to feel right at home here. And because so much of the housing predates modern construction, St. Paul rewards buyers who do their homework on foundations, roofs, and mechanicals — the kind of due diligence that protects you from inheriting someone else's deferred maintenance.</p>
+    </div>
+  </div>
+
+  <hr class="ar-rule">
+
+  <div class="ar-block pb">
+    <div class="ar-in">
+      <h2>Why we <em>love it here.</em></h2>
+      <div class="ar-love">
+        <p>"St. Paul is a city of front porches and corner shops. People put down roots here and stay. Our job is to read a block — the trees, the neighbors, the bones of the house — and find the one that'll still feel right in twenty years."</p>
+        <div class="ar-by">&mdash; The founders, Progressive Real Estate Group</div>
+      </div>
+      <p style="margin-top:24px">Buying or selling in St. Paul? Browse current <a href="/listing">St. Paul homes for sale &rarr;</a>, check <a href="/evaluation">what your home is worth &rarr;</a>, or read about our <a href="/no-hate-pledge">inclusive, no-hate approach &rarr;</a>.</p>
+    </div>
+  </div>
+
+  <div class="ar-cta">
+    <div class="ar-in">
+      <h2>Thinking about <em>St. Paul?</em></h2>
+      <p>Tell us what you're looking for and we'll give you an honest read on the neighborhoods that fit — no pressure, no rush.</p>
+      <div class="ar-cta-row">
+        <a href="/listing" class="ar-btn ar-cta-fill">Browse St. Paul homes &rarr;</a>
+        <a href="/team" class="ar-btn ar-btn-ghost">Talk to a founder</a>
+      </div>
+    </div>
+  </div>
+</section>

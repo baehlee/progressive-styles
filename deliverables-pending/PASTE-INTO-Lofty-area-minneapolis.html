@@ -1,0 +1,154 @@
+<!-- ════════════════════════════════════════════════════════════════════
+     PROGRESSIVE REAL ESTATE GROUP — AREAS PAGE CONTENT: MINNEAPOLIS (Phase 8)
+     ────────────────────────────────────────────────────────────────────
+     ★ THIS IS THE AREAS-PAGE TEMPLATE. Duplicate it for each tier-one area
+       (St. Paul, Edina, Plymouth, …): keep the structure, swap the city name,
+       the original prose, the founder byline, and the SEO meta.
+
+     WHERE TO PASTE:  Lofty CMS → Areas → add/select the area "Minneapolis, MN"
+                      (this auto-creates the page, its URL, the live MLS listings
+                      module, and the market-data widget). Add a Custom HTML /
+                      Code Block in the area's content section and paste this.
+                      Recommended order on the page:
+                        H1 (Lofty)  →  market-data strip (Lofty widget)  →
+                        THIS intro+overview block  →  active listings (Lofty)  →
+                        THIS "what buyers should know" + "why we love it" + CTA.
+                      (Or paste the whole block in one slot; it reads fine as a
+                      single unit too.)
+
+     WHY NO PRICES HERE:  The "by the numbers" strip (median price, days on
+                      market, $/sqft, YoY) should come from Lofty's market-data
+                      widget so it stays accurate and auto-refreshes. Don't
+                      hardcode figures in this block — they'd go stale and wrong.
+
+     SELF-CONTAINED:  All CSS scoped under #preg-area. Fonts from global
+                      hosted.css. No images, no JS.
+
+     ▶ GLOBAL-CSS NOTES: no inline SVG; the navy CTA band sets light text with
+       !important; the CTA fill button uses class `ar-cta-fill` (NOT
+       *btn-primary*) to dodge the global navy-button rule.
+
+     SEO (set in Lofty's per-page SEO panel for this area):
+       Meta title:        Homes for Sale in Minneapolis, MN | Progressive Real Estate
+       Meta description:  Find homes for sale in Minneapolis with a local,
+                          inclusive team. Neighborhood guides, the lakes, parks,
+                          and honest advice for buying or selling in Minneapolis.
+       Focus keyword:     homes for sale minneapolis mn
+       Secondary:         minneapolis real estate, living in minneapolis, best minneapolis neighborhoods
+       URL slug:          (Lofty Areas tool sets this — e.g. /minneapolis-mn)
+     ════════════════════════════════════════════════════════════════════ -->
+
+<section id="preg-area">
+  <style>
+    :has(#preg-area){overflow:visible !important;}
+
+    #preg-area{
+      --i:#0A1F3D; --i2:#14315A; --s2:#6FAED9;
+      --canvas:#F4EEE3; --paper:#FBF8F1; --e:#B86A3E; --e2:#D38A5C;
+      --char:#1B1815; --mute:#6E695F; --rule:#D9D1BE;
+      --disp:'Fraunces','Times New Roman',serif;
+      --sans:'Manrope',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+      display:block;background:var(--canvas);color:var(--char);font-family:var(--sans);
+      -webkit-font-smoothing:antialiased;
+      width:100vw;max-width:100vw;margin-left:calc(50% - 50vw);margin-right:calc(50% - 50vw);
+      overflow-x:clip;
+    }
+    #preg-area *{box-sizing:border-box;}
+    #preg-area .ar-in{max-width:920px;margin:0 auto;padding-left:clamp(1.25rem,5vw,2.5rem);padding-right:clamp(1.25rem,5vw,2.5rem);}
+
+    #preg-area .ar-block{padding:clamp(48px,7vw,84px) 0 0;}
+    #preg-area .ar-block.pb{padding-bottom:clamp(48px,7vw,84px);}
+    #preg-area .ar-eyebrow{display:block;margin:0 0 14px;font-size:12px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--e);}
+    #preg-area .ar-block h2{margin:0 0 16px;font-family:var(--disp);font-size:clamp(28px,4.4vw,48px);line-height:1.04;letter-spacing:-.03em;font-weight:300;color:var(--i);font-variation-settings:"opsz" 96,"SOFT" 50;}
+    #preg-area .ar-block h2 em{font-style:italic;color:var(--e);font-variation-settings:"opsz" 96,"SOFT" 100;}
+    #preg-area .ar-block h3{margin:26px 0 8px;font-family:var(--disp);font-size:clamp(18px,1.9vw,23px);font-weight:500;color:var(--i);font-variation-settings:"opsz" 40,"SOFT" 40;}
+    #preg-area .ar-block p{margin:0 0 16px;font-size:clamp(16px,1.4vw,18px);line-height:1.7;color:var(--char);max-width:62ch;}
+    #preg-area .ar-block p:last-child{margin-bottom:0;}
+    #preg-area .ar-block p strong{color:var(--i);font-weight:600;}
+    #preg-area .ar-block a{color:var(--e);text-decoration:underline;text-underline-offset:2px;}
+    #preg-area .ar-block a:hover{color:var(--i);}
+    #preg-area .ar-rule{border:0;border-top:1px solid var(--rule);max-width:920px;margin:clamp(40px,6vw,64px) auto 0;}
+
+    /* "Why we love it" — founder pull-quote */
+    #preg-area .ar-love{background:var(--paper);border:1px solid var(--rule);border-radius:2px;padding:clamp(26px,3vw,40px);margin-top:24px;}
+    #preg-area .ar-love p{font-family:var(--disp);font-size:clamp(19px,2.2vw,26px);line-height:1.4;color:var(--i);font-weight:300;font-variation-settings:"opsz" 72,"SOFT" 60;max-width:none;}
+    #preg-area .ar-love .ar-by{margin:16px 0 0;font-family:var(--sans);font-size:13px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--mute);}
+
+    /* CTA band */
+    #preg-area .ar-cta{background:linear-gradient(165deg,var(--i) 0%,var(--i2) 100%);text-align:center;padding:clamp(52px,8vw,96px) 0;margin-top:clamp(44px,7vw,72px);}
+    #preg-area .ar-cta h2{margin:0 0 14px;font-family:var(--disp);font-size:clamp(28px,5vw,52px);line-height:1.0;letter-spacing:-.03em;font-weight:300;color:var(--paper) !important;font-variation-settings:"opsz" 96,"SOFT" 50;}
+    #preg-area .ar-cta h2 em{font-style:italic;color:var(--e2) !important;font-variation-settings:"opsz" 96,"SOFT" 100;}
+    #preg-area .ar-cta p{margin:0 auto 30px;max-width:46ch;font-size:clamp(16px,1.4vw,18px);line-height:1.6;color:rgba(251,248,241,.85) !important;}
+    #preg-area .ar-cta-row{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;}
+    #preg-area .ar-btn{display:inline-flex;align-items:center;gap:.55em;padding:1em 1.7em;font-family:var(--sans);font-size:14px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;border:1px solid transparent;border-radius:2px;cursor:pointer;transition:all .2s ease;white-space:nowrap;text-decoration:none;}
+    #preg-area .ar-cta-fill{background:var(--e) !important;color:var(--paper) !important;border-color:var(--e) !important;}
+    #preg-area .ar-cta-fill:hover{background:var(--e2) !important;border-color:var(--e2) !important;transform:translateY(-1px);}
+    #preg-area .ar-btn-ghost{background:transparent !important;color:var(--paper) !important;border-color:rgba(251,248,241,.45) !important;}
+    #preg-area .ar-btn-ghost:hover{background:var(--paper) !important;color:var(--i) !important;border-color:var(--paper) !important;}
+
+    @media (max-width:560px){
+      #preg-area .ar-cta-row{flex-direction:column;}
+      #preg-area .ar-btn{width:100%;justify-content:center;padding:1.1em 1.2em;}
+    }
+  </style>
+
+  <!-- Intro / overview -->
+  <div class="ar-block">
+    <div class="ar-in">
+      <span class="ar-eyebrow">Minneapolis, Minnesota</span>
+      <h2>Living in <em>Minneapolis.</em></h2>
+      <p>Minneapolis is the bigger half of the Twin Cities — a city built around water, parks, and a creative streak that shows up in its food, music, and front porches. The Chain of Lakes (Bde Maka Ska, Lake Harriet, Lake of the Isles, and Cedar Lake) threads right through the southwest side, and the Grand Rounds Scenic Byway connects them by trail to the Mississippi riverfront. The park system is regularly ranked the best in the country, and the city is one of the most bike-friendly in the U.S. — which tells you a lot about how people here actually live.</p>
+      <p>For buyers, Minneapolis offers an unusually wide range: warehouse lofts downtown, character bungalows and historic homes near the lakes, and more attainable single-family neighborhoods across the north and south sides. Whether you're after walkability, a yard, or a short bike commute, there's a version of Minneapolis that fits.</p>
+    </div>
+  </div>
+
+  <hr class="ar-rule">
+
+  <!-- What buyers should know -->
+  <div class="ar-block">
+    <div class="ar-in">
+      <h2>What buyers <em>should know.</em></h2>
+
+      <h3>The neighborhoods</h3>
+      <p>Each pocket of the city has its own feel. <strong>North Loop</strong> and <strong>downtown</strong> are loft-and-restaurant territory for people who want to walk to everything. <strong>Northeast Minneapolis</strong> is the arts-and-breweries district, full of character homes and makers. The southwest lake neighborhoods — <strong>Linden Hills, Fulton, Lynnhurst, Lowry Hill</strong>, and the streets around Lake of the Isles — pair walkable village nodes with some of the city's most beautiful housing stock. South and Northside neighborhoods like <strong>Longfellow, Powderhorn, and Camden</strong> offer diverse communities and more attainable price points.</p>
+
+      <h3>Getting around</h3>
+      <p>The METRO Blue and Green light-rail lines connect the airport, downtown, the U of M, and St. Paul, backed by an extensive bus network. But the real story is the trails: you can get across much of the city on protected bike paths, and a lot of residents do, three seasons a year.</p>
+
+      <h3>Parks, schools &amp; everyday life</h3>
+      <p>Minneapolis Public Schools serves the city alongside a wide mix of charter, magnet, and private options, so school fit is worth a real conversation rather than a single rating. And the parks aren't an afterthought — most homes are within a short walk of green space, a lake, or a trailhead, which shapes daily life here as much as any commute.</p>
+
+      <h3>The housing stock</h3>
+      <p>Minneapolis homes span more than a century of building. You'll find craftsman bungalows and Tudors from the 1910s–1930s across the south side, grand historic homes near the lakes and Lowry Hill, post-war ramblers in the outer rings, and a deep supply of condos and converted lofts downtown and in the North Loop. That range is the city's superpower for buyers: the same map holds a first condo, a forever home, and an investment duplex. It also means condition and updates vary widely from block to block — exactly where having an agent who knows what's behind the walls pays off.</p>
+
+      <h3>Who Minneapolis fits</h3>
+      <p>It's a strong match if you want walkability, water and trails out your door, a real arts-and-food scene, and a short commute. Families weigh school options carefully here; remote workers love the trail access and the price-to-space ratio compared with the coasts. If you'd trade a bigger lot for being able to walk or bike to your morning coffee, Minneapolis was probably built for you.</p>
+    </div>
+  </div>
+
+  <hr class="ar-rule">
+
+  <!-- Why we love it -->
+  <div class="ar-block pb">
+    <div class="ar-in">
+      <h2>Why we <em>love it here.</em></h2>
+      <div class="ar-love">
+        <p>"Minneapolis rewards people who actually live in their neighborhood — the lake loop, the coffee shop you walk to, the block party. Our job is to find the pocket of the city that fits your life, not just your price range."</p>
+        <div class="ar-by">&mdash; The founders, Progressive Real Estate Group</div>
+      </div>
+      <p style="margin-top:24px">Buying or selling in Minneapolis, or just getting your bearings? Browse current <a href="/listing">Minneapolis homes for sale &rarr;</a>, see <a href="/evaluation">what your home is worth &rarr;</a>, or read about our <a href="/no-hate-pledge">inclusive, no-hate approach &rarr;</a> to working with every kind of buyer and seller.</p>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="ar-cta">
+    <div class="ar-in">
+      <h2>Thinking about <em>Minneapolis?</em></h2>
+      <p>Tell us what you're looking for and we'll give you an honest read on the neighborhoods that fit — no pressure, no rush.</p>
+      <div class="ar-cta-row">
+        <a href="/listing" class="ar-btn ar-cta-fill">Browse Minneapolis homes &rarr;</a>
+        <a href="/team" class="ar-btn ar-btn-ghost">Talk to a founder</a>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,277 @@
+<!-- ════════════════════════════════════════════════════════════════════
+     PROGRESSIVE REAL ESTATE GROUP — LGBTQ+ REALTOR, TWIN CITIES (Phase 7)
+     ────────────────────────────────────────────────────────────────────
+     WHERE TO PASTE:  Create a NEW Custom Landing Page in Lofty, URL slug
+                      /lgbtq-realtor-twin-cities, add ONE Custom HTML / Code
+                      Block, and paste this whole file as the page content.
+                      This is the TEMPLATE for the other identity pages
+                      (spanish-speaking, first-time-buyer, relocating, etc.) —
+                      duplicate it, swap the founder/video/copy.
+
+     WHAT IT IS:      A ~1,500-word identity landing page targeting the LGBTQ+
+                      real-estate search cluster the big aggregators ignore.
+                      Travis is the face (his welcome video plays in a lightbox).
+                      Internal links: /no-hate-pledge, /team, /listing, /sell,
+                      /evaluation. Clear CTA.
+
+     SELF-CONTAINED:  All CSS scoped under #preg-lgbtq. Fonts from global
+                      hosted.css. Headshot from the project CDN. One small <script>
+                      for the video lightbox (same pattern as the hero/team).
+
+     ▶ GLOBAL-CSS NOTES (do not "fix"):
+       · No inline SVG (play triangle = CSS borders; lightbox iframe has no src
+         in markup — JS sets it). · Dark bands set light text with !important to
+         beat hosted.css §4 `h1..h6{color:navy!important}`. · CTA buttons use
+         class `lg-cta-fill` (NOT *btn-primary*) and the lightbox close uses
+         !important to escape the global `button{}` restyle.
+
+     SEO (set in Lofty's per-page SEO panel for /lgbtq-realtor-twin-cities):
+       Meta title:        LGBTQ+ Realtor in the Twin Cities | Progressive Real Estate
+       Meta description:  An LGBTQ+-affirming real estate team in Minneapolis & St.
+                          Paul. Buy, sell, or relocate with agents who name you —
+                          and have your back. Meet Travis and the founders.
+       Focus keyword:     lgbtq realtor twin cities
+       Secondary:         gay realtor minneapolis, lgbt friendly real estate agent minnesota
+       URL slug:          /lgbtq-realtor-twin-cities
+     ════════════════════════════════════════════════════════════════════ -->
+
+<section id="preg-lgbtq">
+  <style>
+    :has(#preg-lgbtq){overflow:visible !important;}
+
+    #preg-lgbtq{
+      --i:#0A1F3D; --i2:#14315A; --s2:#6FAED9;
+      --canvas:#F4EEE3; --paper:#FBF8F1; --e:#B86A3E; --e2:#D38A5C;
+      --char:#1B1815; --mute:#6E695F; --rule:#D9D1BE;
+      --disp:'Fraunces','Times New Roman',serif;
+      --sans:'Manrope',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+      display:block;background:var(--canvas);color:var(--char);font-family:var(--sans);
+      -webkit-font-smoothing:antialiased;
+      width:100vw;max-width:100vw;margin-left:calc(50% - 50vw);margin-right:calc(50% - 50vw);
+      overflow-x:clip;
+    }
+    #preg-lgbtq *{box-sizing:border-box;}
+    #preg-lgbtq .lg-in{max-width:920px;margin:0 auto;padding-left:clamp(1.25rem,5vw,2.5rem);padding-right:clamp(1.25rem,5vw,2.5rem);}
+
+    /* ── Hero (navy) ── */
+    #preg-lgbtq .lg-hero{background:linear-gradient(165deg,var(--i) 0%,var(--i2) 100%);text-align:center;padding:clamp(60px,10vw,128px) 0;}
+    #preg-lgbtq .lg-eyebrow{display:block;margin:0 0 18px;font-size:12px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--s2) !important;}
+    #preg-lgbtq h1.lg-h1{margin:0 auto 20px;max-width:17ch;font-family:var(--disp);font-size:clamp(40px,7vw,88px);line-height:.98;letter-spacing:-.035em;font-weight:300;color:var(--paper) !important;font-variation-settings:"opsz" 144,"SOFT" 50;}
+    #preg-lgbtq h1.lg-h1 em{font-style:italic;color:var(--e2) !important;font-variation-settings:"opsz" 144,"SOFT" 100;}
+    #preg-lgbtq .lg-hero-sub{margin:0 auto;max-width:560px;font-size:clamp(17px,1.5vw,20px);line-height:1.6;color:rgba(251,248,241,.85) !important;}
+
+    /* ── Prose blocks ── */
+    #preg-lgbtq .lg-block{padding:clamp(48px,7vw,88px) 0 0;}
+    #preg-lgbtq .lg-block.pb{padding-bottom:clamp(48px,7vw,88px);}
+    #preg-lgbtq .lg-block h2{margin:0 0 18px;font-family:var(--disp);font-size:clamp(28px,4.4vw,48px);line-height:1.04;letter-spacing:-.03em;font-weight:300;color:var(--i);font-variation-settings:"opsz" 96,"SOFT" 50;}
+    #preg-lgbtq .lg-block h2 em{font-style:italic;color:var(--e);font-variation-settings:"opsz" 96,"SOFT" 100;}
+    #preg-lgbtq .lg-block h3{margin:28px 0 10px;font-family:var(--disp);font-size:clamp(19px,2vw,24px);font-weight:500;color:var(--i);font-variation-settings:"opsz" 40,"SOFT" 40;}
+    #preg-lgbtq .lg-block p{margin:0 0 16px;font-size:clamp(16px,1.4vw,18px);line-height:1.7;color:var(--char);max-width:62ch;}
+    #preg-lgbtq .lg-block p:last-child{margin-bottom:0;}
+    #preg-lgbtq .lg-block p strong{color:var(--i);font-weight:600;}
+    #preg-lgbtq .lg-block a{color:var(--e);text-decoration:underline;text-underline-offset:2px;}
+    #preg-lgbtq .lg-block a:hover{color:var(--i);}
+    #preg-lgbtq .lg-rule{border:0;border-top:1px solid var(--rule);max-width:920px;margin:clamp(48px,7vw,80px) auto 0;}
+
+    /* ── Travis video feature ── */
+    #preg-lgbtq .lg-feature{display:grid;grid-template-columns:.85fr 1fr;gap:clamp(24px,4vw,56px);align-items:center;margin-top:28px;}
+    #preg-lgbtq .lg-photo{position:relative;aspect-ratio:1/1.1;overflow:hidden;background:var(--i);border-radius:2px;}
+    #preg-lgbtq .lg-photo img{width:100%;height:100%;object-fit:cover;object-position:center top;filter:saturate(.95);transition:transform .6s ease,filter .3s ease;display:block;}
+    #preg-lgbtq .lg-photo.has-video{cursor:pointer;}
+    #preg-lgbtq .lg-photo.has-video:hover img{transform:scale(1.04);filter:saturate(1.08);}
+    #preg-lgbtq .lg-play{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:62px;height:62px;border-radius:50%;background:rgba(251,248,241,.94);display:none;align-items:center;justify-content:center;transition:all .2s;box-shadow:0 8px 24px rgba(10,31,61,.4);}
+    #preg-lgbtq .lg-photo.has-video .lg-play{display:flex;}
+    #preg-lgbtq .lg-photo.has-video:hover .lg-play{background:var(--e);transform:translate(-50%,-50%) scale(1.06);}
+    #preg-lgbtq .lg-play::after{content:'';width:0;height:0;margin-left:5px;border-style:solid;border-width:10px 0 10px 17px;border-color:transparent transparent transparent var(--i);transition:border-color .2s;}
+    #preg-lgbtq .lg-photo.has-video:hover .lg-play::after{border-color:transparent transparent transparent var(--paper);}
+    #preg-lgbtq .lg-feature .lg-fname{margin:0 0 4px;font-family:var(--disp);font-size:clamp(24px,3vw,34px);font-weight:400;color:var(--i);font-variation-settings:"opsz" 60,"SOFT" 40;}
+    #preg-lgbtq .lg-feature .lg-frole{margin:0 0 16px;font-size:13px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--mute);}
+
+    /* ── "What it means" list ── */
+    #preg-lgbtq ul.lg-list{list-style:none;padding:0;margin:24px 0 0;border-top:1px solid var(--rule);}
+    #preg-lgbtq ul.lg-list li{padding:18px 0;border-bottom:1px solid var(--rule);display:flex;gap:14px;}
+    #preg-lgbtq ul.lg-list li::before{content:'';flex:0 0 auto;width:8px;height:8px;margin-top:9px;border-radius:50%;background:var(--e);}
+    #preg-lgbtq ul.lg-list li b{color:var(--i);font-weight:600;}
+    #preg-lgbtq ul.lg-list li span{font-size:clamp(15px,1.3vw,17px);line-height:1.6;color:var(--char);}
+
+    /* ── CTA band (navy) ── */
+    #preg-lgbtq .lg-cta{background:linear-gradient(165deg,var(--i) 0%,var(--i2) 100%);text-align:center;padding:clamp(56px,8vw,104px) 0;margin-top:clamp(48px,7vw,80px);}
+    #preg-lgbtq .lg-cta h2{margin:0 0 16px;font-family:var(--disp);font-size:clamp(30px,5vw,56px);line-height:1.0;letter-spacing:-.03em;font-weight:300;color:var(--paper) !important;font-variation-settings:"opsz" 96,"SOFT" 50;}
+    #preg-lgbtq .lg-cta h2 em{font-style:italic;color:var(--e2) !important;font-variation-settings:"opsz" 96,"SOFT" 100;}
+    #preg-lgbtq .lg-cta p{margin:0 auto 32px;max-width:48ch;font-size:clamp(16px,1.4vw,18px);line-height:1.6;color:rgba(251,248,241,.85) !important;}
+    #preg-lgbtq .lg-cta-row{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;}
+    #preg-lgbtq .lg-btn{display:inline-flex;align-items:center;gap:.55em;padding:1em 1.7em;font-family:var(--sans);font-size:14px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;border:1px solid transparent;border-radius:2px;cursor:pointer;transition:all .2s ease;white-space:nowrap;text-decoration:none;}
+    #preg-lgbtq .lg-cta-fill{background:var(--e) !important;color:var(--paper) !important;border-color:var(--e) !important;}
+    #preg-lgbtq .lg-cta-fill:hover{background:var(--e2) !important;border-color:var(--e2) !important;transform:translateY(-1px);}
+    #preg-lgbtq .lg-btn-ghost{background:transparent !important;color:var(--paper) !important;border-color:rgba(251,248,241,.45) !important;}
+    #preg-lgbtq .lg-btn-ghost:hover{background:var(--paper) !important;color:var(--i) !important;border-color:var(--paper) !important;}
+
+    /* ── Lightbox ── */
+    #preg-lgbtq .lg-modal{position:fixed;inset:0;z-index:9999;display:none;align-items:center;justify-content:center;padding:24px;background:rgba(10,31,61,.88);backdrop-filter:blur(4px);}
+    #preg-lgbtq .lg-modal.open{display:flex;}
+    #preg-lgbtq .lg-modal-inner{position:relative;width:min(960px,100%);aspect-ratio:16/9;background:#000;border-radius:2px;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.5);}
+    #preg-lgbtq .lg-modal-inner iframe{width:100%;height:100%;border:0;display:block;}
+    #preg-lgbtq button.lg-close{position:absolute !important;top:-44px !important;right:0 !important;width:38px !important;height:38px !important;padding:0 !important;border:0 !important;background:transparent !important;cursor:pointer;color:var(--paper) !important;font-size:30px !important;line-height:1 !important;text-transform:none !important;letter-spacing:0 !important;border-radius:0 !important;}
+    #preg-lgbtq button.lg-close:hover{color:var(--e) !important;background:transparent !important;}
+
+    /* ── Mobile ── */
+    @media (max-width:760px){
+      #preg-lgbtq .lg-feature{grid-template-columns:1fr;gap:22px;}
+      #preg-lgbtq .lg-photo{aspect-ratio:1/1;max-height:420px;}
+      #preg-lgbtq h1.lg-h1{font-size:clamp(38px,11vw,56px);}
+      #preg-lgbtq .lg-cta-row{flex-direction:column;}
+      #preg-lgbtq .lg-btn{width:100%;justify-content:center;padding:1.1em 1.2em;}
+    }
+  </style>
+
+  <!-- Hero -->
+  <div class="lg-hero">
+    <div class="lg-in">
+      <span class="lg-eyebrow">LGBTQ+ Real Estate &middot; Twin Cities</span>
+      <h1 class="lg-h1">An agent who sees you — <em>and says so.</em></h1>
+      <p class="lg-hero-sub">Buying, selling, or relocating to Minneapolis and St. Paul? Work with an LGBTQ+-affirming team that names you out loud — and has your back at every step.</p>
+    </div>
+  </div>
+
+  <!-- Intro -->
+  <div class="lg-block">
+    <div class="lg-in">
+      <p>If you've ever scrolled past a dozen brokerage sites looking for an <strong>LGBTQ+ realtor in the Twin Cities</strong> and found nothing but stock photos and vague "everyone welcome" lines, you're not imagining it. Most real estate sites won't name you. We will.</p>
+      <p>Progressive Real Estate Group is a four-founder team built around one promise: inclusive, equitable homeownership for everyone. For LGBTQ+ buyers and sellers, that means a <strong>gay-friendly real estate agent in Minneapolis</strong> who doesn't make you explain yourself, doesn't make assumptions about your household, and treats your move with the care it deserves — whether you're a couple buying your first place, a family upsizing, or someone relocating to Minnesota for a fresh start.</p>
+      <p>And if you already own and you're ready to sell, the same standard applies. You get an advocate who markets your home to every qualified buyer, prices it on the merits, negotiates hard on your behalf, and never treats your household as a footnote. No code-switching, no second-guessing how a question will land — just a straightforward partner through one of the biggest decisions you'll make.</p>
+    </div>
+  </div>
+
+  <!-- Travis feature -->
+  <div class="lg-block">
+    <div class="lg-in">
+      <h2>Meet Travis — <em>he gets it.</em></h2>
+      <div class="lg-feature">
+        <div class="lg-photo" data-founder="travis">
+          <img src="https://cdn.jsdelivr.net/gh/baehlee/progressive-styles@main/reference/assets/headshot-travis.jpg" alt="Travis Callstrom, LGBTQ+-affirming Co-Founder of Progressive Real Estate Group" loading="lazy">
+          <div class="lg-play" aria-hidden="true"></div>
+        </div>
+        <div class="lg-ftext">
+          <div class="lg-fname">Travis Callstrom</div>
+          <div class="lg-frole">Co-Founder &middot; 27 years</div>
+          <p>Travis has spent 27 years helping people through some of life's biggest moves. He shares life with his husband, Bryan, and their two kids — so when he says he understands what it means to want a home where your family belongs, he's speaking from his own front porch.</p>
+          <p>Press play to hear why he and his co-founders built an <strong>LGBT-friendly real estate</strong> brokerage in Minnesota — on purpose.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="lg-rule">
+
+  <!-- What affirming means -->
+  <div class="lg-block">
+    <div class="lg-in">
+      <h2>What "affirming" <em>actually means</em> with us</h2>
+      <p>It's easy to put a rainbow on a website. Here's what an affirming agent looks like in practice:</p>
+      <ul class="lg-list">
+        <li><span><b>No assumptions.</b> We don't guess who's on the loan, whose name goes on title, or what your family looks like. We ask, we listen, and we plan around your actual life.</span></li>
+        <li><span><b>No steering.</b> Fair housing isn't a suggestion. We'll never quietly push you toward — or away from — a neighborhood based on who you are. You see every option.</span></li>
+        <li><span><b>Title &amp; financing done right.</b> For unmarried partners buying together, how you hold title matters. We'll connect you with lenders and closers who get it and structure things to protect you both.</span></li>
+        <li><span><b>Local knowledge that helps.</b> We know which Twin Cities neighborhoods, schools, and communities our LGBTQ+ clients tend to love — and we'll share it honestly when you ask.</span></li>
+        <li><span><b>Discretion and respect.</b> Your business is yours. We move at your pace and keep your information where it belongs.</span></li>
+      </ul>
+    </div>
+  </div>
+
+  <hr class="lg-rule">
+
+  <!-- Relocating to the Twin Cities -->
+  <div class="lg-block">
+    <div class="lg-in">
+      <h2>Relocating to the Twin Cities? <em>You picked well.</em></h2>
+      <p>If you're moving to Minneapolis or St. Paul from out of state, here's some good news: Minnesota has been ahead of the curve for a long time. The state's Human Rights Act has protected against discrimination based on sexual orientation since <strong>1993</strong> — among the first in the nation — and Minnesota legalized marriage equality in <strong>2013</strong>, before the Supreme Court did.</p>
+      <p>The Twin Cities back that up culturally. Minneapolis consistently earns a perfect score on the Human Rights Campaign's Municipal Equality Index, and <strong>Twin Cities Pride</strong> at Loring Park is one of the largest Pride celebrations in the country. Loring Park has long been the historic heart of the local LGBTQ+ community, but you'll find welcoming, vibrant neighborhoods all over the metro — from Northeast Minneapolis to Uptown to the leafy streets of St. Paul.</p>
+      <p>Relocating is a lot to manage from a distance. We do this all the time: virtual tours, neighborhood rundowns, and an honest read on where you'll feel at home — so you can land somewhere that already feels like yours. (Coming from out of state? Start with our <a href="/team">founders</a> and tell us what matters most.)</p>
+    </div>
+  </div>
+
+  <hr class="lg-rule">
+
+  <!-- How we help -->
+  <div class="lg-block pb">
+    <div class="lg-in">
+      <h2>However you're moving, <em>we've got it.</em></h2>
+      <h3>Buying</h3>
+      <p>Know the market before you make an offer. We'll help you find the right home and negotiate hard to get it. <a href="/listing">Browse Twin Cities homes &rarr;</a></p>
+      <h3>Selling</h3>
+      <p>Strategic pricing, real marketing, and an advocate who protects your bottom line. <a href="/evaluation">See what your home is worth &rarr;</a> or read <a href="/sell">how we sell &rarr;</a></p>
+      <h3>The pledge behind all of it</h3>
+      <p>This page isn't a marketing campaign — it's who we are. Read <a href="/no-hate-pledge">The No Hate Pledge &rarr;</a> to see the commitment every one of our founders stands behind.</p>
+    </div>
+  </div>
+
+  <hr class="lg-rule">
+
+  <!-- FAQ -->
+  <div class="lg-block pb">
+    <div class="lg-in">
+      <h2>Questions we <em>hear a lot</em></h2>
+
+      <h3>Do I really need an LGBTQ+ realtor?</h3>
+      <p>You don't <em>need</em> one — but plenty of our clients say it's a relief to work with someone they don't have to come out to, explain their family to, or quietly size up first. Buying or selling a home is high-stakes and personal, and your agent is your advocate through all of it. Working with a team that already gets it means you spend your energy on the home, not on managing the relationship.</p>
+
+      <h3>Are the Twin Cities a good place for LGBTQ+ families?</h3>
+      <p>Yes — and not just on paper. Minnesota's legal protections are among the oldest in the country, Minneapolis scores a perfect 100 on the Human Rights Campaign's Municipal Equality Index, and there are welcoming, family-friendly neighborhoods across the metro with strong schools and real community. When you're weighing specific areas, we'll give you an honest read on the trade-offs.</p>
+
+      <h3>Can you help same-sex or unmarried partners with financing and title?</h3>
+      <p>Absolutely. When two people buy together without being married, how you hold title — joint tenancy versus tenants in common — and how the loan is structured can have real consequences later. We'll connect you with lenders and title professionals who handle this well, and make sure you both understand your options before you sign.</p>
+
+      <h3>Do you work with transgender and nonbinary clients?</h3>
+      <p>Of course. We use the name and pronouns you give us, full stop, and we handle any documentation or paperwork questions with care and zero drama.</p>
+
+      <h3>I'm relocating from out of state — can we start before I arrive?</h3>
+      <p>Yes. Many of our relocation clients never set foot in Minnesota until closing week. We run video tours, send neighborhood breakdowns, and give you a candid read on where you'll feel at home — so your first day in the Twin Cities already feels like yours.</p>
+
+      <h3>Which Twin Cities neighborhoods do LGBTQ+ buyers tend to love?</h3>
+      <p>It depends on what you're after. Loring Park and downtown Minneapolis put you in the historic center of the community and steps from Pride. Northeast Minneapolis draws the arts-and-breweries crowd; Uptown and the lakes neighborhoods balance walkability with green space; and St. Paul's Mac-Groveland, Highland Park, and Como areas are favorites for families who want character homes and good schools. Out in the suburbs, places like St. Louis Park, Richfield, and Maplewood are welcoming and more affordable. We'll match the search to your budget, commute, and the life you actually want — not a stereotype.</p>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="lg-cta">
+    <div class="lg-in">
+      <h2>Let's find your <em>place to belong.</em></h2>
+      <p>Tell us where you're headed and what matters most. You'll get a straight answer and a team that's genuinely in your corner.</p>
+      <div class="lg-cta-row">
+        <a href="/team" class="lg-btn lg-cta-fill">Talk to a founder &rarr;</a>
+        <a href="/listing" class="lg-btn lg-btn-ghost">Explore homes</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Video lightbox -->
+  <div class="lg-modal" id="lg-modal" role="dialog" aria-modal="true" aria-label="Travis's welcome video">
+    <div class="lg-modal-inner">
+      <button class="lg-close" id="lg-close" type="button" aria-label="Close video">&times;</button>
+      <iframe id="lg-frame" title="Travis Callstrom welcome video" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+    </div>
+  </div>
+
+  <script>
+  (function () {
+    var VIDEOS = { travis: "https://www.youtube-nocookie.com/embed/Lv_qZSl3sYA" };
+    var root = document.getElementById('preg-lgbtq');
+    if (!root) return;
+    var modal = root.querySelector('#lg-modal');
+    var frame = root.querySelector('#lg-frame');
+    var sep = function (u) { return u.indexOf('?') === -1 ? '?' : '&'; };
+    function open(url){ frame.src = url + sep(url) + 'autoplay=1'; modal.classList.add('open'); document.body.style.overflow='hidden'; }
+    function close(){ modal.classList.remove('open'); frame.removeAttribute('src'); document.body.style.overflow=''; }
+    root.querySelectorAll('.lg-photo').forEach(function (ph) {
+      var url = VIDEOS[ph.getAttribute('data-founder')];
+      if (!url) return;
+      ph.classList.add('has-video'); ph.setAttribute('role','button'); ph.setAttribute('tabindex','0');
+      ph.addEventListener('click', function(){ open(url); });
+      ph.addEventListener('keydown', function(e){ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); open(url); } });
+    });
+    root.querySelector('#lg-close').addEventListener('click', close);
+    modal.addEventListener('click', function(e){ if(e.target===modal) close(); });
+    document.addEventListener('keydown', function(e){ if(e.key==='Escape'&&modal.classList.contains('open')) close(); });
+  })();
+  </script>
+</section>

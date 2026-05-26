@@ -220,8 +220,12 @@ header [class*="sub-menu"] a:hover, header ul ul a:hover, header ol a:hover,
 
 /* ═══ 7. Sections & spacing ═══ */
 
-/* Add breathing room between major sections */
-section, [class*="section"], [class*="block"]:not([class*="block-inner"]) {
+/* Add breathing room between major sections. NB: the [class*="block"] matcher
+   must EXCLUDE Bootstrap-style display utilities (d-block / d-inline-block) —
+   Lofty's hamburger lines are <span class="menu-bar … d-block">, and padding
+   here inflated each into a tall black bar (the broken mobile nav). */
+section, [class*="section"],
+[class*="block"]:not([class*="block-inner"]):not([class*="d-block"]):not([class*="d-inline-block"]) {
   padding-top: clamp(48px, 6vw, 96px);
   padding-bottom: clamp(48px, 6vw, 96px);
 }
@@ -544,6 +548,118 @@ body, p, li, td, h1, h2, h3, h4, h5, h6 {
 .md-blog .blog-card-desc{ color:#2F3954 !important; font-size:17px !important; line-height:1.6 !important; }
 .md-blog .blog-jump-btn{ background:var(--preg-ink,#0A1F3D) !important; color:var(--preg-paper,#FBF8F1) !important; }
 .md-blog .blog-jump-btn:hover{ background:var(--preg-ember,#B86A3E) !important; }
+
+
+/* ═══ 22. Mobile navigation — hamburger + cream slide-in drawer ═══
+   Lofty's header (.md-header.layout6) already ships a complete mobile drawer:
+   a hamburger (.menu-icon, three .menu-bar lines, right side) toggles
+   .nav-container.show — a full-width panel that slides in from the right with
+   the nav stacked vertically (50px rows). Two problems we fix here:
+     1) Lofty's default drawer bg is #191919 (dark) — we flip it to cream with
+        our normal navy text.
+     2) Lofty reveals the hamburger via JS that adds a .mobile class AND strips
+        the SSR inline `display:none` on .menu-icon. That JS doesn't always fire
+        (some pages then show the desktop nav, which overflows). So we key every
+        rule off the @media breakpoint and .layout6 — NOT off .mobile — and use
+        !important so the drawer works whether or not Lofty's JS ran. We also
+        replicate the essential drawer layout so the off-canvas/vertical-list
+        behaviour is guaranteed even on the pages where .mobile is missing.
+   Matches Lofty's own breakpoint (max-width:800px). */
+
+@media (max-width: 800px) {
+
+  /* --- Hamburger: always visible on mobile, navy lines on the cream header.
+     The SSR inline `display:none` only loses to !important. --- */
+  .md-header.layout6 .menu-icon { display: flex !important; }
+  .md-header.layout6 .menu-icon .menu-bar,
+  .md-header.layout6.transparent .menu-icon .menu-bar {
+    background-color: var(--preg-ink) !important;
+  }
+
+  /* --- The drawer itself: take over the off-canvas slide-in regardless of
+     Lofty's .mobile class, and paint it cream instead of #191919. --- */
+  .md-header.layout6 .nav-container {
+    position: fixed !important;
+    right: -100% !important;
+    top: var(--header-top, 62px) !important;
+    bottom: 0 !important;
+    height: calc(100% - var(--header-top, 62px)) !important;
+    width: 100% !important;
+    flex: none !important;
+    flex-direction: column !important;
+    justify-content: space-between !important;
+    overflow-y: auto !important;
+    z-index: 500 !important;
+    background: var(--preg-canvas) !important;
+    background-image: none !important;
+    transition: right .3s ease !important;
+  }
+  .md-header.layout6 .nav-container.show { right: 0 !important; }
+
+  /* --- Nav list: vertical 50px rows, navy text, warm rule dividers. --- */
+  .md-header.layout6 .nav-container .head-menu {
+    display: block !important;
+    width: 100% !important;
+    flex: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+  .md-header.layout6 .nav-container .head-menu > .menu-item {
+    display: block !important;
+    width: 100% !important;
+    height: auto !important;
+    line-height: 50px !important;
+    margin: 0 !important;
+    top: 0 !important;
+    border-top: 1px solid var(--preg-rule) !important;
+  }
+  .md-header.layout6 .nav-container .head-menu > .menu-item:first-child {
+    border-top: none !important;
+  }
+  .md-header.layout6 .nav-container .head-menu .menu-item > a {
+    display: block !important;
+    color: var(--preg-char) !important;
+    background: transparent !important;
+  }
+  .md-header.layout6 .nav-container .head-menu .menu-item > a:hover {
+    color: var(--preg-ember) !important;
+  }
+
+  /* --- Expandable sub-menus (e.g. About Us → …): stay inline + cream, no dark
+     panel, indented under their parent. --- */
+  .md-header.layout6 .nav-container .head-menu .wrapper {
+    position: static !important;
+    background: transparent !important;
+    background-image: none !important;
+    box-shadow: none !important;
+    border-top: 1px solid var(--preg-rule) !important;
+  }
+  .md-header.layout6 .nav-container .head-menu .wrapper a {
+    color: var(--preg-char) !important;
+  }
+  /* Caret indicators that point to expandable items */
+  .md-header.layout6 .nav-container .head-menu .icon-arrow_08_down {
+    color: var(--preg-mute) !important;
+  }
+
+  /* --- Bottom Sign-in / Register bar: cream, navy outline buttons. --- */
+  .md-header.layout6 .nav-container .head-account {
+    background: var(--preg-paper) !important;
+    border-top: 1px solid var(--preg-rule) !important;
+  }
+  .md-header.layout6 .nav-container .head-account > .menu-item {
+    border: 1px solid var(--preg-ink) !important;
+    color: var(--preg-ink) !important;
+  }
+  .md-header.layout6 .nav-container .head-account > .menu-item a {
+    color: var(--preg-ink) !important;
+  }
+
+  /* --- The behind-drawer scrim: subtle navy wash instead of plain black. --- */
+  .md-header.layout6 .nav-mask.active {
+    background: rgba(10, 31, 61, .35) !important;
+  }
+}
 
 
 /* ═══ END — Progressive Real Estate Group global stylesheet ═══ */

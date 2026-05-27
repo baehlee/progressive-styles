@@ -210,6 +210,28 @@ header [class*="sub-menu"] a:hover, header ul ul a:hover, header ol a:hover,
 }
 
 
+/* ═══ 6c. Kill Lofty's dark header scrim (the FOUC / flash source) ═══
+   The header's dark look isn't its own background — it's a `.header-bg` overlay
+   child. In the `.transparent` header state (Lofty's hero-overlay mode, briefly
+   active on load) Lofty paints that overlay with a dark gradient via !important:
+     .md-header.layout6.transparent .header-container .header-bg{
+       background:linear-gradient(...rgba(25,25,25,.4)...) !important }
+   §6's `header{background}` never touched `.header-bg`, so the scrim showed
+   until this loaded. Override it (and the white hamburger bars Lofty forces in
+   the same state) with higher specificity + !important, in every state. The
+   anti-flash inline critical CSS (styles/critical-inline.css) mirrors this so
+   it's already correct on the first paint, before this CDN file arrives. */
+html body .md-header.layout6 .header-container .header-bg,
+html body .md-header.layout6.transparent .header-container .header-bg {
+  background: var(--preg-canvas) !important;
+  background-image: none !important;
+}
+html body .md-header.layout6 .menu-icon .menu-bar,
+html body .md-header.layout6.transparent .header-container .menu-icon .menu-bar {
+  background-color: var(--preg-ink) !important;
+}
+
+
 /* ═══ 7. Sections & spacing ═══ */
 
 /* Add breathing room between major sections. NB: the [class*="block"] matcher

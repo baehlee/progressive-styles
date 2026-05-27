@@ -10,21 +10,31 @@
    DARK header before our cream styles arrive (the "flicker").
 
    Custom STYLES, by contrast, are served inside Lofty's render-blocking
-   <head> stylesheet (styleAndTheme.css), so anything here applies on the very
-   first frame. We put ONLY the above-the-fold essentials (page background +
-   header) here so there's nothing left to flash. Everything else still comes
-   from hosted.css. Values are literal hex (no CSS vars) because this loads
-   before hosted.css defines the --preg- tokens.
+   <head> (an inline <style> in styleAndTheme), so anything here applies on the
+   very first frame. We put ONLY the above-the-fold essentials (page bg +
+   header) here so there's nothing left to flash. Values are literal hex (no
+   CSS vars) because this loads before hosted.css defines the --preg- tokens.
 
-   Keep this tiny. It is well under Lofty's 5,000-character Custom Styles cap,
-   and it must mirror the header colors in hosted.css §6 / §22 exactly so the
-   handoff from this file to hosted.css is invisible.
+   THE REAL FLASH SOURCE (found 2026-05-27)
+   The dark header is NOT the header's own background — it's a `.header-bg`
+   overlay child. In Lofty's `.transparent` header state (its hero-overlay
+   mode, briefly active on load) Lofty paints that overlay with a dark
+   gradient via an `!important` rule:
+     .md-header.layout6.transparent .header-container .header-bg{
+       background:linear-gradient(...rgba(25,25,25,.4)...) !important }
+   Our plain `header{background:cream}` never touched `.header-bg`, so the
+   dark scrim showed until hosted.css loaded. The rules below override that
+   overlay (and the white hamburger bars Lofty forces in the same state) with
+   HIGHER specificity + !important so they win on the first frame, in every
+   header state. Mirror any change here in hosted.css §6/§6c/§22.
+
+   Keep this tiny — well under Lofty's 5,000-character Custom Styles cap.
    ════════════════════════════════════════════════════════════════════ */
 
 /* Page background — cream from frame one (prevents a white/dark page flash) */
 html, body { background-color: #F4EEE3 !important; }
 
-/* Header — cream bar, warm rule, navy text (mirrors hosted.css §6) */
+/* Header bar — cream, warm rule, navy text (mirrors hosted.css §6) */
 header,
 .md-header,
 .md-header.layout6 {
@@ -35,5 +45,18 @@ header,
 header a, .md-header a,
 .md-header span, .md-header div { color: #1B1815 !important; }
 
-/* Mobile hamburger lines — navy on the cream header (mirrors hosted.css §22) */
-.md-header .menu-icon .menu-bar { background-color: #0A1F3D !important; }
+/* Kill the dark `.header-bg` gradient scrim in BOTH header states. High
+   specificity (html body … 5 classes) so it beats Lofty's .transparent
+   !important gradient — this is the actual fix for the black-header flash. */
+html body .md-header.layout6 .header-container .header-bg,
+html body .md-header.layout6.transparent .header-container .header-bg {
+  background: #F4EEE3 !important;
+  background-image: none !important;
+}
+
+/* Hamburger lines navy on the cream header — including the .transparent state,
+   where Lofty otherwise forces them white (invisible on cream). */
+html body .md-header.layout6 .menu-icon .menu-bar,
+html body .md-header.layout6.transparent .header-container .menu-icon .menu-bar {
+  background-color: #0A1F3D !important;
+}

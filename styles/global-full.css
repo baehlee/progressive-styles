@@ -682,4 +682,74 @@ body, p, li, td, h1, h2, h3, h4, h5, h6 {
 .md-detail-info .address-container { letter-spacing: normal !important; }
 
 
+/* ═══ 24. Blog list page (.md-blog-list) — editorial card remake ═══
+   The stock /blog list rendered each post as a full-bleed banner of whatever
+   the featured image is — and since the posts use the round Progressive logo
+   as their image, every card was a giant cropped logo. Remade as a text-led
+   editorial card: a fixed square thumbnail (the logo reads as an intentional
+   brand mark) pinned top-left, with a Fraunces navy title, a 2-line-clamped
+   excerpt (which also hides the raw-markdown the post bodies currently leak),
+   muted meta + terracotta "View more", plus a styled search/Categories/Recent
+   sidebar. Two columns on desktop, single column on mobile. The thumbnail is
+   absolutely positioned so it can't inflate the text rows. Verified via local
+   cascade test (real md-blog-list CSS + hosted.css) at 1280px and 390px.
+   NB: content fixes still needed by the team — a real landscape photo per post
+   and reformatting bodies in Lofty's editor (not pasted markdown). */
+
+/* two-column shell */
+.md-blog-list .mg-container.info-container{ gap:44px !important; align-items:flex-start !important; }
+.md-blog-list .left{ flex:1 1 auto !important; }
+.md-blog-list .right{ flex:0 0 300px !important; }
+
+/* post list -> stacked editorial cards (thumb absolutely placed so it can't
+   inflate the text rows; text flows naturally beside it) */
+.md-blog-list .blog-list{ display:flex !important; flex-direction:column !important; gap:20px !important; list-style:none !important; margin:0 !important; padding:0 !important; }
+.md-blog-list .blog-list .item{
+  position:relative !important; display:block !important; box-sizing:border-box !important;
+  background:var(--preg-paper) !important;
+  border:1px solid var(--preg-rule) !important;
+  border-radius:4px !important;
+  padding:18px 20px 18px 190px !important;
+  min-height:186px !important; margin:0 !important;
+  transition:border-color .2s ease, transform .2s ease, box-shadow .2s ease !important;
+}
+.md-blog-list .blog-list .item:hover{ border-color:var(--preg-ink) !important; transform:translateY(-2px) !important; box-shadow:0 10px 28px rgba(10,31,61,.10) !important; }
+
+/* square thumb (the <a> wraps the image), pinned top-left */
+.md-blog-list .blog-list .item > a{ position:absolute !important; left:18px !important; top:18px !important; width:150px !important; height:150px !important; display:block !important; }
+.md-blog-list .img-box.blog-img{ width:150px !important; height:150px !important; border-radius:3px !important; overflow:hidden !important; margin:0 !important; }
+.md-blog-list .img-box .img-content{ width:100% !important; height:100% !important; }
+.md-blog-list .img-content img{ width:100% !important; height:100% !important; object-fit:cover !important; object-position:center !important; display:block !important; }
+
+/* title / excerpt / meta */
+.md-blog-list .blog-title{ font-family:var(--preg-display) !important; color:var(--preg-ink) !important; font-size:clamp(18px,2.1vw,23px) !important; line-height:1.18 !important; letter-spacing:-0.01em !important; font-weight:400 !important; margin:0 0 8px !important; }
+.md-blog-list .content{ color:var(--preg-mute) !important; font-size:15px !important; line-height:1.55 !important; margin:0 0 14px !important; display:-webkit-box !important; -webkit-line-clamp:2 !important; -webkit-box-orient:vertical !important; overflow:hidden !important; }
+.md-blog-list .info{ display:flex !important; align-items:center !important; justify-content:space-between !important; gap:12px !important; margin:0 !important; }
+.md-blog-list .info .time{ font-size:12px !important; letter-spacing:.05em !important; text-transform:uppercase !important; color:var(--preg-mute) !important; }
+.md-blog-list .info .more{ color:var(--preg-ember) !important; font-weight:600 !important; font-size:12px !important; text-transform:uppercase !important; letter-spacing:.05em !important; white-space:nowrap !important; }
+.md-blog-list .info .more:hover{ color:var(--preg-ink) !important; }
+
+/* sidebar */
+.md-blog-list .search-input-form-box{ display:flex !important; align-items:center !important; border:1px solid var(--preg-rule) !important; border-radius:3px !important; overflow:hidden !important; background:var(--preg-paper) !important; }
+.md-blog-list .search-input{ border:none !important; background:transparent !important; flex:1 !important; padding:11px 14px !important; }
+.md-blog-list .search-input-form-box button.icon-search{ background:var(--preg-ink) !important; color:var(--preg-paper) !important; border:none !important; padding:0 16px !important; align-self:stretch !important; cursor:pointer !important; }
+.md-blog-list .module-wrapper{ border-top:1px solid var(--preg-rule) !important; margin-top:26px !important; padding-top:18px !important; }
+.md-blog-list .module-wrapper-title{ font-family:var(--preg-display) !important; color:var(--preg-ink) !important; font-size:19px !important; letter-spacing:-0.01em !important; margin:0 0 12px !important; }
+.md-blog-list .blog-category{ list-style:none !important; margin:0 !important; padding:0 !important; }
+.md-blog-list .blog-category .item a{ display:flex !important; justify-content:space-between !important; padding:6px 0 !important; color:var(--preg-char) !important; }
+.md-blog-list .blog-category .item a:hover .name{ color:var(--preg-ember) !important; }
+.md-blog-list .blog-category .name.active{ color:var(--preg-ember) !important; font-weight:600 !important; }
+.md-blog-list .blog-category .num{ color:var(--preg-mute) !important; }
+
+/* mobile: smaller thumb, stacked meta, sidebar below */
+@media (max-width:600px){
+  .md-blog-list .mg-container.info-container{ gap:28px !important; flex-direction:column !important; }
+  .md-blog-list .right{ flex:1 1 auto !important; width:100% !important; }
+  .md-blog-list .blog-list .item{ padding:14px 14px 14px 132px !important; min-height:132px !important; }
+  .md-blog-list .blog-list .item > a, .md-blog-list .img-box.blog-img{ width:104px !important; height:104px !important; }
+  .md-blog-list .blog-list .item > a{ left:14px !important; top:14px !important; }
+  .md-blog-list .info{ flex-direction:column !important; align-items:flex-start !important; gap:6px !important; }
+}
+
+
 /* ═══ END — Progressive Real Estate Group global stylesheet ═══ */

@@ -662,4 +662,32 @@ body, p, li, td, h1, h2, h3, h4, h5, h6 {
 }
 
 
+/* ═══ 23. Listing-detail page (.md-detail-info) — Key Details legibility ═══
+   Lofty names the Key Details data LABELS `.info-title`. Our §4 display rule
+   matches [class*="title"], so every label was rendered in Fraunces serif with
+   -0.02em tracking — which crammed "Property Type" into "PropertyType" etc.
+   (the mashed-together text). The .info-data VALUES (Manrope) were already fine.
+   Here we pull the labels back to the sans face with normal spacing, mute them
+   for label/value hierarchy, relax the over-tight address tracking Lofty ships
+   (-1.92px on .street), and add a little vertical rhythm to each row.
+   Verified live (inject + screenshot) at 1280px and 390px. */
+
+.md-detail-info .info-title {
+  font-family: var(--preg-sans) !important;
+  letter-spacing: normal !important;
+  font-weight: 600 !important;
+  color: var(--preg-mute) !important;
+  line-height: 1.5 !important;
+}
+.md-detail-info .info-data {
+  color: var(--preg-char) !important;
+  line-height: 1.5 !important;
+}
+/* Row rhythm — a touch more space between each fact */
+.md-detail-info .info-content { padding-bottom: 18px !important; }
+/* Address: Lofty crushes the city/state line to -1.92px tracking — relax it */
+.md-detail-info .street,
+.md-detail-info .address-container { letter-spacing: normal !important; }
+
+
 /* ═══ END — Progressive Real Estate Group global stylesheet ═══ */

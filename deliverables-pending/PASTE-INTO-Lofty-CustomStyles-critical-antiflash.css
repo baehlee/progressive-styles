@@ -1,0 +1,39 @@
+/* ════════════════════════════════════════════════════════════════════
+   PROGRESSIVE REAL ESTATE GROUP — CRITICAL (anti-flash) CSS
+   ────────────────────────────────────────────────────────────────────
+   Paste into:  Lofty → Settings → Tools → Custom Styles  (the inline box)
+
+   WHY THIS EXISTS
+   The full stylesheet (styles/hosted.css) is loaded via the Util.addStyle()
+   snippet in Custom SCRIPTS — that's JavaScript, injected after the page has
+   already painted. So on first load the visitor briefly sees Lofty's native
+   DARK header before our cream styles arrive (the "flicker").
+
+   Custom STYLES, by contrast, are served inside Lofty's render-blocking
+   <head> stylesheet (styleAndTheme.css), so anything here applies on the very
+   first frame. We put ONLY the above-the-fold essentials (page background +
+   header) here so there's nothing left to flash. Everything else still comes
+   from hosted.css. Values are literal hex (no CSS vars) because this loads
+   before hosted.css defines the --preg- tokens.
+
+   Keep this tiny. It is well under Lofty's 5,000-character Custom Styles cap,
+   and it must mirror the header colors in hosted.css §6 / §22 exactly so the
+   handoff from this file to hosted.css is invisible.
+   ════════════════════════════════════════════════════════════════════ */
+
+/* Page background — cream from frame one (prevents a white/dark page flash) */
+html, body { background-color: #F4EEE3 !important; }
+
+/* Header — cream bar, warm rule, navy text (mirrors hosted.css §6) */
+header,
+.md-header,
+.md-header.layout6 {
+  background-color: #F4EEE3 !important;
+  background-image: none !important;
+  border-bottom: 1px solid #D9D1BE !important;
+}
+header a, .md-header a,
+.md-header span, .md-header div { color: #1B1815 !important; }
+
+/* Mobile hamburger lines — navy on the cream header (mirrors hosted.css §22) */
+.md-header .menu-icon .menu-bar { background-color: #0A1F3D !important; }

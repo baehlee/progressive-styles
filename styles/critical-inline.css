@@ -2,34 +2,29 @@
    PROGRESSIVE REAL ESTATE GROUP — CRITICAL (anti-flash) CSS
    ────────────────────────────────────────────────────────────────────
    Paste into:  Lofty → Settings → Tools → Custom Styles  (the inline box)
+   The @import MUST stay on the first line (CSS rule).
 
    WHY THIS EXISTS
-   The full stylesheet (styles/hosted.css) is loaded via the Util.addStyle()
-   snippet in Custom SCRIPTS — that's JavaScript, injected after the page has
-   already painted. So on first load the visitor briefly sees Lofty's native
-   DARK header before our cream styles arrive (the "flicker").
+   hosted.css loads via the Util.addStyle() snippet in Custom SCRIPTS — that's
+   JavaScript, injected after the page paints, so the header briefly shows
+   Lofty's native styling first (the "flicker"). Custom STYLES are served in
+   Lofty's render-blocking <head>, so anything here applies on the first frame.
+   We put ONLY the above-the-fold header essentials here. Literal hex (no vars)
+   because this loads before hosted.css defines the --preg- tokens.
 
-   Custom STYLES, by contrast, are served inside Lofty's render-blocking
-   <head> (an inline <style> in styleAndTheme), so anything here applies on the
-   very first frame. We put ONLY the above-the-fold essentials (page bg +
-   header) here so there's nothing left to flash. Values are literal hex (no
-   CSS vars) because this loads before hosted.css defines the --preg- tokens.
-
-   THE REAL FLASH SOURCE (found 2026-05-27)
-   The dark header is NOT the header's own background — it's a `.header-bg`
-   overlay child. In Lofty's `.transparent` header state (its hero-overlay
-   mode, briefly active on load) Lofty paints that overlay with a dark
-   gradient via an `!important` rule:
-     .md-header.layout6.transparent .header-container .header-bg{
-       background:linear-gradient(...rgba(25,25,25,.4)...) !important }
-   Our plain `header{background:cream}` never touched `.header-bg`, so the
-   dark scrim showed until hosted.css loaded. The rules below override that
-   overlay (and the white hamburger bars Lofty forces in the same state) with
-   HIGHER specificity + !important so they win on the first frame, in every
-   header state. Mirror any change here in hosted.css §6/§6c/§22.
+   THREE flash sources fixed here (mirror any change in hosted.css §1/§6/§6c):
+   1. Page/header background — cream from frame one.
+   2. The dark `.header-bg` overlay: in Lofty's `.transparent` header state it
+      paints a dark gradient via !important, which `header{background}` never
+      reached. Overridden below with higher specificity.
+   3. FONT: Lofty's header uses a bold typeface (var(--font-bold) -> a "font-bold"
+      @font-face). We force our sans (Manrope) at weight 400 with high
+      specificity so the bold never shows; the @import starts Manrope loading on
+      the first frame so the fallback->Manrope swap is minimal (display=swap).
 
    Keep this tiny — well under Lofty's 5,000-character Custom Styles cap.
    ════════════════════════════════════════════════════════════════════ */
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@300..800&display=swap');
 
 /* Page background — cream from frame one (prevents a white/dark page flash) */
 html, body { background-color: #F4EEE3 !important; }
@@ -45,9 +40,21 @@ header,
 header a, .md-header a,
 .md-header span, .md-header div { color: #1B1815 !important; }
 
+/* Header FONT — our sans at weight 400, high specificity so Lofty's bold
+   --font-bold face never flashes. Falls back to system sans (also normal
+   weight) until Manrope finishes loading. */
+html body .md-header,
+html body .md-header a,
+html body .md-header span,
+html body .md-header div,
+html body .md-header .head-menu a {
+  font-family: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important;
+  font-weight: 400 !important;
+}
+
 /* Kill the dark `.header-bg` gradient scrim in BOTH header states. High
-   specificity (html body … 5 classes) so it beats Lofty's .transparent
-   !important gradient — this is the actual fix for the black-header flash. */
+   specificity (html body + 5 classes) so it beats Lofty's .transparent
+   !important gradient. */
 html body .md-header.layout6 .header-container .header-bg,
 html body .md-header.layout6.transparent .header-container .header-bg {
   background: #F4EEE3 !important;

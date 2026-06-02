@@ -793,4 +793,19 @@ body, p, li, td, h1, h2, h3, h4, h5, h6 {
 }
 
 
+/* ═══ 22. Launch-registration (template27) consent legibility ═══
+   The /launch-registration landing-page lead form hard-codes its TCPA consent
+   text + checkboxes WHITE via an inline custom prop on the element itself
+   (style="--g-text-color:#ffffff" on .disclaimer-content; border/color:#ffffff
+   on .check-box-container). That's correct on a dark-photo form, but this landing
+   page's card is light, so the legal fine print and the empty checkboxes are
+   invisible — and the white is baked in, unreachable from Lofty's editor.
+   An !important author rule out-ranks a non-important inline declaration, so we
+   force it dark HERE. Scoped to body.landing-page.template27 so the homepage lead
+   form's consent (white on its dark photo) is untouched. The blue Terms/Privacy
+   links already read fine and are intentionally left alone. */
+body.landing-page.template27 .consent-item .disclaimer-content,
+body.landing-page.template27 .consent-item .disclaimer-content p{ color:var(--preg-char,#1B1815) !important; }
+body.landing-page.template27 .consent-item .check-box-container{ border-color:var(--preg-mute,#6E695F) !important; }
+
 /* ═══ END — Progressive Real Estate Group global stylesheet ═══ */

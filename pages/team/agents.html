@@ -29,6 +29,12 @@
 
 <section id="preg-agents">
   <style>
+    /* Escape Lofty's narrow content container so the 100vw full-bleed reaches
+       the viewport edges (same mechanism the founder block uses). Without this,
+       Lofty clips the block to its container and the white container background
+       shows as side margins. */
+    :has(#preg-agents){overflow:visible !important;}
+
     #preg-agents{
       --i:#0A1F3D; --canvas:#F4EEE3; --paper:#FBF8F1; --e:#B86A3E;
       --char:#1B1815; --mute:#6E695F; --rule:#D9D1BE;

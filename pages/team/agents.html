@@ -1,0 +1,140 @@
+<!-- ════════════════════════════════════════════════════════════════════
+     PROGRESSIVE REAL ESTATE GROUP — OUR AGENTS (secondary tier)
+     ────────────────────────────────────────────────────────────────────
+     WHERE TO PASTE:  Lofty Page Editor → The Team page → Add Block →
+                      Custom HTML / Code Block. Place it DIRECTLY BELOW the
+                      founder block (#preg-team, team.html). This is the
+                      secondary "Our Agents" tier — it must read as supporting
+                      the four founders, not as equal to them.
+
+     WHAT IT IS:      The two AGENTS (Jon Lopez, Drew Wallis) as a lighter
+                      2-up card grid: smaller portraits, name + own title +
+                      web bio (≤150 words). NO welcome videos (plain portraits,
+                      no play button). Roles are the agents' OWN titles —
+                      NEVER "Co-Founder."
+
+     SELF-CONTAINED:  All CSS scoped under #preg-agents. Headshots load from the
+                      project CDN (jsDelivr) — nothing to upload to Lofty. Fonts
+                      (Fraunces + Manrope) come from the global hosted.css.
+
+     ▶ LOFTY / GLOBAL-CSS NOTES (do not "fix"):
+       · NO inline SVG (Lofty rewrites svg attrs then rejects them). This block
+         has no SVG and no <button> — nothing for the global button rule to hit.
+       · hosted.css forces all headings navy; on this CREAM section navy is
+         correct, so no override needed.
+
+     SEO:             /team meta is set on the founder block; this is the same
+                      page, no separate meta.
+     ════════════════════════════════════════════════════════════════════ -->
+
+<section id="preg-agents">
+  <style>
+    #preg-agents{
+      --i:#0A1F3D; --canvas:#F4EEE3; --paper:#FBF8F1; --e:#B86A3E;
+      --char:#1B1815; --mute:#6E695F; --rule:#D9D1BE;
+      --disp:'Fraunces','Times New Roman',serif;
+      --sans:'Manrope',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+      display:block;background:var(--canvas);color:var(--char);font-family:var(--sans);
+      padding:0 clamp(1.25rem,5vw,2.5rem) clamp(52px,8vw,110px);
+      -webkit-font-smoothing:antialiased;
+      width:100vw;max-width:100vw;
+      margin-left:calc(50% - 50vw);margin-right:calc(50% - 50vw);overflow-x:clip;
+    }
+    #preg-agents *{box-sizing:border-box;}
+    #preg-agents .ag-wrap{max-width:1120px;margin:0 auto;}
+
+    /* Thin rule separates this tier from the founders above */
+    #preg-agents .ag-head{
+      max-width:680px;margin:0 0 clamp(34px,5vw,56px);
+      padding-top:clamp(40px,6vw,72px);border-top:1px solid var(--rule);
+    }
+    #preg-agents .ag-eyebrow{
+      display:block;margin:0 0 14px;font-size:12px;font-weight:600;
+      letter-spacing:.18em;text-transform:uppercase;color:var(--e);
+    }
+    #preg-agents h2.ag-h2{
+      margin:0 0 14px;font-family:var(--disp);
+      font-size:clamp(28px,3.6vw,44px);line-height:1.04;letter-spacing:-.025em;
+      font-weight:300;color:var(--i);font-variation-settings:"opsz" 72,"SOFT" 50;
+    }
+    #preg-agents .ag-intro{margin:0;font-size:clamp(15px,1.3vw,17px);line-height:1.6;color:var(--char);}
+
+    /* ── 2-up card grid (secondary tier — smaller than founder rows) ── */
+    #preg-agents .ag-grid{
+      display:grid;grid-template-columns:repeat(2,1fr);
+      gap:clamp(28px,5vw,56px);align-items:start;
+    }
+    #preg-agents .ag-card{display:flex;flex-direction:column;}
+    #preg-agents .ag-photo{
+      position:relative;aspect-ratio:1/1.12;overflow:hidden;
+      background:var(--i);border-radius:2px;margin:0 0 22px;
+    }
+    #preg-agents .ag-photo img{
+      width:100%;height:100%;object-fit:cover;object-position:center top;
+      filter:saturate(.95);display:block;
+    }
+    #preg-agents .ag-spec{
+      display:block;margin:0 0 10px;font-size:12px;font-weight:600;
+      letter-spacing:.12em;text-transform:uppercase;color:var(--e);
+    }
+    /* Secondary tier: name is smaller than founders and has NO italic emphasis */
+    #preg-agents h3.ag-name{
+      margin:0 0 4px;font-family:var(--disp);font-size:clamp(24px,2.6vw,32px);
+      font-weight:400;letter-spacing:-.02em;color:var(--i);
+      font-variation-settings:"opsz" 48,"SOFT" 30;
+    }
+    #preg-agents .ag-role{
+      margin:0 0 16px;font-size:13px;font-weight:600;letter-spacing:.1em;
+      text-transform:uppercase;color:var(--mute);
+    }
+    #preg-agents .ag-bio{margin:0;font-size:clamp(15px,1.1vw,16px);line-height:1.66;color:var(--char);}
+    #preg-agents .ag-bio em{font-style:italic;color:var(--i);}
+
+    /* ── Entrance ── */
+    @keyframes agUp{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:none;}}
+    #preg-agents .ag-card{animation:agUp .7s ease both;}
+    #preg-agents .ag-card:nth-child(2){animation-delay:.08s;}
+    @media (prefers-reduced-motion:reduce){#preg-agents .ag-card{animation:none;}}
+
+    /* ── Mobile: single column ── */
+    @media (max-width:780px){
+      #preg-agents .ag-grid{grid-template-columns:1fr;gap:40px;}
+      #preg-agents .ag-photo{aspect-ratio:1/1;max-height:440px;}
+    }
+  </style>
+
+  <div class="ag-wrap">
+    <div class="ag-head">
+      <span class="ag-eyebrow">Our agents</span>
+      <h2 class="ag-h2">The team behind the team.</h2>
+      <p class="ag-intro">
+        Working alongside our founders — same standard, same straight talk,
+        same belief that everyone deserves a place to belong.
+      </p>
+    </div>
+
+    <div class="ag-grid">
+      <!-- Jon Lopez -->
+      <div class="ag-card">
+        <div class="ag-photo">
+          <img src="https://cdn.jsdelivr.net/gh/baehlee/progressive-styles@main/reference/assets/headshot-jon.jpg" alt="Jon Lopez, Agent with Progressive Real Estate Group" loading="lazy">
+        </div>
+        <span class="ag-spec">Helping buyers &amp; sellers since 2012</span>
+        <h3 class="ag-name">Jon Lopez</h3>
+        <div class="ag-role">Agent</div>
+        <p class="ag-bio">Jon's approach starts with something he's always valued in a salesperson: straight talk. Clear advice, no runaround, and the room to make your own decision in the end. He's been guiding people through their real estate moves since 2012, and he treats every one as a chance to genuinely connect — not just to close. Jon came to the U.S. from Colombia at age five and watched his parents chase the American Dream the hard way: working hard, getting a little further each year, from North Jersey to Minnetonka, where the family has been since 1997. That's the dream he's honored to help his own clients build now — <em>a place of their own</em>, and someone in their corner who'll shoot straight the whole way through.</p>
+      </div>
+
+      <!-- Drew Wallis -->
+      <div class="ag-card">
+        <div class="ag-photo">
+          <img src="https://cdn.jsdelivr.net/gh/baehlee/progressive-styles@main/reference/assets/headshot-drew.jpg" alt="Drew Wallis, Associate Broker with Progressive Real Estate Group" loading="lazy">
+        </div>
+        <span class="ag-spec">Former teacher &amp; business owner &middot; First-time buyer champion</span>
+        <h3 class="ag-name">Drew Wallis</h3>
+        <div class="ag-role">Associate Broker</div>
+        <p class="ag-bio">Drew brings a background most agents don't. Years as a teacher taught him to break a complicated thing down until it actually makes sense; years running a small business taught him how contracts and negotiations really work. He puts both to work on every transaction — especially for <em>first-time buyers</em> who need someone to explain the process and fight their corner. Originally from Arkansas, Drew and his family chose Minnesota on purpose: they wanted a community that believes everyone deserves equal treatment, and that a better future is worth working for. He's been helping people buy and sell for more than four years. Outside of work, you'll find him with his wife and daughter — usually mid-project, or learning something new.</p>
+      </div>
+    </div>
+  </div>
+</section>

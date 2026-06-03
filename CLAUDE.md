@@ -209,11 +209,16 @@ When producing a deliverable, write it to its final folder *and* drop a copy in 
 - **No external JS dependencies** unless explicitly necessary. Lofty pages have their own JS environment and we don't want conflicts.
 - **Self-contained.** Each block file should render correctly if pasted into a blank Lofty Custom HTML block. Don't depend on other blocks being present on the page.
 - **Comment the destination at the top.** Every block file starts with a comment block stating exactly which page it goes on and which existing block it replaces (if any).
+- **⚠️ FULL-BLEED BLOCKS MUST INCLUDE THE CONTAINER ESCAPE — don't repeat the team-page mistake.** Lofty wraps every Custom HTML block in a narrow, `overflow`-clipping content container. A block that goes edge-to-edge with `width:100vw; margin-left:calc(50% - 50vw)` will get **clipped to that container**, and Lofty's (white) container background shows as side margins / an "odd divider" band. The `100vw` rule is NOT enough on its own. You MUST also override the parent's overflow, scoped to the block's own id, as the FIRST rule in the block:
+  ```css
+  :has(#preg-yourblock){ overflow:visible !important; }
+  ```
+  Both `pages/homepage/hero.html` (`#preg-hero`) and `pages/team/team.html` (`#preg-team`) do this; `pages/team/agents.html` (`#preg-agents`) was shipped WITHOUT it on 2026-06-02 and rendered with white shoulders until the `:has()` line was added. Any new full-bleed block needs its own matching `:has(#preg-…){overflow:visible !important}`. (Diagnosis tip: white only in the side margins + no full-width gap row = the block isn't bleeding because the escape is missing — not a Lofty inter-block gap.)
 
 ### Content / copy
 
 - **Founder bios** have two lengths: long (the original press-kit-style, kept for reference and email signatures) and web (max 150 words per founder, used on the Team page).
-- **Roles are always "Co-Founder."** Never "Agent." When grabbing copy from the existing site, fix this everywhere it appears.
+- **Roles for the four founders are always "Co-Founder."** Never "Agent" for them. When grabbing copy from the existing site, fix this everywhere it appears. **Exception — the two actual agents (Jon Lopez, Drew Wallis, added 2026-06-02):** for THEM their own license title is correct (Jon → "Agent", Drew → "Associate Broker"), never "Co-Founder." See the agents tier in §1 and `pages/team/agents.html`.
 - **Pages must have SEO meta** drafted alongside the page: meta title (≤60 chars), meta description (140-160 chars), focus keyword, recommended URL slug. Write these in a comment block at the top of the page's HTML file.
 
 ### Image and media

@@ -14,6 +14,21 @@
                       hosted logos + click-to-call / email / website links, and
                       a navy CTA band with a neutral referral disclaimer.
 
+     CLICKABLE LOGOS: 11 of 14 logos link through to the vendor's website (new
+                      tab) with a hover ring. The 3 WITHOUT a link have no usable
+                      site: Pamela M Peterson Agency + Nabozny & Associates (only
+                      the generic amfam.com corporate page, which doesn't reach
+                      the agent) and McKernan Property Solutions (Gmail, no site
+                      found). If you get agent/business URLs for those, add an
+                      <a class="pv-mark pv-mlink" href="https://…"> wrapper around
+                      their <img> like the others. Derived links (from each
+                      vendor's email domain, all verified to resolve): Rife Group
+                      →mutualmortgage.com, HomeSync→rosethmortgage.com, WNB→
+                      wnbfinancial.com, Achosa→achosahw.com, Blackrock→
+                      blackrockmn.com, Minocqua→minocquabrewingcompany.com, T-Rex
+                      →trexcookie.com. Explicit (from your list): Results Title,
+                      River Prairie, Envision Capital, Zenvos.
+
      SELF-CONTAINED:  All CSS scoped under #preg-vendors. Fonts come from global
                       hosted.css (Fraunces + Manrope). No JS. Logos load from the
                       jsDelivr repo (reference/assets/vendor-logos/) — they must
@@ -39,7 +54,7 @@
        better at card size). Envision Capital's mark is low-contrast at source.
 
      SEO (set in Lofty's per-page SEO panel for /preferred-vendors):
-       Meta title:        Preferred Vendors & Partners | Progressive Real Estate Group
+       Meta title:        Preferred Vendors & Partners | Progressive Real Estate
        Meta description:  Trusted Twin Cities & western Wisconsin lenders,
                           title, insurance, contractors, and local businesses —
                           the partners our team works with and recommends.
@@ -108,6 +123,12 @@
       padding:18px 22px;background:#fff;border-bottom:1px solid var(--rule);
     }
     #preg-vendors .pv-img{max-height:68px;max-width:190px;width:auto;height:auto;object-fit:contain;display:block;}
+    /* clickable logo (links to vendor website) */
+    #preg-vendors a.pv-mlink{cursor:pointer;text-decoration:none;position:relative;transition:box-shadow .15s;}
+    #preg-vendors a.pv-mlink .pv-img{transition:transform .2s;}
+    #preg-vendors a.pv-mlink:hover{box-shadow:inset 0 0 0 2px var(--s2);}
+    #preg-vendors a.pv-mlink:hover .pv-img{transform:scale(1.04);}
+    #preg-vendors a.pv-mlink:focus-visible{outline:2px solid var(--e);outline-offset:-3px;}
     #preg-vendors .pv-body{padding:18px 20px 20px;display:flex;flex-direction:column;flex:1 1 auto;}
     #preg-vendors .pv-parent{margin:0 0 5px;font-size:11px;font-weight:600;letter-spacing:.13em;text-transform:uppercase;color:var(--e);}
     #preg-vendors h3.pv-name{margin:0;font-family:var(--sans);font-size:19px;line-height:1.2;font-weight:700;color:var(--i) !important;letter-spacing:-.01em;}
@@ -167,7 +188,7 @@
         </div>
         <div class="pv-grid">
         <article class="pv-co">
-          <div class="pv-mark"><img class="pv-img" src="https://cdn.jsdelivr.net/gh/baehlee/progressive-styles@main/reference/assets/vendor-logos/rife-group.png" alt="Rife Group logo" loading="lazy" decoding="async"></div>
+          <a class="pv-mark pv-mlink" href="https://mutualmortgage.com" target="_blank" rel="noopener" aria-label="Visit Rife Group website"><img class="pv-img" src="https://cdn.jsdelivr.net/gh/baehlee/progressive-styles@main/reference/assets/vendor-logos/rife-group.png" alt="Rife Group logo" loading="lazy" decoding="async"></a>
           <div class="pv-body">
             <p class="pv-parent">Mutual of Omaha Mortgage</p>
             <h3 class="pv-name">Rife Group</h3>
@@ -180,7 +201,7 @@
           </div>
         </article>
         <article class="pv-co">
-          <div class="pv-mark"><img class="pv-img" src="https://cdn.jsdelivr.net/gh/baehlee/progressive-styles@main/reference/assets/vendor-logos/homesync.png" alt="HomeSync logo" loading="lazy" decoding="async"></div>
+          <a class="pv-mark pv-mlink" href="https://rosethmortgage.com" target="_blank" rel="noopener" aria-label="Visit HomeSync website"><img class="pv-img" src="https://cdn.jsdelivr.net/gh/baehlee/progressive-styles@main/reference/assets/vendor-logos/homesync.png" alt="HomeSync logo" loading="lazy" decoding="async"></a>
           <div class="pv-body">
             <p class="pv-parent">Powered by Roseth Mortgage</p>
             <h3 class="pv-name">HomeSync</h3>
@@ -193,7 +214,7 @@
           </div>
         </article>
         <article class="pv-co">
-          <div class="pv-mark"><img class="pv-img" src="https://cdn.jsdelivr.net/gh/baehlee/progressive-styles@main/reference/assets/vendor-logos/envision-capital.png" alt="Envision Capital logo" loading="lazy" decoding="async"></div>
+          <a class="pv-mark pv-mlink" href="https://envcap.com" target="_blank" rel="noopener" aria-label="Visit Envision Capital website"><img class="pv-img" src="https://cdn.jsdelivr.net/gh/baehlee/progressive-styles@main/reference/assets/vendor-logos/envision-capital.png" alt="Envision Capital logo" loading="lazy" decoding="async"></a>
           <div class="pv-body">
             <h3 class="pv-name">Envision Capital</h3>
             <p class="pv-who"><span class="pv-pers">Paris Alves</span> · <span class="pv-role">Senior Mortgage Consultant</span></p>
@@ -205,7 +226,7 @@
           </div>
         </article>
         <article class="pv-co">
-          <div class="pv-mark"><img class="pv-img" src="https://cdn.jsdelivr.net/gh/baehlee/progressive-styles@main/reference/assets/vendor-logos/wnb-financial.jpg" alt="WNB Financial logo" loading="lazy" decoding="async"></div>
+          <a class="pv-mark pv-mlink" href="https://wnbfinancial.com" target="_blank" rel="noopener" aria-label="Visit WNB Financial website"><img class="pv-img" src="https://cdn.jsdelivr.net/gh/baehlee/progressive-styles@main/reference/assets/vendor-logos/wnb-financial.jpg" alt="WNB Financial logo" loading="lazy" decoding="async"></a>
           <div class="pv-body">
             <h3 class="pv-name">WNB Financial</h3>
             <p class="pv-line">More than a bank</p>
@@ -227,7 +248,7 @@
         </div>
         <div class="pv-grid">
         <article class="pv-co">
-          <div class="pv-mark"><img class="pv-img" src="https://cdn.jsdelivr.net/gh/baehlee/progressive-styles@main/reference/assets/vendor-logos/results-title.png" alt="Results Title logo" loading="lazy" decoding="async"></div>
+          <a class="pv-mark pv-mlink" href="https://ResultsTitle.net" target="_blank" rel="noopener" aria-label="Visit Results Title website"><img class="pv-img" src="https://cdn.jsdelivr.net/gh/baehlee/progressive-styles@main/reference/assets/vendor-logos/results-title.png" alt="Results Title logo" loading="lazy" decoding="async"></a>
           <div class="pv-body">
             <h3 class="pv-name">Results Title</h3>
             <p class="pv-who"><span class="pv-pers">Jen Trujillo</span> · <span class="pv-role">Bilingual Closing Support Specialist</span></p>
@@ -239,7 +260,7 @@
           </div>
         </article>
         <article class="pv-co">
-          <div class="pv-mark"><img class="pv-img" src="https://cdn.jsdelivr.net/gh/baehlee/progressive-styles@main/reference/assets/vendor-logos/achosa.png" alt="Achosa Home Warranty logo" loading="lazy" decoding="async"></div>
+          <a class="pv-mark pv-mlink" href="https://achosahw.com" target="_blank" rel="noopener" aria-label="Visit Achosa Home Warranty website"><img class="pv-img" src="https://cdn.jsdelivr.net/gh/baehlee/progressive-styles@main/reference/assets/vendor-logos/achosa.png" alt="Achosa Home Warranty logo" loading="lazy" decoding="async"></a>
           <div class="pv-body">
             <h3 class="pv-name">Achosa Home Warranty</h3>
             <p class="pv-who"><span class="pv-pers">Shelley Goldman</span> · <span class="pv-role">Senior Sales Executive</span></p>
@@ -284,7 +305,7 @@
           </div>
         </article>
         <article class="pv-co">
-          <div class="pv-mark"><img class="pv-img" src="https://cdn.jsdelivr.net/gh/baehlee/progressive-styles@main/reference/assets/vendor-logos/river-prairie.png" alt="River Prairie Wealth Partners logo" loading="lazy" decoding="async"></div>
+          <a class="pv-mark pv-mlink" href="https://AmeripriseAdvisors.com" target="_blank" rel="noopener" aria-label="Visit River Prairie Wealth Partners website"><img class="pv-img" src="https://cdn.jsdelivr.net/gh/baehlee/progressive-styles@main/reference/assets/vendor-logos/river-prairie.png" alt="River Prairie Wealth Partners logo" loading="lazy" decoding="async"></a>
           <div class="pv-body">
             <p class="pv-parent">Ameriprise Financial Services LLC</p>
             <h3 class="pv-name">River Prairie Wealth Partners</h3>
@@ -317,7 +338,7 @@
           </div>
         </article>
         <article class="pv-co">
-          <div class="pv-mark"><img class="pv-img" src="https://cdn.jsdelivr.net/gh/baehlee/progressive-styles@main/reference/assets/vendor-logos/blackrock-construction.png" alt="Blackrock Construction logo" loading="lazy" decoding="async"></div>
+          <a class="pv-mark pv-mlink" href="https://blackrockmn.com" target="_blank" rel="noopener" aria-label="Visit Blackrock Construction website"><img class="pv-img" src="https://cdn.jsdelivr.net/gh/baehlee/progressive-styles@main/reference/assets/vendor-logos/blackrock-construction.png" alt="Blackrock Construction logo" loading="lazy" decoding="async"></a>
           <div class="pv-body">
             <h3 class="pv-name">Blackrock Construction</h3>
             <p class="pv-who"><span class="pv-pers">Sarah Baso &amp; Penny Erickson</span> · <span class="pv-role">Business Operations &amp; Finance</span></p>
@@ -338,7 +359,7 @@
         </div>
         <div class="pv-grid">
         <article class="pv-co">
-          <div class="pv-mark"><img class="pv-img" src="https://cdn.jsdelivr.net/gh/baehlee/progressive-styles@main/reference/assets/vendor-logos/zenvos-media.png" alt="Zenvos Media logo" loading="lazy" decoding="async"></div>
+          <a class="pv-mark pv-mlink" href="https://zenvosmedia.com" target="_blank" rel="noopener" aria-label="Visit Zenvos Media website"><img class="pv-img" src="https://cdn.jsdelivr.net/gh/baehlee/progressive-styles@main/reference/assets/vendor-logos/zenvos-media.png" alt="Zenvos Media logo" loading="lazy" decoding="async"></a>
           <div class="pv-body">
             <h3 class="pv-name">Zenvos Media</h3>
             <p class="pv-who"><span class="pv-pers">Tyler St. Marie</span> · <span class="pv-role">Owner</span></p>
@@ -358,7 +379,7 @@
         </div>
         <div class="pv-grid">
         <article class="pv-co">
-          <div class="pv-mark"><img class="pv-img" src="https://cdn.jsdelivr.net/gh/baehlee/progressive-styles@main/reference/assets/vendor-logos/minocqua-brewing.jpg" alt="Minocqua Brewing Company logo" loading="lazy" decoding="async"></div>
+          <a class="pv-mark pv-mlink" href="https://minocquabrewingcompany.com" target="_blank" rel="noopener" aria-label="Visit Minocqua Brewing Company website"><img class="pv-img" src="https://cdn.jsdelivr.net/gh/baehlee/progressive-styles@main/reference/assets/vendor-logos/minocqua-brewing.jpg" alt="Minocqua Brewing Company logo" loading="lazy" decoding="async"></a>
           <div class="pv-body">
             <h3 class="pv-name">Minocqua Brewing Company</h3>
             <p class="pv-who"><span class="pv-pers">Laura Connell</span></p>
@@ -369,7 +390,7 @@
           </div>
         </article>
         <article class="pv-co">
-          <div class="pv-mark"><img class="pv-img" src="https://cdn.jsdelivr.net/gh/baehlee/progressive-styles@main/reference/assets/vendor-logos/trex-cookie.jpg" alt="T-Rex Cookie Company logo" loading="lazy" decoding="async"></div>
+          <a class="pv-mark pv-mlink" href="https://TRexCookie.com" target="_blank" rel="noopener" aria-label="Visit T-Rex Cookie Company website"><img class="pv-img" src="https://cdn.jsdelivr.net/gh/baehlee/progressive-styles@main/reference/assets/vendor-logos/trex-cookie.jpg" alt="T-Rex Cookie Company logo" loading="lazy" decoding="async"></a>
           <div class="pv-body">
             <h3 class="pv-name">T-Rex Cookie Company</h3>
             <p class="pv-who"><span class="pv-pers">Becky Pasch</span></p>

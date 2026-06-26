@@ -123,11 +123,14 @@ email / website links), built outside the original 8 phases.
 
 > **Logos are hosted via jsDelivr** (`reference/assets/vendor-logos/`) and load
 > automatically — no uploads needed. They were committed + pushed with this page, so
-> new CDN paths fetch fresh immediately. **Shared logo:** Pamela Peterson and Nabozny
-> & Associates both show the corporate American Family mark (only that was supplied).
-> **Zenvos** is the small shield icon (a horizontal wordmark would read better);
-> **Envision Capital**'s mark is low-contrast at source. Swap either in if better art
-> arrives.
+> new CDN paths fetch fresh immediately. **Clickable logos:** 11 of the 14 logos link
+> through to the vendor's website (new tab). The 3 without a link have no usable site —
+> Pamela Peterson + Nabozny (American Family agents; only the generic amfam.com exists)
+> and McKernan (Gmail, no site). Send me agent/business URLs and I'll wire those up too.
+> **Shared logo:** Pamela Peterson and Nabozny both show the corporate American Family
+> mark (only that was supplied). **Zenvos** is the small shield icon (a horizontal
+> wordmark would read better); **Envision Capital**'s mark is low-contrast at source.
+> Swap either in if better art arrives.
 
 ---
 

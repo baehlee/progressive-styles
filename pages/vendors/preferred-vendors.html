@@ -1,0 +1,395 @@
+<!-- ════════════════════════════════════════════════════════════════════
+     PROGRESSIVE REAL ESTATE GROUP — PREFERRED VENDORS / PARTNERS PAGE
+     ────────────────────────────────────────────────────────────────────
+     WHERE TO PASTE:  Lofty CMS → create a NEW Custom Landing Page at slug
+                      /preferred-vendors → add ONE Custom HTML / Code block →
+                      paste this entire file. (Add it to the nav/footer if you
+                      want it discoverable.)
+
+     WHAT IT IS:      A general/mixed preferred-vendor directory: navy hero,
+                      a short intro, six category sections (Mortgage & Lending;
+                      Title, Closing & Home Warranty; Insurance & Financial
+                      Planning; Home Improvement & Construction; Marketing &
+                      Media; Local Businesses We Love), 14 vendor cards with
+                      hosted logos + click-to-call / email / website links, and
+                      a navy CTA band with a neutral referral disclaimer.
+
+     SELF-CONTAINED:  All CSS scoped under #preg-vendors. Fonts come from global
+                      hosted.css (Fraunces + Manrope). No JS. Logos load from the
+                      jsDelivr repo (reference/assets/vendor-logos/) — they must
+                      be committed + pushed for the images to resolve.
+
+     ▶ GLOBAL-CSS NOTES (do not "fix"):
+       · NO inline SVG (Lofty rewrites/rejects it). · Class names deliberately
+         AVOID hosted.css substring traps ([class*="card"|"logo"|"brand"|
+         "title"|"hero"|"section"|"tile"|"price"|"value"|"banner"|"block"…]) —
+         that's why classes look terse (pv-co, pv-mark, pv-name…). Don't rename
+         them to "pv-card"/"pv-logo" etc. · The navy hero + CTA set light text
+         with !important to beat hosted.css §4  h1..h6{color:navy!important}.
+         · CTA link uses class pv-act (NOT *btn-primary*/*Button*) to dodge the
+         global navy-button rule. · Full-bleed escape via
+         :has(#preg-vendors){overflow:visible} — required or Lofty clips the
+         100vw to its narrow container (white "shoulders").
+
+     ▶ LINKS (confirmed live slug): "Talk to our team" → /team.
+
+     ▶ LOGOS: corporate American Family mark is shared by Pamela Peterson and
+       Nabozny & Associates (both Am Fam agents) — swap in agency-specific marks
+       if supplied. Zenvos is the small shield icon (a wordmark would read
+       better at card size). Envision Capital's mark is low-contrast at source.
+
+     SEO (set in Lofty's per-page SEO panel for /preferred-vendors):
+       Meta title:        Preferred Vendors & Partners | Progressive Real Estate Group
+       Meta description:  Trusted Twin Cities & western Wisconsin lenders,
+                          title, insurance, contractors, and local businesses —
+                          the partners our team works with and recommends.
+       Focus keyword:     preferred real estate vendors twin cities
+       URL slug:          /preferred-vendors
+     ════════════════════════════════════════════════════════════════════ -->
+
+<section id="preg-vendors">
+  <style>
+    :has(#preg-vendors){overflow:visible !important;}
+
+    #preg-vendors{
+      --i:#0A1F3D; --i2:#14315A; --s:#3D88BD; --s2:#6FAED9;
+      --canvas:#F4EEE3; --paper:#FBF8F1; --e:#B86A3E; --e2:#D38A5C;
+      --char:#1B1815; --mute:#6E695F; --rule:#D9D1BE;
+      --disp:'Fraunces','Times New Roman',serif;
+      --sans:'Manrope',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+      display:block;background:var(--canvas);color:var(--char);font-family:var(--sans);
+      -webkit-font-smoothing:antialiased;line-height:1.5;
+      width:100vw;max-width:100vw;margin-left:calc(50% - 50vw);margin-right:calc(50% - 50vw);
+      overflow-x:clip;
+    }
+    #preg-vendors *{box-sizing:border-box;}
+    #preg-vendors .pv-in{max-width:1140px;margin:0 auto;padding-left:clamp(1.25rem,5vw,2.5rem);padding-right:clamp(1.25rem,5vw,2.5rem);}
+
+    /* ── Hero (navy) ── */
+    #preg-vendors .pv-top{background:var(--i);color:#fff;padding:clamp(64px,9vw,116px) 0 clamp(56px,8vw,96px);}
+    #preg-vendors .pv-eyebrow{display:block;margin:0 0 18px;font-size:12px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--e2) !important;}
+    #preg-vendors h1.pv-h1{
+      margin:0 0 22px;max-width:18ch;font-family:var(--disp);
+      font-size:clamp(38px,6.4vw,76px);line-height:.98;letter-spacing:-.035em;
+      font-weight:300;color:#fff !important;font-variation-settings:"opsz" 120,"SOFT" 50;
+    }
+    #preg-vendors h1.pv-h1 em{font-style:italic;color:var(--e2) !important;font-variation-settings:"opsz" 120,"SOFT" 100;}
+    #preg-vendors .pv-lede{margin:0;max-width:60ch;font-size:clamp(17px,1.6vw,20px);line-height:1.6;color:rgba(255,255,255,.86) !important;}
+
+    /* ── Intro strip (cream) ── */
+    #preg-vendors .pv-intro{padding:clamp(44px,6vw,72px) 0 0;}
+    #preg-vendors .pv-intro p{margin:0;max-width:64ch;font-size:clamp(16px,1.4vw,18px);line-height:1.7;color:var(--char);}
+    #preg-vendors .pv-intro strong{color:var(--i);font-weight:600;}
+
+    /* ── Category group ── */
+    #preg-vendors .pv-group{padding:clamp(40px,5vw,60px) 0 0;}
+    #preg-vendors .pv-group:last-of-type{padding-bottom:clamp(8px,2vw,16px);}
+    #preg-vendors .pv-grp-h{max-width:1140px;margin:0 auto;padding:0 clamp(1.25rem,5vw,2.5rem);border-top:1px solid var(--rule);padding-top:clamp(28px,3.5vw,40px);}
+    #preg-vendors h2.pv-grp-t{
+      margin:0 0 6px;font-family:var(--disp);font-size:clamp(24px,2.8vw,34px);
+      line-height:1.05;letter-spacing:-.02em;font-weight:400;color:var(--i) !important;
+      font-variation-settings:"opsz" 90,"SOFT" 40;
+    }
+    #preg-vendors .pv-grp-d{margin:0;max-width:60ch;font-size:15px;line-height:1.55;color:var(--mute);}
+
+    /* ── Card grid ── */
+    #preg-vendors .pv-grid{
+      max-width:1140px;margin:clamp(22px,3vw,30px) auto 0;
+      padding:0 clamp(1.25rem,5vw,2.5rem);
+      display:grid;gap:clamp(16px,2vw,22px);
+      grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
+    }
+    #preg-vendors .pv-co{
+      display:flex;flex-direction:column;background:var(--paper);
+      border:1px solid var(--rule);border-radius:16px;overflow:hidden;
+    }
+    #preg-vendors .pv-mark{
+      height:104px;display:flex;align-items:center;justify-content:center;
+      padding:18px 22px;background:#fff;border-bottom:1px solid var(--rule);
+    }
+    #preg-vendors .pv-img{max-height:68px;max-width:190px;width:auto;height:auto;object-fit:contain;display:block;}
+    #preg-vendors .pv-body{padding:18px 20px 20px;display:flex;flex-direction:column;flex:1 1 auto;}
+    #preg-vendors .pv-parent{margin:0 0 5px;font-size:11px;font-weight:600;letter-spacing:.13em;text-transform:uppercase;color:var(--e);}
+    #preg-vendors h3.pv-name{margin:0;font-family:var(--sans);font-size:19px;line-height:1.2;font-weight:700;color:var(--i) !important;letter-spacing:-.01em;}
+    #preg-vendors .pv-line{margin:6px 0 0;font-size:13.5px;font-style:italic;color:var(--mute);line-height:1.45;}
+    #preg-vendors .pv-who{margin:10px 0 0;font-size:14px;line-height:1.4;color:var(--char);}
+    #preg-vendors .pv-pers{font-weight:600;}
+    #preg-vendors .pv-role{color:var(--mute);}
+    #preg-vendors .pv-meta{margin-top:14px;padding-top:14px;border-top:1px solid var(--rule);display:flex;flex-direction:column;gap:7px;}
+    #preg-vendors .pv-row{margin:0;display:flex;align-items:baseline;gap:10px;font-size:14px;line-height:1.4;}
+    #preg-vendors .pv-lbl{flex:0 0 46px;font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--mute);padding-top:1px;}
+    #preg-vendors a.pv-lnk{color:var(--i);text-decoration:none;border-bottom:1px solid transparent;transition:color .15s,border-color .15s;word-break:break-word;}
+    #preg-vendors a.pv-lnk:hover{color:var(--e);border-bottom-color:var(--e2);}
+    #preg-vendors .pv-addr{color:var(--char);}
+    #preg-vendors .pv-fine{margin:12px 0 0;font-size:11.5px;letter-spacing:.02em;color:var(--mute);}
+
+    /* ── CTA band (navy) ── */
+    #preg-vendors .pv-cta{margin-top:clamp(44px,6vw,72px);background:var(--i);color:#fff;padding:clamp(48px,7vw,84px) 0;}
+    #preg-vendors h2.pv-cta-t{margin:0 0 14px;max-width:20ch;font-family:var(--disp);font-size:clamp(28px,4vw,46px);line-height:1.02;letter-spacing:-.03em;font-weight:300;color:#fff !important;font-variation-settings:"opsz" 110,"SOFT" 50;}
+    #preg-vendors h2.pv-cta-t em{font-style:italic;color:var(--e2) !important;font-variation-settings:"opsz" 110,"SOFT" 100;}
+    #preg-vendors .pv-cta-d{margin:0 0 26px;max-width:54ch;font-size:clamp(16px,1.5vw,18px);line-height:1.6;color:rgba(255,255,255,.86) !important;}
+    #preg-vendors a.pv-act{
+      display:inline-block;background:var(--e) !important;color:#fff !important;
+      font-family:var(--sans);font-size:16px;font-weight:600;text-decoration:none;
+      padding:15px 30px;border-radius:999px;border:0;transition:background .15s,transform .15s;
+    }
+    #preg-vendors a.pv-act:hover{background:var(--e2) !important;transform:translateY(-1px);}
+    #preg-vendors .pv-disc{margin:30px 0 0;max-width:74ch;font-size:12.5px;line-height:1.6;color:rgba(255,255,255,.6) !important;}
+
+    /* ── Mobile ── */
+    @media(max-width:560px){
+      #preg-vendors .pv-grid{grid-template-columns:1fr;}
+      #preg-vendors .pv-lbl{flex-basis:42px;}
+      #preg-vendors a.pv-act{display:block;text-align:center;}
+    }
+  </style>
+
+  <!-- Hero -->
+  <div class="pv-top">
+    <div class="pv-in">
+      <span class="pv-eyebrow">Preferred Vendors &amp; Partners</span>
+      <h1 class="pv-h1">People we trust, <em>vetted</em> by us.</h1>
+      <p class="pv-lede">Buying or selling a home takes a whole team. These are the lenders, closers, insurers, contractors, and local businesses we work with across the Twin Cities and western Wisconsin — and would send our own families to.</p>
+    </div>
+  </div>
+
+  <!-- Intro -->
+  <div class="pv-intro">
+    <div class="pv-in">
+      <p>Every name here is someone our team has worked with directly. We share them as a <strong>starting point, not a requirement</strong> — you're always free to choose any provider you like. Tell us what you need and we'll point you to the right person.</p>
+    </div>
+  </div>
+
+      <section class="pv-group">
+        <div class="pv-grp-h">
+          <h2 class="pv-grp-t">Mortgage &amp; Lending</h2>
+          <p class="pv-grp-d">Pre-approval, rates, and loan guidance from people who pick up the phone.</p>
+        </div>
+        <div class="pv-grid">
+        <article class="pv-co">
+          <div class="pv-mark"><img class="pv-img" src="https://cdn.jsdelivr.net/gh/baehlee/progressive-styles@main/reference/assets/vendor-logos/rife-group.png" alt="Rife Group logo" loading="lazy" decoding="async"></div>
+          <div class="pv-body">
+            <p class="pv-parent">Mutual of Omaha Mortgage</p>
+            <h3 class="pv-name">Rife Group</h3>
+            <p class="pv-who"><span class="pv-pers">Ken Rife</span> · <span class="pv-role">Regional Vice President</span></p>
+            <div class="pv-meta">
+              <p class="pv-row"><span class="pv-lbl">Phone</span><a class="pv-lnk" href="tel:+16512727232">651-272-7232</a></p>
+              <p class="pv-row"><span class="pv-lbl">Email</span><a class="pv-lnk" href="mailto:krife@mutualmortgage.com">krife@mutualmortgage.com</a></p>
+            </div>
+            <p class="pv-fine">NMLS #784496</p>
+          </div>
+        </article>
+        <article class="pv-co">
+          <div class="pv-mark"><img class="pv-img" src="https://cdn.jsdelivr.net/gh/baehlee/progressive-styles@main/reference/assets/vendor-logos/homesync.png" alt="HomeSync logo" loading="lazy" decoding="async"></div>
+          <div class="pv-body">
+            <p class="pv-parent">Powered by Roseth Mortgage</p>
+            <h3 class="pv-name">HomeSync</h3>
+            <p class="pv-line">The #1 mortgage partner for Realtor growth</p>
+            <p class="pv-who"><span class="pv-pers">Kyle Roggenbuck</span> · <span class="pv-role">VP of Business Development</span></p>
+            <div class="pv-meta">
+              <p class="pv-row"><span class="pv-lbl">Phone</span><a class="pv-lnk" href="tel:+16514921402">651-492-1402</a></p>
+              <p class="pv-row"><span class="pv-lbl">Email</span><a class="pv-lnk" href="mailto:Kyle@RosethMortgage.com">Kyle@RosethMortgage.com</a></p>
+            </div>
+          </div>
+        </article>
+        <article class="pv-co">
+          <div class="pv-mark"><img class="pv-img" src="https://cdn.jsdelivr.net/gh/baehlee/progressive-styles@main/reference/assets/vendor-logos/envision-capital.png" alt="Envision Capital logo" loading="lazy" decoding="async"></div>
+          <div class="pv-body">
+            <h3 class="pv-name">Envision Capital</h3>
+            <p class="pv-who"><span class="pv-pers">Paris Alves</span> · <span class="pv-role">Senior Mortgage Consultant</span></p>
+            <div class="pv-meta">
+              <p class="pv-row"><span class="pv-lbl">Phone</span><a class="pv-lnk" href="tel:+16123966370">612-396-6370</a></p>
+              <p class="pv-row"><span class="pv-lbl">Web</span><a class="pv-lnk" href="https://envcap.com" target="_blank" rel="noopener">envcap.com</a></p>
+            </div>
+            <p class="pv-fine">NMLS #343637 · Lender ID 327578</p>
+          </div>
+        </article>
+        <article class="pv-co">
+          <div class="pv-mark"><img class="pv-img" src="https://cdn.jsdelivr.net/gh/baehlee/progressive-styles@main/reference/assets/vendor-logos/wnb-financial.jpg" alt="WNB Financial logo" loading="lazy" decoding="async"></div>
+          <div class="pv-body">
+            <h3 class="pv-name">WNB Financial</h3>
+            <p class="pv-line">More than a bank</p>
+            <p class="pv-who"><span class="pv-pers">Jane Gobler</span> · <span class="pv-role">Mortgage Loan Officer</span></p>
+            <div class="pv-meta">
+              <p class="pv-row"><span class="pv-lbl">Cell</span><a class="pv-lnk" href="tel:+17154560409">715-456-0409</a></p>
+              <p class="pv-row"><span class="pv-lbl">Office</span><a class="pv-lnk" href="tel:+17155987741">715-598-7741</a></p>
+              <p class="pv-row"><span class="pv-lbl">Email</span><a class="pv-lnk" href="mailto:JaneG@WNBFinancial.com">JaneG@WNBFinancial.com</a></p>
+            </div>
+          </div>
+        </article>
+        </div>
+      </section>
+
+      <section class="pv-group">
+        <div class="pv-grp-h">
+          <h2 class="pv-grp-t">Title, Closing &amp; Home Warranty</h2>
+          <p class="pv-grp-d">The teams that get you to the closing table and cover what comes after.</p>
+        </div>
+        <div class="pv-grid">
+        <article class="pv-co">
+          <div class="pv-mark"><img class="pv-img" src="https://cdn.jsdelivr.net/gh/baehlee/progressive-styles@main/reference/assets/vendor-logos/results-title.png" alt="Results Title logo" loading="lazy" decoding="async"></div>
+          <div class="pv-body">
+            <h3 class="pv-name">Results Title</h3>
+            <p class="pv-who"><span class="pv-pers">Jen Trujillo</span> · <span class="pv-role">Bilingual Closing Support Specialist</span></p>
+            <div class="pv-meta">
+              <p class="pv-row"><span class="pv-lbl">Phone</span><a class="pv-lnk" href="tel:+19524758001">952-475-8001</a></p>
+              <p class="pv-row"><span class="pv-lbl">Email</span><a class="pv-lnk" href="mailto:Jen.Trujillo@ResultsTitle.net">Jen.Trujillo@ResultsTitle.net</a></p>
+              <p class="pv-row"><span class="pv-lbl">Web</span><a class="pv-lnk" href="https://ResultsTitle.net" target="_blank" rel="noopener">ResultsTitle.net</a></p>
+            </div>
+          </div>
+        </article>
+        <article class="pv-co">
+          <div class="pv-mark"><img class="pv-img" src="https://cdn.jsdelivr.net/gh/baehlee/progressive-styles@main/reference/assets/vendor-logos/achosa.png" alt="Achosa Home Warranty logo" loading="lazy" decoding="async"></div>
+          <div class="pv-body">
+            <h3 class="pv-name">Achosa Home Warranty</h3>
+            <p class="pv-who"><span class="pv-pers">Shelley Goldman</span> · <span class="pv-role">Senior Sales Executive</span></p>
+            <div class="pv-meta">
+              <p class="pv-row"><span class="pv-lbl">Cell</span><a class="pv-lnk" href="tel:+16123601777">612-360-1777</a></p>
+              <p class="pv-row"><span class="pv-lbl">Office</span><a class="pv-lnk" href="tel:+18885092916">888-509-2916</a></p>
+              <p class="pv-row"><span class="pv-lbl">Email</span><a class="pv-lnk" href="mailto:ShelleyG@achosahw.com">ShelleyG@achosahw.com</a></p>
+            </div>
+          </div>
+        </article>
+        </div>
+      </section>
+
+      <section class="pv-group">
+        <div class="pv-grp-h">
+          <h2 class="pv-grp-t">Insurance &amp; Financial Planning</h2>
+          <p class="pv-grp-d">Protecting the home you buy and the plan that pays for it.</p>
+        </div>
+        <div class="pv-grid">
+        <article class="pv-co">
+          <div class="pv-mark"><img class="pv-img" src="https://cdn.jsdelivr.net/gh/baehlee/progressive-styles@main/reference/assets/vendor-logos/american-family-insurance.png" alt="Pamela M Peterson Agency logo" loading="lazy" decoding="async"></div>
+          <div class="pv-body">
+            <p class="pv-parent">American Family Insurance</p>
+            <h3 class="pv-name">Pamela M Peterson Agency</h3>
+            <p class="pv-who"><span class="pv-pers">Pamela Peterson</span> · <span class="pv-role">Agent</span></p>
+            <div class="pv-meta">
+              <p class="pv-row"><span class="pv-lbl">Phone</span><a class="pv-lnk" href="tel:+16514398442">651-439-8442</a></p>
+              <p class="pv-row"><span class="pv-lbl">Visit</span><span class="pv-addr">1330 Frontage Rd W, Stillwater, MN</span></p>
+            </div>
+          </div>
+        </article>
+        <article class="pv-co">
+          <div class="pv-mark"><img class="pv-img" src="https://cdn.jsdelivr.net/gh/baehlee/progressive-styles@main/reference/assets/vendor-logos/american-family-insurance.png" alt="Nabozny &amp; Associates logo" loading="lazy" decoding="async"></div>
+          <div class="pv-body">
+            <p class="pv-parent">American Family Insurance</p>
+            <h3 class="pv-name">Nabozny &amp; Associates</h3>
+            <p class="pv-who"><span class="pv-pers">Jamie Nabozny</span> · <span class="pv-role">Agent</span></p>
+            <div class="pv-meta">
+              <p class="pv-row"><span class="pv-lbl">Phone</span><a class="pv-lnk" href="tel:+17634247933">763-424-7933</a></p>
+              <p class="pv-row"><span class="pv-lbl">Visit</span><span class="pv-addr">10650 Cty Rd 81 #224, Maple Grove, MN</span></p>
+            </div>
+          </div>
+        </article>
+        <article class="pv-co">
+          <div class="pv-mark"><img class="pv-img" src="https://cdn.jsdelivr.net/gh/baehlee/progressive-styles@main/reference/assets/vendor-logos/river-prairie.png" alt="River Prairie Wealth Partners logo" loading="lazy" decoding="async"></div>
+          <div class="pv-body">
+            <p class="pv-parent">Ameriprise Financial Services LLC</p>
+            <h3 class="pv-name">River Prairie Wealth Partners</h3>
+            <p class="pv-who"><span class="pv-pers">Kate Noe</span> · <span class="pv-role">Financial Planner</span></p>
+            <div class="pv-meta">
+              <p class="pv-row"><span class="pv-lbl">Phone</span><a class="pv-lnk" href="tel:+17158327715">715-832-7715</a></p>
+              <p class="pv-row"><span class="pv-lbl">Email</span><a class="pv-lnk" href="mailto:Kate.Noe@ampf.com">Kate.Noe@ampf.com</a></p>
+              <p class="pv-row"><span class="pv-lbl">Web</span><a class="pv-lnk" href="https://AmeripriseAdvisors.com" target="_blank" rel="noopener">AmeripriseAdvisors.com</a></p>
+            </div>
+          </div>
+        </article>
+        </div>
+      </section>
+
+      <section class="pv-group">
+        <div class="pv-grp-h">
+          <h2 class="pv-grp-t">Home Improvement &amp; Construction</h2>
+          <p class="pv-grp-d">From a punch list before listing to a full build — trades we'd hire ourselves.</p>
+        </div>
+        <div class="pv-grid">
+        <article class="pv-co">
+          <div class="pv-mark"><img class="pv-img" src="https://cdn.jsdelivr.net/gh/baehlee/progressive-styles@main/reference/assets/vendor-logos/mckernan-property-solutions.jpg" alt="McKernan Property Solutions logo" loading="lazy" decoding="async"></div>
+          <div class="pv-body">
+            <h3 class="pv-name">McKernan Property Solutions</h3>
+            <p class="pv-who"><span class="pv-pers">Joshua McKernan</span> · <span class="pv-role">Handyman &amp; Home Improvements</span></p>
+            <div class="pv-meta">
+              <p class="pv-row"><span class="pv-lbl">Phone</span><a class="pv-lnk" href="tel:+19526830074">952-683-0074</a></p>
+              <p class="pv-row"><span class="pv-lbl">Email</span><a class="pv-lnk" href="mailto:mckernanpropertysolutions@gmail.com">mckernanpropertysolutions@gmail.com</a></p>
+            </div>
+          </div>
+        </article>
+        <article class="pv-co">
+          <div class="pv-mark"><img class="pv-img" src="https://cdn.jsdelivr.net/gh/baehlee/progressive-styles@main/reference/assets/vendor-logos/blackrock-construction.png" alt="Blackrock Construction logo" loading="lazy" decoding="async"></div>
+          <div class="pv-body">
+            <h3 class="pv-name">Blackrock Construction</h3>
+            <p class="pv-who"><span class="pv-pers">Sarah Baso &amp; Penny Erickson</span> · <span class="pv-role">Business Operations &amp; Finance</span></p>
+            <div class="pv-meta">
+              <p class="pv-row"><span class="pv-lbl">Phone</span><a class="pv-lnk" href="tel:+16512336334">651-233-6334</a></p>
+              <p class="pv-row"><span class="pv-lbl">Email</span><a class="pv-lnk" href="mailto:sarah@blackrockmn.com">sarah@blackrockmn.com</a></p>
+              <p class="pv-row"><span class="pv-lbl">Email</span><a class="pv-lnk" href="mailto:penny@blackrockmn.com">penny@blackrockmn.com</a></p>
+            </div>
+          </div>
+        </article>
+        </div>
+      </section>
+
+      <section class="pv-group">
+        <div class="pv-grp-h">
+          <h2 class="pv-grp-t">Marketing &amp; Media</h2>
+          <p class="pv-grp-d">The crew behind photography, video, and the way a home shows online.</p>
+        </div>
+        <div class="pv-grid">
+        <article class="pv-co">
+          <div class="pv-mark"><img class="pv-img" src="https://cdn.jsdelivr.net/gh/baehlee/progressive-styles@main/reference/assets/vendor-logos/zenvos-media.png" alt="Zenvos Media logo" loading="lazy" decoding="async"></div>
+          <div class="pv-body">
+            <h3 class="pv-name">Zenvos Media</h3>
+            <p class="pv-who"><span class="pv-pers">Tyler St. Marie</span> · <span class="pv-role">Owner</span></p>
+            <div class="pv-meta">
+              <p class="pv-row"><span class="pv-lbl">Phone</span><a class="pv-lnk" href="tel:+19529179985">952-917-9985</a></p>
+              <p class="pv-row"><span class="pv-lbl">Web</span><a class="pv-lnk" href="https://zenvosmedia.com" target="_blank" rel="noopener">zenvosmedia.com</a></p>
+            </div>
+          </div>
+        </article>
+        </div>
+      </section>
+
+      <section class="pv-group">
+        <div class="pv-grp-h">
+          <h2 class="pv-grp-t">Local Businesses We Love</h2>
+          <p class="pv-grp-d">Twin Cities &amp; western Wisconsin makers we're proud to send you to.</p>
+        </div>
+        <div class="pv-grid">
+        <article class="pv-co">
+          <div class="pv-mark"><img class="pv-img" src="https://cdn.jsdelivr.net/gh/baehlee/progressive-styles@main/reference/assets/vendor-logos/minocqua-brewing.jpg" alt="Minocqua Brewing Company logo" loading="lazy" decoding="async"></div>
+          <div class="pv-body">
+            <h3 class="pv-name">Minocqua Brewing Company</h3>
+            <p class="pv-who"><span class="pv-pers">Laura Connell</span></p>
+            <div class="pv-meta">
+              <p class="pv-row"><span class="pv-lbl">Phone</span><a class="pv-lnk" href="tel:+19529135986">952-913-5986</a></p>
+              <p class="pv-row"><span class="pv-lbl">Email</span><a class="pv-lnk" href="mailto:Laura@minocquabrewingcompany.com">Laura@minocquabrewingcompany.com</a></p>
+            </div>
+          </div>
+        </article>
+        <article class="pv-co">
+          <div class="pv-mark"><img class="pv-img" src="https://cdn.jsdelivr.net/gh/baehlee/progressive-styles@main/reference/assets/vendor-logos/trex-cookie.jpg" alt="T-Rex Cookie Company logo" loading="lazy" decoding="async"></div>
+          <div class="pv-body">
+            <h3 class="pv-name">T-Rex Cookie Company</h3>
+            <p class="pv-who"><span class="pv-pers">Becky Pasch</span></p>
+            <div class="pv-meta">
+              <p class="pv-row"><span class="pv-lbl">Cell</span><a class="pv-lnk" href="tel:+16512062815">651-206-2815</a></p>
+              <p class="pv-row"><span class="pv-lbl">Office</span><a class="pv-lnk" href="tel:+16123455815">612-345-5815</a></p>
+              <p class="pv-row"><span class="pv-lbl">Email</span><a class="pv-lnk" href="mailto:Becky@TRexCookie.com">Becky@TRexCookie.com</a></p>
+            </div>
+          </div>
+        </article>
+        </div>
+      </section>
+
+  <!-- CTA -->
+  <div class="pv-cta">
+    <div class="pv-in">
+      <h2 class="pv-cta-t">Need someone we don't <em>list here?</em></h2>
+      <p class="pv-cta-d">Inspectors, movers, stagers, attorneys — chances are we know a good one. Ask us and we'll make an introduction.</p>
+      <a class="pv-act" href="/team">Talk to our team</a>
+      <p class="pv-disc">Progressive Real Estate Group lists these partners as a convenience to our clients. They are independent businesses and are not affiliates of Progressive Real Estate Group or RE/MAX Results. A listing here is not an endorsement or guarantee of any service, and you are free to choose any provider you prefer.</p>
+    </div>
+  </div>
+</section>

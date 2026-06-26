@@ -43,6 +43,7 @@ Util.addStyle('https://cdn.jsdelivr.net/gh/baehlee/progressive-styles@cc27306239
 | Relocating to Twin Cities | ✅ | ❌ pending | **Paste** (§3) |
 | Mortgage pre-approval | ✅ | ❌ pending | **Paste** (§3) |
 | 10 Areas pages | ✅ | ❌ pending | **Create in Areas tool + paste** (§4) |
+| Preferred Vendors page | ✅ | ❌ pending | **Create landing page /preferred-vendors + paste** (§4b) |
 | SEO meta — all pages | ✅ sheet ready | ❌ pending | **Enter in SEO panels** (§5) |
 | Blog | ❌ not built | — | Next build task (not your job to paste yet) |
 
@@ -106,6 +107,27 @@ Build in this order (biggest SEO lever first):
 | 8 | Wayzata | `PASTE-INTO-Lofty-area-wayzata.html` |
 | 9 | Hopkins | `PASTE-INTO-Lofty-area-hopkins.html` |
 | 10 | Hudson, WI | `PASTE-INTO-Lofty-area-hudson-wi.html` |
+
+---
+
+## 4b · Create the Preferred Vendors page (NEW — added 2026-06-26)
+
+A general/mixed vendor directory (14 partners with hosted logos + click-to-call /
+email / website links), built outside the original 8 phases.
+
+1. Lofty → create a **new Custom Landing Page** → set slug **`/preferred-vendors`**.
+2. Add ONE Custom HTML / Code block → paste
+   `PASTE-INTO-Lofty-preferred-vendors-page.html`.
+3. Set its SEO from the sheet (§5 → "/preferred-vendors").
+4. Add it to the nav and/or footer so clients can find it (optional but recommended).
+
+> **Logos are hosted via jsDelivr** (`reference/assets/vendor-logos/`) and load
+> automatically — no uploads needed. They were committed + pushed with this page, so
+> new CDN paths fetch fresh immediately. **Shared logo:** Pamela Peterson and Nabozny
+> & Associates both show the corporate American Family mark (only that was supplied).
+> **Zenvos** is the small shield icon (a horizontal wordmark would read better);
+> **Envision Capital**'s mark is low-contrast at source. Swap either in if better art
+> arrives.
 
 ---
 

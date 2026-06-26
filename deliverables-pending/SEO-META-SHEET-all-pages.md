@@ -38,6 +38,12 @@ tool — match as closely as possible.
 - **Focus keyword:** sell my home twin cities
 - **Slug:** /sell
 
+### /preferred-vendors (Preferred Vendors & Partners)
+- **Title:** Preferred Vendors & Partners | Progressive Real Estate
+- **Description:** Trusted Twin Cities & western Wisconsin lenders, title, insurance, contractors, and local businesses — the partners our team works with and recommends.
+- **Focus keyword:** preferred real estate vendors twin cities
+- **Slug:** /preferred-vendors
+
 ---
 
 ## B · Identity landing pages

@@ -117,14 +117,19 @@ email / website links), built outside the original 8 phases.
 
 1. Lofty → create a **new Custom Landing Page** → set slug **`/preferred-vendors`**.
 2. Add ONE Custom HTML / Code block → paste
-   `PASTE-INTO-Lofty-preferred-vendors-page.html`.
-3. Set its SEO from the sheet (§5 → "/preferred-vendors").
-4. Add it to the nav and/or footer so clients can find it (optional but recommended).
+   `PASTE-INTO-Lofty-preferred-vendors-page.html`. **If you pasted an earlier copy,
+   RE-PASTE this latest one** — the logo links were reworked to survive Lofty (see note).
+3. **Test logo clicks on the Preview / published page, NOT in the Lofty editor** — links
+   don't navigate while you're in the editor canvas.
+4. Set its SEO from the sheet (§5 → "/preferred-vendors").
+5. Add it to the nav and/or footer so clients can find it (optional but recommended).
 
 > **Logos are hosted via jsDelivr** (`reference/assets/vendor-logos/`) and load
 > automatically — no uploads needed. They were committed + pushed with this page, so
 > new CDN paths fetch fresh immediately. **Clickable logos:** 11 of the 14 logos link
-> through to the vendor's website (new tab). The 3 without a link have no usable site —
+> through to the vendor's website (new tab). _(The link sits as a transparent overlay
+> over each logo so Lofty's built-in image click/zoom handler can't swallow it — that's
+> why an earlier version didn't click and you need the re-paste.)_ The 3 without a link have no usable site —
 > Pamela Peterson + Nabozny (American Family agents; only the generic amfam.com exists)
 > and McKernan (Gmail, no site). Send me agent/business URLs and I'll wire those up too.
 > **Shared logo:** Pamela Peterson and Nabozny both show the corporate American Family

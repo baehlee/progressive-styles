@@ -21,14 +21,15 @@ The project's goal is to make the website actually reflect this — both visuall
 
 All four are **Co-Founders**. Anywhere the live site or content calls them "Agent" is wrong and needs to be corrected to "Co-Founder."
 
-### The agents (secondary tier — added 2026-06-02)
+### The agents (secondary tier — added 2026-06-02, Neelu added 2026-07-23)
 
-Beyond the four founders, the team has **two agents** who are NOT founders. They render as a lighter secondary tier (`#preg-agents`, `pages/team/agents.html`) directly beneath the founder block on `/team` — smaller 2-up card grid, no welcome video, and **their own real titles** (never "Co-Founder"). Source bios/headshots: `misc-files/Bios 6.2.26.txt` + `Drew Headshot.jpg` / `Jon Lopez.jpeg`; web bios in `content/agents/web-versions.md`.
+Beyond the four founders, the team has **three agents** who are NOT founders. They render as a lighter secondary tier (`#preg-agents`, `pages/team/agents.html`) directly beneath the founder block on `/team` — Jon + Drew as a 2-up card grid, Neelu as a full-width photo+bio row below it (`.ag-solo`, her bio runs longer by design), no welcome videos, and **their own real titles** (never "Co-Founder"). Source bios/headshots: `misc-files/Bios 6.2.26.txt` + `Drew Headshot.jpg` / `Jon Lopez.jpeg` / `Meet Neelu Stene.docx` + `Neelu Stene.png`; web bios in `content/agents/web-versions.md`.
 
 | Name | Role (as shown) | Notes |
 |---|---|---|
 | **Jon Lopez** | Agent | In real estate since 2012; first-gen Colombian immigrant, Minnetonka since 1997. Likely bilingual EN/ES but NOT claimed on site (user's call — leave out). |
 | **Drew Wallis** | Associate Broker | 4+ yrs; former teacher + small-business owner, first-time-buyer focus; Arkansas → MN by choice (values fit the No Hate Pledge). |
+| **Neelu Stene** | Agent | Licensed FL 2014 / MN 2016; relocation specialist (MN → Seattle/Microsoft → Miami Beach luxury condos → home to MN); ex-boutique owner 50th & France; foodie, dog mom ×3. Full-width row below the 2-up grid. |
 
 This is the inverse of the founder rule: for these two, "Agent"/their license title is **correct** — do not relabel them "Co-Founder."
 

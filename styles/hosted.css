@@ -818,6 +818,15 @@ html body footer.md-footer::before{ display:none !important; }
 html body footer.md-footer .footer-container{ background:transparent !important; }
 html body footer.md-footer .site-logo img{ max-height:72px !important; width:auto !important; }
 html body footer.md-footer .copyright{ border-top:1px solid rgba(251,248,241,.14) !important; padding-top:20px !important; }
+/* Lofty forces one agent into the footer contact block (company title, then
+   the agent's name, address, phone, email). The group wants no single-owner
+   feel: hide the agent name (every .site-title after the company one).
+   scripts/footer-contact.js (pasted in Lofty Scripts) swaps phone + email to
+   the group's; any phone/email that ISN'T the group's stays hidden, so a
+   failed script never shows the agent's details. */
+html body footer.md-footer.layout5 .detail .site-title ~ .site-title{ display:none !important; }
+html body footer.md-footer.layout5 .detail p:has(> a[href^="mailto:"]:not([href="mailto:info@progressiverealestate.com"])){ display:none !important; }
+html body footer.md-footer.layout5 .detail p:has(> a[href^="tel:"]:not([href="tel:+19522995704"])){ display:none !important; }
 /* md-form layout5 ("Get In Touch" email row): its submit is a 20px send ICON
    Lofty pins inside the input's right edge. §21's ember button padding blew it
    up to a 75×51 slab hanging off the input (and off-screen at 390px). */

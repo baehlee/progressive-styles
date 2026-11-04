@@ -16,13 +16,13 @@ tool — match as closely as possible.
 
 ### / (Homepage)
 - **Title:** Twin Cities Real Estate, Founded by Four | Progressive
-- **Description:** Four veteran Twin Cities founders building an inclusive, equitable brokerage. Buy, sell, or relocate with a team that believes everyone deserves a place to belong.
+- **Description:** Four veteran Twin Cities founders building an inclusive, equitable brokerage. Buy, sell, or relocate with a team that believes everyone belongs.
 - **Focus keyword:** twin cities real estate
 - **Slug:** /
 
 ### /team (The Team)
-- **Title:** Meet the Founders | Progressive Real Estate Group
-- **Description:** Four Twin Cities co-founders, 80+ years combined, building an inclusive, equitable brokerage. Meet Rodolfo, Travis, Joe, and Jake.
+- **Title:** Meet Our Team | Progressive Real Estate Group
+- **Description:** Meet the four co-founders and agents of Progressive Real Estate Group: 80+ years of Twin Cities experience, building an inclusive, equitable brokerage.
 - **Focus keyword:** twin cities real estate team
 - **Slug:** /team
 

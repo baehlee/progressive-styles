@@ -808,4 +808,116 @@ body.landing-page.template27 .consent-item .disclaimer-content,
 body.landing-page.template27 .consent-item .disclaimer-content p{ color:var(--preg-char,#1B1815) !important; }
 body.landing-page.template27 .consent-item .check-box-container{ border-color:var(--preg-mute,#6E695F) !important; }
 
+/* ═══ 25. Footer frame + listing-card "Listed by" strip (site-wide) ═══
+   md-footer paints a full-width light overlay (::before, rgba(232,229,225,.9))
+   over the navy footer, so only the centered .footer-container read as navy —
+   a navy box floating on grey. Kill the overlay; the footer itself is navy (§14).
+   .house-footer ("Listed by …") on listing cards matched §14's [class*="footer"]
+   and got a navy slab; return it to the card. */
+html body footer.md-footer::before{ display:none !important; }
+html body footer.md-footer .footer-container{ background:transparent !important; }
+html body footer.md-footer .site-logo img{ max-height:72px !important; width:auto !important; }
+html body footer.md-footer .copyright{ border-top:1px solid rgba(251,248,241,.14) !important; padding-top:20px !important; }
+/* md-form layout5 ("Get In Touch" email row): its submit is a 20px send ICON
+   Lofty pins inside the input's right edge. §21's ember button padding blew it
+   up to a 75×51 slab hanging off the input (and off-screen at 390px). */
+html body .md-form.layout5 button.submit.submit-icon{
+  background:transparent !important; border:0 !important; padding:0 !important;
+  width:44px !important; height:44px !important; margin:-12px !important; min-width:0 !important; opacity:1 !important;
+}
+html body .md-form.layout5 button.submit.submit-icon i{ color:var(--preg-ember,#B86A3E) !important; font-size:20px !important; }
+html body .md-form.layout5 button.submit.submit-disabled i{ opacity:.55; }
+/* doubled classes → (0,4,0), out-ranks §14's [class*="footer"]:not():not() (0,3,0) */
+.md-house.md-house .house-footer.house-footer{ background:transparent !important; }
+
+
+/* ═══ 26. Areas pages (CMS → Areas; body.featured-area-intro-v2) ═══
+   Lofty's area template stacks locked modules on near-black #191919 with
+   inline --g-* colour vars, and §4 forces every heading navy → the headings on
+   the dark bands (Featured Listings, Demographics, Get In Touch, Overview, Age,
+   Education) were invisible, and hero/CTA/neighbourhood titles were navy on
+   photos. Re-skin to the brand: dark bands → navy ink, light bands → cream,
+   light headings on dark, ember eyebrow labels. An !important author rule
+   out-ranks the modules' inline (non-important) custom props. */
+body.featured-area-intro-v2 .md-area-overview,
+body.featured-area-intro-v2 .md-house,
+body.featured-area-intro-v2 .md-nbr-demographics{
+  --g-bg-color:var(--preg-ink,#0A1F3D) !important;
+  --g-primary-color:var(--preg-paper,#FBF8F1) !important;
+  --g-text-color:rgba(251,248,241,.82) !important;
+  --g-tip-color:rgba(251,248,241,.62) !important;
+  background-color:var(--preg-ink,#0A1F3D) !important;
+}
+body.featured-area-intro-v2 .md-area-overview .data-overview{ background-color:var(--preg-ink,#0A1F3D) !important; }
+body.featured-area-intro-v2 .md-form{
+  --g-bg-color:var(--preg-ink-2,#14315A) !important;
+  --g-tip-color:rgba(251,248,241,.7) !important;
+  background-color:var(--preg-ink-2,#14315A) !important;
+}
+body.featured-area-intro-v2 .md-map.layout1{ background-color:var(--preg-paper,#FBF8F1) !important; }
+body.featured-area-intro-v2 .md-map.layout2,
+body.featured-area-intro-v2 .md-featured-area{ background-color:var(--preg-canvas,#F4EEE3) !important; }
+
+/* Headings on the dark bands → cream */
+body.featured-area-intro-v2 .md-house .site-title h2,
+body.featured-area-intro-v2 .md-nbr-demographics .site-title h2,
+body.featured-area-intro-v2 .md-form .site-title h2,
+body.featured-area-intro-v2 .md-nbr-demographics .title-box,
+body.featured-area-intro-v2 .md-nbr-demographics .title-box *{ color:var(--preg-paper,#FBF8F1) !important; }
+body.featured-area-intro-v2 .md-house h3.house-address,
+body.featured-area-intro-v2 .md-house h3.house-address a{ color:var(--preg-paper,#FBF8F1) !important; font-size:clamp(19px,1.7vw,24px) !important; }
+body.featured-area-intro-v2 .md-nbr-demographics .card-item{ border-color:rgba(251,248,241,.18) !important; background:rgba(251,248,241,.04) !important; }
+body.featured-area-intro-v2 .md-nbr-demographics .chart-card{ border-color:rgba(251,248,241,.18) !important; }
+body.featured-area-intro-v2 .md-nbr-demographics .attom-desc a{ color:var(--preg-ember-2,#D38A5C) !important; }
+
+/* Ember eyebrow label ("Overview") */
+body.featured-area-intro-v2 .md-area-overview .data-title{
+  font-family:var(--preg-sans) !important; font-size:12px !important; font-weight:600 !important;
+  letter-spacing:.18em !important; text-transform:uppercase !important; color:var(--preg-ember-2,#D38A5C) !important;
+}
+body.featured-area-intro-v2 .md-area-overview .item-price{ font-family:var(--preg-display) !important; font-size:clamp(24px,2.4vw,32px) !important; color:var(--preg-paper,#FBF8F1) !important; }
+body.featured-area-intro-v2 .md-area-overview .item-left{ background:var(--preg-paper,#FBF8F1) !important; }
+body.featured-area-intro-v2 .md-area-overview .item-left i{ color:var(--preg-ember,#B86A3E) !important; }
+
+/* Hero: cream title on a navy scrim, ember state label, chip tags */
+body.featured-area-intro-v2 .md-area-overview .banner-mask{ background:linear-gradient(180deg,rgba(10,31,61,.28) 0%,rgba(10,31,61,.58) 55%,rgba(10,31,61,.86) 100%) !important; opacity:1 !important; }
+body.featured-area-intro-v2 .md-area-overview h1.site-title{ color:var(--preg-paper,#FBF8F1) !important; text-shadow:0 2px 24px rgba(10,31,61,.55) !important; }
+body.featured-area-intro-v2 .md-area-overview div.site-title{
+  font-family:var(--preg-sans) !important; font-size:13px !important; font-weight:600 !important;
+  letter-spacing:.24em !important; color:var(--preg-ember-2,#D38A5C) !important; margin-top:10px !important;
+}
+body.featured-area-intro-v2 .md-area-overview .banner-content,
+body.featured-area-intro-v2 .md-area-overview .banner-content *{ color:rgba(251,248,241,.92) !important; }
+body.featured-area-intro-v2 .md-area-overview .info-tags > *{
+  background:transparent !important; border:1px solid rgba(251,248,241,.5) !important; border-radius:999px !important;
+  color:var(--preg-paper,#FBF8F1) !important; padding:4px 12px !important;
+}
+
+/* "Similar Neighborhood" tiles: cream names on a navy scrim */
+body.featured-area-intro-v2 .md-featured-area .featured-area-item-img-mask{ background:linear-gradient(180deg,rgba(10,31,61,.15),rgba(10,31,61,.7)) !important; opacity:1 !important; }
+body.featured-area-intro-v2 .md-featured-area .featured-area-item-sub-title{ color:var(--preg-paper,#FBF8F1) !important; font-size:clamp(24px,2.4vw,32px) !important; text-shadow:0 2px 14px rgba(10,31,61,.6) !important; }
+
+/* "Work With Us" CTA: cream type on a navy photo scrim, ember button */
+body.featured-area-intro-v2 .md-cta .banner-mask{ background:rgba(10,31,61,.72) !important; opacity:1 !important; }
+body.featured-area-intro-v2 .md-cta h2,
+body.featured-area-intro-v2 .md-cta h3{ color:var(--preg-paper,#FBF8F1) !important; }
+body.featured-area-intro-v2 .md-cta h3{ font-family:var(--preg-sans) !important; font-size:clamp(16px,1.6vw,20px) !important; line-height:1.55 !important; letter-spacing:0 !important; max-width:640px; margin-left:auto !important; margin-right:auto !important; }
+/* cream button + navy label (ember+cream fails AA at 3.8:1) */
+body.featured-area-intro-v2 .md-cta .btn-item{ background:var(--preg-paper,#FBF8F1) !important; border:1px solid var(--preg-paper,#FBF8F1) !important; }
+body.featured-area-intro-v2 .md-cta .btn-item, body.featured-area-intro-v2 .md-cta .btn-item *{ color:var(--preg-ink,#0A1F3D) !important; }
+body.featured-area-intro-v2 .md-cta .btn-item:hover{ background:transparent !important; }
+body.featured-area-intro-v2 .md-cta .btn-item:hover, body.featured-area-intro-v2 .md-cta .btn-item:hover *{ color:var(--preg-paper,#FBF8F1) !important; }
+
+/* Featured Listings: active tab + More button in brand colours */
+body.featured-area-intro-v2 .md-house .tab-item{ color:rgba(251,248,241,.75) !important; }
+body.featured-area-intro-v2 .md-house .tab-item.active{ background:var(--preg-paper,#FBF8F1) !important; color:var(--preg-ink,#0A1F3D) !important; }
+body.featured-area-intro-v2 .md-house .button-more{ background:transparent !important; border:1px solid rgba(251,248,241,.6) !important; color:var(--preg-paper,#FBF8F1) !important; }
+body.featured-area-intro-v2 .md-house .button-more:hover{ background:var(--preg-paper,#FBF8F1) !important; color:var(--preg-ink,#0A1F3D) !important; }
+
+/* Get In Touch: consent text legible on navy */
+body.featured-area-intro-v2 .md-form .disclaimer-item,
+body.featured-area-intro-v2 .md-form .disclaimer-item *{ color:rgba(251,248,241,.72) !important; }
+body.featured-area-intro-v2 .md-form .disclaimer-item a{ color:var(--preg-ember-2,#D38A5C) !important; }
+body.featured-area-intro-v2 .md-form .label-top{ color:rgba(251,248,241,.8) !important; }
+
 /* ═══ END — Progressive Real Estate Group global stylesheet ═══ */
